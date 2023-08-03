@@ -1,0 +1,586 @@
+---
+title: "Analysis with raw data"
+author: "Joshua Eugenio"
+date: "2023-01-06"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+#Loading Libraries
+
+
+```{r}
+library(tidyverse)
+library(WGCNA)
+library(rstudioapi)
+library(data.table)
+library(gridExtra)
+library(dplyr)
+library(ggplot2)
+library(corrplot)
+library(ggcorrplot)
+library(corrr)
+library(conflicted)
+```
+
+#Reading in Data
+
+```{r}
+conflict_prefer("filter","dplyr")
+setwd(dirname(getActiveDocumentContext()$path))
+
+Raw<- read.csv("LukasFiles/Count_per_gene_per_sample_raw_BCL-SP0195.csv")
+Raw2<- read.csv("LukasFiles/Counts_per_gene_per_sample_raw_BCL-SP0208.csv")
+Metadata <- read.delim("LukasFiles/meta_data (1).txt")
+KidneyPt<- read.table("LukasFiles/20210916_pt_urine_kidney_LACDR.txt", sep=" ")
+PlasmaPt<- read.table("LukasFiles/20210916_pt_Plasma_complete_LACDR.txt", sep=" ")
+
+RepairNER <-read.delim("DATA/GO_term_summary_NER.txt",sep = "\t",row.names = NULL)
+names(RepairNER) = names(RepairNER)[-1]
+RepairNER[, ncol(RepairNER)] <- NULL
+```
+
+```{r}
+
+#genes from WGCNA|Kidney:160
+  
+list_genes_DD = c("Mdm2", 
+"Phlda3",
+"Ccng1",
+"Pvt1",
+"Bbc3",
+"Plk2",
+"Cdkn1a",
+"Aen",
+"Zmat3",
+"Fas",
+"Plcd4",
+"Pias3",
+"Gas6")
+
+list_genes_Rep = unique(RepairNER$Symbol)
+```
+
+# -----------------------------------------------------------------------------------------------
+
+# 1.    Removing low %mapped samples
+
+## a.   Checking out samples with low percentaged mapped (<10)
+
+```{r}
+Metadata$SAMPLE_ID <- factor(Metadata$SAMPLE_ID, levels = Metadata$SAMPLE_ID[order(Metadata$PERCENTAGE_MAPPED)])
+ggplot(Metadata, aes(x=SAMPLE_ID,y=PERCENTAGE_MAPPED)) +
+  geom_point(colour=ifelse(Metadata$PERCENTAGE_MAPPED < 10,"light blue","purple")) +
+  geom_hline(yintercept = 10) +
+  theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5,size = 5))
+```
+
+## b.   Removing low %mapped samples
+
+```{r}
+conflict_prefer("rename","dplyr")
+
+list_10percmapped <- as.data.frame(unique(Metadata$SAMPLE_ID[Metadata$PERCENTAGE_MAPPED < 10])) %>%
+  rename(SAMPLE_ID = 1)
+
+All_raw <- cbind(Raw%>% rename(X=1),Raw2) %>%
+  column_to_rownames(var = "X")%>%  select(-unique(list_10percmapped$SAMPLE_ID),-X)
+
+```
+
+# 2.    Aggregate technical replicates
+
+```{r}
+
+conflict_prefer("group","dplyr")
+conflict_prefer("summarize","dplyr")
+
+agg_summed_Probes <- All_raw %>% rownames_to_column("gene") %>%
+  pivot_longer(cols = -gene,names_to = "SAMPLE_ID",values_to = "value") %>%
+  left_join(Metadata, by= "SAMPLE_ID") %>%
+  na.omit(data) %>%
+  mutate(mean_id = paste(paste("R",REPLICATE,sep=""),LOCATION_ID,paste("C",CONCENTRATION,sep=""),paste("T",TIMEPOINT,sep=""),sep="_"),
+         mean_id2 = paste(LOCATION_ID,paste("C",CONCENTRATION,sep=""),paste("T",TIMEPOINT,sep=""),sep="_")) %>%
+  group_by(gene,mean_id,mean_id2) %>%
+  summarize(value = sum(value)) %>% #This line sums up the technical replicates
+  mutate(value=value+1)
+
+```
+
+# 3. Quality Check
+
+```{r}
+low_mean_v_quantile <- agg_summed_Probes %>%
+  group_by(gene) %>%
+  summarize(mean = mean(value),quant25 = quantile(value, 0.25)) %>%
+  filter(mean == quant25 | mean <quant25) %>% select(gene)
+```
+
+### Removing means lower than 1st quantile 
+```{r}
+count_fquant <- gg_summed_Probes %>%
+  separate(mean_id,c("REPLICATE","LOCATION_ID","CONC","id3")) %>% select(-c(id3)) %>% na.omit() %>%
+  group_by(gene,LOCATION_ID,CONC) %>%
+  mutate(REPLICATE2 = 1:n()) %>%
+  mutate(REPLICATE2 = paste("R",REPLICATE2,sep = "")) %>%
+  mutate(REPLICATE = ifelse(CONC == "C0", REPLICATE2, REPLICATE)) %>% select(-REPLICATE2) %>%
+  mutate(mean_id2 = ifelse(CONC=="C0", paste(LOCATION_ID,CONC,"T0",sep="_"),mean_id2))
+```
+
+```{r}
+
+conflict_prefer("correlate","corrr")
+
+correlation <- count_fquant %>% ungroup() %>%
+  separate(mean_id2,c("id1","id2","TIMEPOINT"),remove=FALSE) %>%
+  select(-c(id1,id2)) %>%
+  mutate(CONCENTRATION = CONC,REPLICATE = as.double(str_remove(REPLICATE,"R")), CONCENTRATION = as.double(str_remove(CONCENTRATION,"C")), TIMEPOINT = as.double(str_remove(TIMEPOINT,"T"))) %>%
+select(gene,REPLICATE, value,TIMEPOINT, LOCATION_ID) %>%
+  group_split(TIMEPOINT,LOCATION_ID)
+
+plots <- list()
+
+for(i in 1:36){
+  
+  title <- paste(paste("Timepoint",correlation[[i]][[1,"TIMEPOINT"]]),paste("Segment",correlation[[i]][[1,"LOCATION_ID"]]),sep=" / ")
+  
+  plots[[i]] <-  ggcorrplot(correlate(correlation[[i]] %>% select(-c(TIMEPOINT,LOCATION_ID)) %>% mutate(REPLICATE = paste("R",REPLICATE,sep = "")) %>% pivot_wider(names_from = REPLICATE,values_from = value) %>% column_to_rownames(var="gene"), diagonal = 0, quiet = T) %>% column_to_rownames(var = "term"), lab = TRUE, hc.order = TRUE, type = "upper",lab_size = 2,tl.cex = 8) +
+  scale_fill_gradient2(limit = c(0.8,1), low = "white", high =  "red", mid = "lightblue", midpoint = 0.9) +  labs(subtitle = title)
+}
+
+
+```
+
+
+
+## Removing low PearsonR
+
+```{r}
+count_fquant_frep <- anti_join(agg_summed_Probes,low_pearsonr)
+
+```
+
+## Saving plots
+
+```{r}
+
+plots_pdf <- list(
+  arrangeGrob(grobs=plots[1:4]),
+ arrangeGrob(grobs=plots[5:8]),
+  arrangeGrob(grobs=plots[9:12]),
+  arrangeGrob(grobs=plots[13:16]),
+  arrangeGrob(grobs=plots[17:20]),
+  arrangeGrob(grobs=plots[21:24]),
+  arrangeGrob(grobs=plots[25:28]),
+  arrangeGrob(grobs=plots[29:32]),
+  arrangeGrob(grobs=plots[32:36])
+)
+
+#class(plots_pdf) <- c("arrangelist", class(plots_pdf))
+
+ggsave("Output/03-08-Replicate_Analysis_log2_poging6.pdf",plots_pdf,width=11, height=8.5)
+```
+
+
+
+# 4. CPM normalization of summed counts
+
+
+```{r}
+cpm_normalization <- function(x){
+(x/sum(x))*1000000
+}
+
+cpmNormalized <- as.data.frame(apply(All_raw,2,cpm_normalization))
+
+get_low_cpm_probes <- function(countdata, metadata, exclude){
+
+  if(!has_rownames(countdata)){
+    countdata <- countdata %>%
+      column_to_rownames(var = names(countdata %>% dplyr::select(where(is.character))))
+  }
+
+  if(!all(c("SAMPLE_ID", "mean_id") %in% colnames(metadata))){
+    stop("Metadata must contain columns sample_name and mean_id")
+  }
+
+  countdata <- countdata %>% select(-contains(paste(c(exclude, collapse = "|"))))
+
+  countdata <- data.frame(ifelse(test = countdata >= 1, yes = 1, no = 0)) %>%
+    mutate(across(where(is.numeric), ~as.logical(.x)))
+
+  countdata <- countdata %>%
+    rownames_to_column(var = "probe_id") %>%
+    pivot_longer(cols = where(is.logical), names_to = "SAMPLE_ID") %>%
+    left_join(x = metadata %>%
+                dplyr::select(SAMPLE_ID, mean_id) %>%
+                group_by(mean_id) %>%
+                mutate(n = n()) %>%
+                ungroup(),
+              by = "SAMPLE_ID") %>%
+    group_by(mean_id, n, probe_id) %>%
+    summarise(value = sum(value), .groups = "drop") %>%
+    dplyr::filter(value <= n * 0.75)
+
+  n_mean_id <- length(unique(countdata$mean_id))
+
+  countdata %>%
+    group_by(probe_id) %>%
+    count() %>%
+    filter(n == n_mean_id) %>%
+    pull(probe_id) %>%
+    unique()
+}
+
+
+# Adding column mean_ID for each sample condition..
+
+conflict_prefer("count","dplyr")
+conflict_prefer("unique","base")
+conflict_prefer("filter","dplyr")
+
+Metadata <-  Metadata %>%
+  mutate(mean_id = paste(CELL_ID,LOCATION_ID,TIMEPOINT,CONCENTRATION, sep = "_"))
+
+low_cpm_probes <- get_low_cpm_probes(countdata = cpmNormalized, metadata = Metadata, exclude = c())
+
+cpm_fquant_frep = count_fquant_frep %>% filter(!gene %in% low_cpm_probes) %>% select(-mean_id2) %>%
+  separate(gene,c("gene","probe_id","probe_id2")) %>%
+  unite("gene_probe",c("gene","probe_id"),remove = FALSE)%>%
+  unite("probe_id",c("probe_id","probe_id2"),na.rm = TRUE) %>%
+  group_by(gene,mean_id) %>%
+  summarise(value=sum(value)) %>%
+  pivot_wider(names_from = mean_id,values_from = value) %>% column_to_rownames("gene") %>%
+  apply(2,cpm_normalization)
+
+```
+
+
+
+
+# 5.    Log fold change transformation
+
+```{r}
+
+# Making data longer
+
+cpm_log <- as.data.frame(cpm_fquant_frep) %>%
+  rownames_to_column("gene") %>%
+  pivot_longer(-1,names_to = "SAMPLE_ID",values_to = "value") %>%
+  #na.omit(data) %>%
+  separate(SAMPLE_ID,c("REPLICATE","LOCATION_ID","CONCENTRATION","TIMEPOINT"),remove=FALSE) %>%
+  mutate_at(c("REPLICATE","CONCENTRATION","TIMEPOINT"), str_replace, "R|C|T", "") %>%
+  mutate_at(c("REPLICATE","CONCENTRATION","TIMEPOINT"), as.double)%>%
+  group_by(gene,LOCATION_ID,REPLICATE,CONCENTRATION) %>%
+  mutate(value=log((value),2))
+
+  
+# LOG FOLD CHANGE
+
+
+cpmNormalized_l2fc_meanCont <- cpm_log %>%
+  group_by(gene,LOCATION_ID,REPLICATE) %>%
+  mutate(CONT= log(mean(2**value[CONCENTRATION==5 & TIMEPOINT==1]),2)) %>%
+  mutate(l2fc=value-CONT,TIMEPOINT = TIMEPOINT)
+
+cpmNormalized_l2fc_meanCont <- cpm_log %>%
+  group_by(gene,LOCATION_ID) %>%
+  mutate(CONT= log(mean(2**value[CONCENTRATION==0]),2)) %>% ungroup() %>%
+  group_by(gene,LOCATION_ID,REPLICATE) %>%
+  mutate(l2fc=value-CONT,TIMEPOINT = TIMEPOINT)
+```
+
+# checking individual genes
+
+```{r}
+
+ggplot(cpmNormalized_l2fc_meanCont %>% dplyr::filter(gene %in% c("Clu") & CONCENTRATION == 5 & LOCATION_ID != "WHOLE") %>% group_by(LOCATION_ID,TIMEPOINT,gene) %>% summarize(Log2FoldChange=mean(l2fc),sd_l2fc=sd(l2fc)) %>% mutate(Segment =LOCATION_ID), aes(x = TIMEPOINT, y=Log2FoldChange, col = Segment)) +
+geom_line() +
+facet_wrap(vars(gene)) +
+  geom_ribbon(aes(y = Log2FoldChange, ymin = Log2FoldChange - sd_l2fc, ymax = Log2FoldChange + sd_l2fc,fill = Segment), alpha = .1, colour = NA) +
+  labs(x = "time in hours", title = "Gene expression level")
+
+```
+
+
+# Preparing list of genes
+
+```{r}
+
+# These line of codes will remove genes from the genelist that are not available in the dataset provided - to prevent errors. 
+
+list_genes_DD <- semi_join(as.data.frame(list_genes_DD) %>% rename(gene=1),cpmNormalized_l2fc_meanCont[,"gene"])
+list_genes_DD <- list_genes_DD[["gene"]]
+list_genes_DD<-list_genes_DD[!list_genes_DD %in% c("Ercc6","Msh2","Rpa2","Xpc","Brca2","Cul4a")]
+
+list_genes_Rep <- semi_join(as.data.frame(list_genes_Rep) %>% rename(gene=1),cpmNormalized_l2fc_meanCont[,"gene"])
+list_genes_Rep <- list_genes_Rep[["gene"]]
+list_genes_Rep<-list_genes_Rep[!list_genes_Rep %in% c("Hus1","Hus1b","Brca2","Cul4a")]
+
+All_genes<-c(list_genes_DD,list_genes_Rep)
+```
+
+# 6. Filippo method
+
+```{r}
+
+# These line of codes seperate the diffetent replicates
+
+rep_list  <- list()
+
+
+for (i in c("DD","Rep")) {
+  
+  x = get(paste("list_genes_",i,sep=""))
+  
+  rep_list[[i]] <- cpmNormalized_l2fc_meanCont %>%
+    ungroup() %>%
+    filter(gene %in% x) %>%
+    select(-c(REPLICATE, LOCATION_ID, CONCENTRATION, TIMEPOINT, value, CONT)) %>%
+    pivot_wider(names_from = gene, values_from = l2fc) %>%
+    column_to_rownames(var = "SAMPLE_ID")
+}
+
+rep_list["Rep"]
+get("rep_list")$"Rep"
+```
+
+## Pearson Correlation
+
+```{r}
+
+# Define a function to calculate the pearson correlation for a given set of genes
+calc_pearson <- function(input_data, gene_list) {
+  pear <- as.data.frame(abs(cor(input_data %>% select(all_of(gene_list)), method = "pearson")))
+  pear_small <- as.data.frame(pear - diag(diag(data.matrix(pear))))
+  return(list(pear_small = pear_small))
+}
+
+# Apply the function to each category for each replicate
+result_list <- list()
+for (i in c("DD","Rep")) {
+  rep_input <- as.data.frame(rep_list[[i]])
+  gene_list <- get(paste("list_genes_",i,sep=""))
+  result_list[[i]] <- calc_pearson(rep_input, gene_list)
+  
+}
+
+Data_DD <- cpmNormalized_l2fc_meanCont %>%
+  filter(CONCENTRATION == 5)
+
+list_time <- data.frame(TimeID = as.double(unique(Data_DD$TIMEPOINT)))
+
+```
+
+## DNA damage data
+
+```{r}
+
+# Creating empty dataframe for DNA-Damage
+
+DD <- data.frame(Score = double(),
+                         Time = double(),
+                         Segment = character(),
+                         Replicate = double(),
+                         StateVar = character())
+k = 1
+
+for(l in 1:3){
+  
+  x <- result_list$DD$pear_small
+  
+  for(h in c("PPT","CPT","WHOLE")){
+    
+    for(j in unique(Data_DD$TIMEPOINT[Data_DD$LOCATION_ID == h & Data_DD$REPLICATE==l])){
+    
+     DD[k,] <- 0
+      
+      for (i in list_genes_DD){
+       
+         DD[k,1] = DD[k,1] + Data_DD[Data_DD$LOCATION_ID == h & Data_DD$TIMEPOINT == j & Data_DD$gene == i & Data_DD$REPLICATE==l, "l2fc"]/length(list_genes_DD)*sum(x[,i])/length(list_genes_DD)
+         DD[k,3] <-h
+         DD[k,2] <-j
+         DD[k,4] <- l
+         DD[k,5] <- "DD"
+   }
+      k = k+1
+    }
+  }
+}
+
+```
+
+## Repair
+
+```{r}
+
+# Creating empty dataframe for DNA-Damage
+
+Rep <- data.frame(Score = double(),
+                         Time = double(),
+                         Segment = character(),
+                         Replicate = double(),
+                         StateVar = character())
+
+k = 1
+
+for(l in 1:3){
+  
+  x <- result_list$Rep$pear_small
+  
+  for(h in c("PPT","CPT","WHOLE")){
+    
+    for(j in unique(Data_DD$TIMEPOINT[Data_DD$LOCATION_ID == h & Data_DD$REPLICATE==l])){
+    
+     Rep[k,] <- 0
+      
+      for (i in list_genes_Rep){
+       
+         Rep[k,1] = Rep[k,1] + Data_DD[Data_DD$LOCATION_ID == h & Data_DD$TIMEPOINT == j & Data_DD$gene == i & Data_DD$REPLICATE==l, "l2fc"]/length(list_genes_Rep)*sum(x[,i])/length(list_genes_Rep)
+         Rep[k,3] <-h
+         Rep[k,2] <-j
+         Rep[k,4] <- l
+         Rep[k,5] <- "Rep"
+   }
+      k = k+1
+    }
+  }
+}
+
+```
+
+## Getting Blood and Kidney data
+```{r}
+
+list_time <- data.frame(TimeID = unique(Data_DD$TIMEPOINT))
+list_rep <- rep(1:3, times=12)
+
+S <- semi_join(PlasmaPt,list_time, by = "TimeID") %>%
+  filter(Compartment=="Plasma"& Concentration == 5)%>%
+  select(7,8,12) %>%
+  rename(Score = 3, Time = TimeID) %>%
+  mutate(Score = Score *0.001, Segment = "WHOLE",StateVar="S") %>%
+  group_by(Time) %>%
+   filter(row_number() <= (3)) %>%
+  ungroup()%>%
+  mutate(Replicate = list_rep)
+
+Accu <- KidneyPt %>%
+  filter(Compartment=="Kidney" & Concentration == 5 & Initial_volume == 400) %>%
+  select(7,8,17) %>%
+  rename(Score = 3, Time = TimeID) %>%
+  mutate(Segment = "WHOLE",StateVar="Accu") 
+
+```
+
+## plotting
+
+```{r}
+target = c("WHOLE","CPT","PPT")
+
+Cis_Exposure_Compartments <- rbind(DD, Rep, Accu, Accu %>% mutate(Segment = "CPT"), Accu %>% mutate(Segment = "PPT"), S, S %>% mutate(Segment = "CPT"), S %>% mutate(Segment = "PPT")) %>% 
+  rename(data4modelReal = Score, timepoints = Time, replID = Replicate) %>%
+  mutate(dose_uMadj = 5, data4modelInterpol = data4modelReal, timeID=timepoints) %>%
+  arrange(timepoints,replID) %>%
+  arrange(factor(Segment, levels = target))#%>%
+  #filter(Segment != "WHOLE")
+
+SPlot <- ggplot(Cis_Exposure_Compartments %>% filter(StateVar =="S") %>% group_by(timepoints,Segment) %>% summarize(scoreMean= mean(data4modelReal),SE = sd(data4modelReal)/length(unique(data4modelReal))), 
+                aes(x = timepoints, y = scoreMean, col = Segment)) +
+    geom_line() +
+    labs(title = "S over time per segment", x="Time after in hours", y="Score") +
+    geom_ribbon(aes(y = scoreMean, ymin = scoreMean - SE, ymax = scoreMean + SE,fill = Segment), alpha = .1, colour = NA)
+
+AccuPlot <- ggplot(Cis_Exposure_Compartments %>% filter(StateVar =="Accu") %>% group_by(timepoints,Segment) %>% summarize(scoreMean= mean(data4modelReal),SE = sd(data4modelReal)/length(unique(data4modelReal))), 
+                aes(x = timepoints, y = scoreMean, col = Segment)) +
+    geom_line() +
+    labs(title = "Pt Accumulation over time per segment", x="Time after in hours", y="Score") +
+    geom_ribbon(aes(y = scoreMean, ymin = scoreMean - SE, ymax = scoreMean + SE,fill = Segment), alpha = .1, colour = NA)
+
+DDPlot <- ggplot(Cis_Exposure_Compartments %>% filter(StateVar =="DD") %>% mutate(timepoints = timepoints/24) %>% group_by(timepoints,Segment) %>% summarize(scoreMean= mean(data4modelReal),SE = sd(data4modelReal)/n()), 
+                aes(x = timepoints, y = scoreMean, col = Segment)) +
+    geom_line() +
+    labs(title = "DNA Damage over time per segment", x="Time after in days", y="Score") +
+    geom_ribbon(aes(y = scoreMean, ymin = scoreMean - SE, ymax = scoreMean + SE,fill = Segment), alpha = .1, colour = NA)
+
+RepPlot <- ggplot(Cis_Exposure_Compartments %>% filter(StateVar =="Rep") %>% mutate(timepoints = timepoints/24) %>% group_by(timepoints,Segment) %>% summarize(scoreMean= mean(data4modelReal),SE = sd(data4modelReal)/length(unique(data4modelReal))), 
+                aes(x = timepoints, y = scoreMean, col = Segment)) +
+    geom_line() +
+    labs(title = "Repair over time per segment", x="Time after in hours", y="Score") +
+    geom_ribbon(aes(y = scoreMean, ymin = scoreMean - SE, ymax = scoreMean + SE,fill = Segment), alpha = .1, colour = NA)
+
+grid.arrange(DDPlot,RepPlot,nrow=2)
+```
+
+# Saving data 
+
+```{r}
+setwd(dirname(getActiveDocumentContext()$path))
+
+write.csv(Cis_Exposure_Compartments,
+          file="Output/Cisplatin_Exposure_data.csv", row.name=TRUE)
+```
+#Finding missing replicates/timepoints
+```{r}
+Test_data <- cpm_log %>% dplyr::filter(gene=="Mdm2" & CONCENTRATION != 0) %>% group_by(LOCATION_ID,TIMEPOINT) %>% summarize(replicates = paste(unique(REPLICATE),collapse=", "))
+
+```
+
+#Find most correlated gene
+
+```{r}
+library(igraph)
+library(grid)
+
+# Assuming you have already calculated node_colors and edges as mentioned before
+
+# Create the graph using the adjacency matrix
+matrix_slice <- 
+ordered_cor_matrix <- result_list$Rep$pear_small %>% select(order(-colSums(.))) %>%
+  arrange(desc(rowSums(.)))
+
+result_matrix <- as.matrix(matrix_slice)
+graph <- graph.adjacency(result_matrix, mode = "undirected", weighted = TRUE)
+
+# Remove self-loops from the graph
+graph <- igraph::simplify(graph, remove.loops = TRUE)
+order <- colSums(matrix_slice)
+
+# Scale the node colors based on column sum
+node_colors <- order
+node_colors <- node_colors - min(node_colors)  # Adjust to avoid negative values
+node_colors <- node_colors / max(node_colors)  # Scale to [0, 1]
+
+node_colors <- node_colors
+
+# Set node colors in the graph
+V(graph)$color <- heat.colors(length(node_colors))
+
+# Plot the network with edge thickness based on correlation value and node labels
+plot(
+  graph,
+  layout = layout_in_circle(graph),
+  vertex.label = colnames(matrix_slice),  # Use column names as node labels
+  vertex.label.dist = 1.5,  # Adjust the distance of node labels from the nodes
+  vertex.label.cex = 0.8,  # Adjust the size of node labels
+  vertex.label.color = "black",  # Set the color of node labels
+  vertex.frame.color = "white",  # Set the color of the node frame (optional)
+  edge.color = "grey",  # Set all edges to grey color
+  edge.width = abs(E(graph)$weight) * 5  # Adjust the thickness based on correlation value (multiplying by 5 for better visibility)
+)
+
+```
+
+
+```{r}
+
+plotnetwork(result_list$DD$pear_small, interval = 3, xlim = c(-2.5,5), 
+ylim=c(-3.2,3.2), lty = rep(1,4), value = "r", 
+legendx = 3, legendy = 0, right = 1.2, intcept = 0.22, 
+left = 0.35, linelength = 0.3, cex = 3, lwd = 1.5,
+show.legend = TRUE, digits = 2, dit = 1.2, 
+number.label = FALSE, text.label = TRUE, 
+linecol = c("red","pink","grey"))
+
+```

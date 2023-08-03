@@ -1,0 +1,100 @@
+MGI Gene/Marker ID	Symbol	Name	Chr	Qualifier	Annotated Term	Context	Proteoform	Evidence	Inferred From	Reference(s)
+MGI:1270862	Axin2	axin 2	11		regulation of mismatch repair			ISO	Q9Y2T1 	J:164563 	
+MGI:1349427	Exo1	exonuclease 1	1		mismatch repair			IBA	PTN000118621 	J:265628 	
+MGI:1349427	Exo1	exonuclease 1	1		mismatch repair			ISO	Q9UQ84 	J:164563 	
+MGI:2158340	Hdac10	histone deacetylase 10	15		positive regulation of mismatch repair			ISO	Q969S8 	J:164563 	
+MGI:96113	Hmgb1	high mobility group box 1	5		positive regulation of mismatch repair			ISO	P09429 	J:164563 	
+MGI:1918817	Mcm9	minichromosome maintenance 9 homologous recombination repair factor	10		mismatch repair involved in maintenance of fidelity involved in DNA-dependent DNA replication			IMP		J:228092 	
+MGI:1918817	Mcm9	minichromosome maintenance 9 homologous recombination repair factor	10		mismatch repair involved in maintenance of fidelity involved in DNA-dependent DNA replication			ISO	Q9NXL9 	J:164563 	
+MGI:101938	Mlh1	mutL homolog 1	9		mismatch repair			IBA	PTN000008161 	J:265628 	
+MGI:101938	Mlh1	mutL homolog 1	9		mismatch repair			IDA		J:61445 	
+MGI:101938	Mlh1	mutL homolog 1	9		mismatch repair			IMP	MGI:1857946 	J:102704 	
+MGI:101938	Mlh1	mutL homolog 1	9		mismatch repair			IMP	MGI:1857946 	J:115296 	
+MGI:101938	Mlh1	mutL homolog 1	9		mismatch repair			IMP	MGI:1857946 	J:115827 	
+MGI:101938	Mlh1	mutL homolog 1	9		mismatch repair			IMP	MGI:1857946 	J:46382 	
+MGI:101938	Mlh1	mutL homolog 1	9		mismatch repair			IMP	MGI:1857946 	J:55724 	
+MGI:101938	Mlh1	mutL homolog 1	9		mismatch repair			IMP	MGI:1857946 	J:62824 	
+MGI:101938	Mlh1	mutL homolog 1	9		mismatch repair			IMP	MGI:1857946 	J:68922 	
+MGI:101938	Mlh1	mutL homolog 1	9		mismatch repair			IMP	MGI:1858054 	J:33878 	
+MGI:101938	Mlh1	mutL homolog 1	9		mismatch repair			IMP	MGI:1858054 	J:53451 	
+MGI:101938	Mlh1	mutL homolog 1	9		mismatch repair			IMP	MGI:1930998 	J:47642 	
+MGI:101938	Mlh1	mutL homolog 1	9		mismatch repair			IMP	MGI:1930998 	J:60616 	
+MGI:101938	Mlh1	mutL homolog 1	9		mismatch repair			ISO	O00497 	J:71822 	
+MGI:101938	Mlh1	mutL homolog 1	9		mismatch repair			ISO	P40692 	J:198961 	
+MGI:1353455	Mlh3	mutL homolog 3	12		mismatch repair			IBA	PTN000008161 	J:265628 	
+MGI:1353455	Mlh3	mutL homolog 3	12		mismatch repair			IGI	MGI:104288 	J:102704 	
+MGI:1353455	Mlh3	mutL homolog 3	12		mismatch repair			IMP	MGI:2384218 	J:102704 	
+MGI:101816	Msh2	mutS homolog 2	17		mismatch repair			IBA	PTN000145640 	J:265628 	
+MGI:101816	Msh2	mutS homolog 2	17		mismatch repair			IDA		J:40423 	
+MGI:101816	Msh2	mutS homolog 2	17		mismatch repair			IDA		J:41865 	
+MGI:101816	Msh2	mutS homolog 2	17		mismatch repair			IGI	MGI:109519 	J:115827 	
+MGI:101816	Msh2	mutS homolog 2	17		mismatch repair			IMP	MGI:1857940 	J:115827 	
+MGI:101816	Msh2	mutS homolog 2	17		mismatch repair			IMP	MGI:1857940 	J:34940 	
+MGI:101816	Msh2	mutS homolog 2	17		mismatch repair			IMP	MGI:1857940 	J:42723 	
+MGI:101816	Msh2	mutS homolog 2	17		mismatch repair			IMP	MGI:1857940 	J:63445 	
+MGI:101816	Msh2	mutS homolog 2	17		mismatch repair			IMP	MGI:1857940 	J:65384 	
+MGI:101816	Msh2	mutS homolog 2	17		mismatch repair			IMP	MGI:1857940 	J:75218 	
+MGI:101816	Msh2	mutS homolog 2	17		mismatch repair			IMP	MGI:1858055 	J:119981 	
+MGI:101816	Msh2	mutS homolog 2	17		mismatch repair			IMP	MGI:1858055 	J:192085 	
+MGI:101816	Msh2	mutS homolog 2	17		mismatch repair			IMP	MGI:1858055 	J:27469 	
+MGI:101816	Msh2	mutS homolog 2	17		mismatch repair			IMP	MGI:1858055 	J:48833 	
+MGI:101816	Msh2	mutS homolog 2	17		mismatch repair			IMP	MGI:1858055 	J:58797 	
+MGI:101816	Msh2	mutS homolog 2	17		mismatch repair			IMP	MGI:2151801 	J:64667 	
+MGI:101816	Msh2	mutS homolog 2	17		mismatch repair			IMP	MGI:2389314 	J:79732 	
+MGI:101816	Msh2	mutS homolog 2	17		mismatch repair			IMP	MGI:2680817 	J:88092 	
+MGI:101816	Msh2	mutS homolog 2	17		mismatch repair			ISO	P43246 	J:164563 	
+MGI:101816	Msh2	mutS homolog 2	17		mismatch repair			ISO	P43246 	J:198961 	
+MGI:101816	Msh2	mutS homolog 2	17		mismatch repair			ISO	P43246 	J:71822 	
+MGI:109519	Msh3	mutS homolog 3	13		mismatch repair			IBA	PTN000145759 	J:265628 	
+MGI:109519	Msh3	mutS homolog 3	13		mismatch repair			IGI	MGI:101816 	J:115827 	
+MGI:109519	Msh3	mutS homolog 3	13		mismatch repair			IGI	MGI:1343961 	J:115827 	
+MGI:109519	Msh3	mutS homolog 3	13		mismatch repair			IGI	MGI:1343961 	J:60604 	
+MGI:109519	Msh3	mutS homolog 3	13		mismatch repair			IGI	MGI:1343961 	J:73030 	
+MGI:109519	Msh3	mutS homolog 3	13		mismatch repair			IGI	MGI:88039 	J:73030 	
+MGI:109519	Msh3	mutS homolog 3	13		mismatch repair			IMP	MGI:1858056 	J:115827 	
+MGI:109519	Msh3	mutS homolog 3	13		mismatch repair			IMP	MGI:1858056 	J:60604 	
+MGI:109519	Msh3	mutS homolog 3	13		mismatch repair			ISO	P20585 	J:164563 	
+MGI:1860077	Msh4	mutS homolog 4	3		mismatch repair			IEA	IPR000432 IPR007696 IPR007860 IPR007861 IPR036678 IPR045076 	J:72247 	
+MGI:1329021	Msh5	mutS homolog 5	17		mismatch repair			IEA	IPR000432 IPR007696 IPR007861 IPR011184 IPR045076 	J:72247 	
+MGI:1343961	Msh6	mutS homolog 6	17		mismatch repair			IBA	PTN000145560 	J:265628 	
+MGI:1343961	Msh6	mutS homolog 6	17		mismatch repair			IGI	MGI:109519 	J:115827 	
+MGI:1343961	Msh6	mutS homolog 6	17		mismatch repair			IGI	MGI:88039 	J:73030 	
+MGI:1343961	Msh6	mutS homolog 6	17		mismatch repair			IMP	MGI:1858014 	J:115827 	
+MGI:1343961	Msh6	mutS homolog 6	17		mismatch repair			IMP	MGI:1858014 	J:44428 	
+MGI:1343961	Msh6	mutS homolog 6	17		mismatch repair			IMP	MGI:1858014 	J:79726 	
+MGI:1343961	Msh6	mutS homolog 6	17		mismatch repair			IMP	MGI:2151803 	J:192085 	
+MGI:1343961	Msh6	mutS homolog 6	17		mismatch repair	happens in epiblast cell		IMP	MGI:3653701 	J:92555 	
+MGI:1343961	Msh6	mutS homolog 6	17		mismatch repair			ISO	RGD:2322311 	J:155856 	
+MGI:1343961	Msh6	mutS homolog 6	17		mismatch repair			ISO	P52701 	J:164563 	
+MGI:1343961	Msh6	mutS homolog 6	17		mismatch repair			ISO	P52701 	J:198961 	
+MGI:1917853	Mutyh	mutY DNA glycosylase	4		mismatch repair			IBA	PTN000040628 	J:265628 	
+MGI:97503	Pcna	proliferating cell nuclear antigen	2		mismatch repair			IBA	PTN000143427 	J:265628 	
+MGI:97503	Pcna	proliferating cell nuclear antigen	2		mismatch repair			ISO	P12004 	J:164563 	
+MGI:1202302	Pms1	PMS1 homolog 1, mismatch repair system component	1		mismatch repair			IBA	PTN000008161 	J:265628 	
+MGI:1202302	Pms1	PMS1 homolog 1, mismatch repair system component	1		mismatch repair			IMP	MGI:1857948 	J:46382 	
+MGI:104288	Pms2	PMS1 homolog2, mismatch repair system component	5		mismatch repair			IBA	PTN000008161 	J:265628 	
+MGI:104288	Pms2	PMS1 homolog2, mismatch repair system component	5		mismatch repair			IGI	MGI:1353455 	J:102704 	
+MGI:104288	Pms2	PMS1 homolog2, mismatch repair system component	5		mismatch repair			IMP	MGI:1857946 	J:68922 	
+MGI:104288	Pms2	PMS1 homolog2, mismatch repair system component	5		mismatch repair			IMP	MGI:1857947 	J:102704 	
+MGI:104288	Pms2	PMS1 homolog2, mismatch repair system component	5		mismatch repair			IMP	MGI:1857947 	J:115296 	
+MGI:104288	Pms2	PMS1 homolog2, mismatch repair system component	5		mismatch repair			IMP	MGI:1857947 	J:115827 	
+MGI:104288	Pms2	PMS1 homolog2, mismatch repair system component	5		mismatch repair			IMP	MGI:1857947 	J:192085 	
+MGI:104288	Pms2	PMS1 homolog2, mismatch repair system component	5		mismatch repair			IMP	MGI:1857947 	J:46382 	
+MGI:104288	Pms2	PMS1 homolog2, mismatch repair system component	5		mismatch repair			IMP	MGI:1857947 	J:55724 	
+MGI:104288	Pms2	PMS1 homolog2, mismatch repair system component	5		mismatch repair			TAS		J:62204 	
+MGI:97597	Prkcg	protein kinase C, gamma	7		positive regulation of mismatch repair			ISO	P05129 	J:164563 	
+MGI:1916974	Rnaseh2a	ribonuclease H2, large subunit	8		mismatch repair			IBA	PTN000102672 	J:265628 	
+MGI:1916974	Rnaseh2a	ribonuclease H2, large subunit	8		mismatch repair			IMP		J:198961 	
+MGI:1916974	Rnaseh2a	ribonuclease H2, large subunit	8		mismatch repair			ISO	O75792 	J:198961 	
+MGI:1916974	Rnaseh2a	ribonuclease H2, large subunit	8		mismatch repair			NAS		J:161682 	
+MGI:1914403	Rnaseh2b	ribonuclease H2, subunit B	14		mismatch repair			NAS		J:161682 	
+MGI:1915459	Rnaseh2c	ribonuclease H2, subunit C	19		mismatch repair			NAS		J:161682 	
+MGI:1915525	Rpa1	replication protein A1	11		mismatch repair			ISO	P27694 	J:164563 	
+MGI:1339939	Rpa2	replication protein A2	4		mismatch repair			ISO	P15927 	J:164563 	
+MGI:1915490	Rpa3	replication protein A3	6		mismatch repair			IBA	PTN001031498 	J:265628 	
+MGI:1915490	Rpa3	replication protein A3	6		mismatch repair			ISO	P35244 	J:164563 	
+MGI:1918177	Setd2	SET domain containing 2	9		mismatch repair			ISO	Q9BYW2 	J:164563 	
+MGI:108247	Tdg	thymine DNA glycosylase	10		mismatch repair			ISO	Q13569 	J:164563 	
+MGI:3645587	Tdg-ps	thymine DNA glycosylase, pseudogene	15		mismatch repair			ISO	Q13569 	J:164563 	
+MGI:103557	Xpc	xeroderma pigmentosum, complementation group C	6		mismatch repair			IBA	PTN000253194 	J:265628 	
+

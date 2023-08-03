@@ -1,0 +1,129 @@
+MGI Gene/Marker ID	Symbol	Name	Chr	Qualifier	Annotated Term	Context	Proteoform	Evidence	Inferred From	Reference(s)
+MGI:87904	Actb	actin, beta	5		regulation of nucleotide-excision repair			NAS		J:320041 	
+MGI:1861453	Actl6a	actin-like 6A	3		regulation of nucleotide-excision repair			NAS		J:320041 	
+MGI:1933548	Actl6b	actin-like 6B	5		regulation of nucleotide-excision repair			NAS		J:320041 	
+MGI:1935147	Arid1a	AT rich interactive domain 1A (SWI-like)	4		regulation of nucleotide-excision repair			NAS		J:320041 	
+MGI:1926129	Arid1b	AT rich interactive domain 1B (SWI-like)	17		regulation of nucleotide-excision repair			NAS		J:320041 	
+MGI:1924294	Arid2	AT rich interactive domain 2 (ARID, RFX-like)	15		regulation of nucleotide-excision repair			NAS		J:320041 	
+MGI:1924295	Bcl7a	B cell CLL/lymphoma 7A	5		regulation of nucleotide-excision repair			NAS		J:320041 	
+MGI:1332238	Bcl7b	B cell CLL/lymphoma 7B	5		regulation of nucleotide-excision repair			NAS		J:320041 	
+MGI:1332237	Bcl7c	B cell CLL/lymphoma 7C	7		regulation of nucleotide-excision repair			NAS		J:320041 	
+MGI:109337	Brca2	breast cancer 2, early onset	5		nucleotide-excision repair			ISO	P51587 	J:164563 	
+MGI:1349766	Brd7	bromodomain containing 7	8		regulation of nucleotide-excision repair			NAS		J:320041 	
+MGI:2442836	Brip1	BRCA1 interacting protein C-terminal helicase 1	11		nucleotide-excision repair			IBA	PTN000158307 	J:265628 	
+MGI:1347086	Cetn1	centrin 1	18		nucleotide-excision repair			IBA	PTN002746217 	J:265628 	
+MGI:1347085	Cetn2	centrin 2	X		nucleotide-excision repair			IBA	PTN002746217 	J:265628 	
+MGI:1347085	Cetn2	centrin 2	X		nucleotide-excision repair			ISO	P41208 	J:164563 	
+MGI:2677454	Cetn4	centrin 4	3		nucleotide-excision repair			IBA	PTN002746217 	J:265628 	
+MGI:109474	Commd1	COMM domain containing 1	11		nucleotide-excision repair			ISO	Q8N668 	J:164563 	
+MGI:1914487	Cul4a	cullin 4A	8		regulation of nucleotide-excision repair	regulates nucleotide-excision repair		IMP	MGI:3851025 	J:150427 	
+MGI:1930042	Dclre1a	DNA cross-link repair 1A	19		nucleotide-excision repair			IMP	MGI:2180947 	J:62832 	
+MGI:2156057	Dclre1b	DNA cross-link repair 1B	3		nucleotide-excision repair			ISA	AF241240 	J:62832 	
+MGI:1355314	Ddb2	damage specific DNA binding protein 2	2		nucleotide-excision repair			ISO	Q92466 	J:164563 	
+MGI:1352748	Dpf1	double PHD fingers 1	7		regulation of nucleotide-excision repair			NAS		J:320041 	
+MGI:109529	Dpf2	double PHD fingers 2	19		regulation of nucleotide-excision repair			NAS		J:320041 	
+MGI:1917377	Dpf3	double PHD fingers 3	12		regulation of nucleotide-excision repair			NAS		J:320041 	
+MGI:95412	Ercc1	excision repair cross-complementing rodent repair deficiency, complementation group 1	7		nucleotide-excision repair	happens in fibroblast		IMP	MGI:2183944 	J:15422 	
+MGI:95412	Ercc1	excision repair cross-complementing rodent repair deficiency, complementation group 1	7		nucleotide-excision repair			ISO	P07992 	J:73065 	
+MGI:95412	Ercc1	excision repair cross-complementing rodent repair deficiency, complementation group 1	7		nucleotide-excision repair			ISO	P07992 	J:9239 	
+MGI:95412	Ercc1	excision repair cross-complementing rodent repair deficiency, complementation group 1	7		pyrimidine dimer repair by nucleotide-excision repair	happens in epiblast cell		IMP		J:56965 	
+MGI:95413	Ercc2	excision repair cross-complementing rodent repair deficiency, complementation group 2	7		nucleotide-excision repair	happens in skin		IMP	MGI:2183949 	J:48256 	
+MGI:95413	Ercc2	excision repair cross-complementing rodent repair deficiency, complementation group 2	7		nucleotide-excision repair			IMP	MGI:2183949 	J:76608 	
+MGI:95413	Ercc2	excision repair cross-complementing rodent repair deficiency, complementation group 2	7		nucleotide-excision repair			ISO	P18074 	J:73065 	
+MGI:95413	Ercc2	excision repair cross-complementing rodent repair deficiency, complementation group 2	7		transcription-coupled nucleotide-excision repair			ISO	P18074 	J:164563 	
+MGI:95414	Ercc3	excision repair cross-complementing rodent repair deficiency, complementation group 3	18		nucleotide-excision repair			ISO	P19447 	J:164563 	
+MGI:95414	Ercc3	excision repair cross-complementing rodent repair deficiency, complementation group 3	18		nucleotide-excision repair, DNA duplex unwinding			ISO	P19447 	J:164563 	
+MGI:95414	Ercc3	excision repair cross-complementing rodent repair deficiency, complementation group 3	18		transcription-coupled nucleotide-excision repair			ISO	P19447 	J:164563 	
+MGI:1354163	Ercc4	excision repair cross-complementing rodent repair deficiency, complementation group 4	16		nucleotide-excision repair			ISO	Q92889 	J:164563 	
+MGI:1354163	Ercc4	excision repair cross-complementing rodent repair deficiency, complementation group 4	16		nucleotide-excision repair			ISO	Q92889 	J:60251 	
+MGI:1354163	Ercc4	excision repair cross-complementing rodent repair deficiency, complementation group 4	16		nucleotide-excision repair involved in interstrand cross-link repair			IBA	PTN000015911 	J:265628 	
+MGI:1354163	Ercc4	excision repair cross-complementing rodent repair deficiency, complementation group 4	16		nucleotide-excision repair involved in interstrand cross-link repair			ISO	Q92889 	J:164563 	
+MGI:103582	Ercc5	excision repair cross-complementing rodent repair deficiency, complementation group 5	1		nucleotide-excision repair	happens in fibroblast		IMP	MGI:2182793 	J:53756 	
+MGI:103582	Ercc5	excision repair cross-complementing rodent repair deficiency, complementation group 5	1		nucleotide-excision repair			ISO	P28715 	J:164563 	
+MGI:103582	Ercc5	excision repair cross-complementing rodent repair deficiency, complementation group 5	1		transcription-coupled nucleotide-excision repair			ISO	P28715 	J:164563 	
+MGI:1100494	Ercc6	excision repair cross-complementing rodent repair deficiency, complementation group 6	14		transcription-coupled nucleotide-excision repair			IBA	PTN001326493 	J:265628 	
+MGI:1100494	Ercc6	excision repair cross-complementing rodent repair deficiency, complementation group 6	14		transcription-coupled nucleotide-excision repair			IMP	MGI:1932102 	J:40211 	
+MGI:1100494	Ercc6	excision repair cross-complementing rodent repair deficiency, complementation group 6	14		transcription-coupled nucleotide-excision repair			IMP	MGI:1932102 	J:81189 	
+MGI:1100494	Ercc6	excision repair cross-complementing rodent repair deficiency, complementation group 6	14		transcription-coupled nucleotide-excision repair			ISO	RGD:1311509 	J:155856 	
+MGI:1100494	Ercc6	excision repair cross-complementing rodent repair deficiency, complementation group 6	14		transcription-coupled nucleotide-excision repair			ISO	Q03468 	J:164563 	
+MGI:1919241	Ercc8	excision repaiross-complementing rodent repair deficiency, complementation group 8	13		regulation of transcription-coupled nucleotide-excision repair			ISO	Q13216 	J:164563 	
+MGI:1919241	Ercc8	excision repaiross-complementing rodent repair deficiency, complementation group 8	13		transcription-coupled nucleotide-excision repair			IBA	PTN000523156 	J:265628 	
+MGI:1919241	Ercc8	excision repaiross-complementing rodent repair deficiency, complementation group 8	13		transcription-coupled nucleotide-excision repair			ISO	Q13216 	J:73065 	
+MGI:3045266	Fan1	FANCD2/FANCI-associated nuclease 1	7		nucleotide-excision repair			ISO	Q9Y2M0 	J:164563 	
+MGI:95480	Fancc	Fanconi anemia, complementation group C	13		nucleotide-excision repair			IBA	PTN000423656 	J:265628 	
+MGI:95480	Fancc	Fanconi anemia, complementation group C	13		nucleotide-excision repair			IMP	MGI:1858041 	J:61512 	
+MGI:1277216	Gtf2h1	general transcription factor II H, polypeptide 1	7		nucleotide-excision repair			IEA	IPR027079 	J:72247 	
+MGI:1345669	Gtf2h2	general transcription factor II H, polypeptide 2	13		nucleotide-excision repair			IBA	PTN000294370 	J:265628 	
+MGI:1277143	Gtf2h3	general transcription factor IIH, polypeptide 3	5		nucleotide-excision repair			IBA	PTN000302934 	J:265628 	
+MGI:1338799	Gtf2h4	general transcription factor II H, polypeptide 4	17		nucleotide-excision repair			IBA	PTN000322344 	J:265628 	
+MGI:107227	Gtf2h5	general transcription factor IIH, polypeptide 5	17		nucleotide-excision repair	happens in fibroblast		IMP	MGI:5514340 	J:200022 	
+MGI:107227	Gtf2h5	general transcription factor IIH, polypeptide 5	17		nucleotide-excision repair			ISO	Q6ZYL4 	J:73065 	
+MGI:107227	Gtf2h5	general transcription factor IIH, polypeptide 5	17		nucleotide-excision repair, preincision complex assembly			IBA	PTN002005445 	J:265628 	
+MGI:107227	Gtf2h5	general transcription factor IIH, polypeptide 5	17		nucleotide-excision repair, preincision complex assembly			IMP	MGI:5514340 	J:200022 	
+MGI:96113	Hmgb1	high mobility group box 1	5		regulation of nucleotide-excision repair			IMP		J:139020 	
+MGI:96120	Hmgn1	high mobility group nucleosomal binding domain 1	16		pyrimidine dimer repair by nucleotide-excision repair			IMP	MGI:3590648 	J:100282 	
+MGI:96120	Hmgn1	high mobility group nucleosomal binding domain 1	16		transcription-coupled nucleotide-excision repair			IMP	MGI:3590648 	J:100282 	
+MGI:1277962	Hus1	HUS1 checkpoint clamp component	11		nucleotide-excision repair			IBA	PTN000307391 	J:265628 	
+MGI:2671003	Hus1b	HUS1 checkpoint clamp component B	13		nucleotide-excision repair			IBA	PTN000307391 	J:265628 	
+MGI:1932051	Kat5	K(lysine) acetyltransferase 5	19		nucleotide-excision repair			ISO	Q92993 	J:164563 	
+MGI:2182799	Kat7	K(lysine) acetyltransferase 7	11		regulation of nucleotide-excision repair			ISO	O95251 	J:164563 	
+MGI:1335098	Lig4	ligase IV, DNA, ATP-dependent	8		nucleotide-excision repair, DNA gap filling			IBA	PTN000048698 	J:265628 	
+MGI:1335098	Lig4	ligase IV, DNA, ATP-dependent	8		nucleotide-excision repair, DNA gap filling			ISO	P49917 	J:164563 	
+MGI:106207	Mnat1	menage a trois 1	12		nucleotide-excision repair			IEA	IPR004575 	J:72247 	
+MGI:1313275	Nthl1	nth (endonuclease III)-like 1 (E.coli)	17		nucleotide-excision repair			IDA		J:50110 	
+MGI:1313275	Nthl1	nth (endonuclease III)-like 1 (E.coli)	17		nucleotide-excision repair			ISO	P78549 	J:164563 	
+MGI:1097693	Ogg1	8-oxoguanine DNA-glycosylase 1	6		nucleotide-excision repair			ISO	O15527 	J:151534 	
+MGI:1923998	Pbrm1	polybromo 1	14		regulation of nucleotide-excision repair			NAS		J:320041 	
+MGI:1919307	Phf10	PHD finger protein 10	17		regulation of nucleotide-excision repair			NAS		J:320041 	
+MGI:97741	Pold1	polymerase (DNA directed), delta 1, catalytic subunit	7		nucleotide-excision repair, DNA gap filling			IBA	PTN000035478 	J:265628 	
+MGI:97741	Pold1	polymerase (DNA directed), delta 1, catalytic subunit	7		nucleotide-excision repair, DNA gap filling			ISO	P28340 	J:164563 	
+MGI:1915217	Pold3	polymerase (DNA-directed), delta 3, accessory subunit	7		nucleotide-excision repair, DNA gap filling			IBA	PTN000426529 	J:265628 	
+MGI:1915217	Pold3	polymerase (DNA-directed), delta 3, accessory subunit	7		nucleotide-excision repair, DNA gap filling			ISO	Q15054 	J:164563 	
+MGI:1196391	Pole	polymerase (DNA directed), epsilon	5		nucleotide-excision repair, DNA gap filling			IBA	PTN000072300 	J:265628 	
+MGI:1196391	Pole	polymerase (DNA directed), epsilon	5		nucleotide-excision repair, DNA gap filling			ISO	Q07864 	J:164563 	
+MGI:1349767	Polk	polymerase (DNA directed), kappa	13		nucleotide-excision repair, DNA gap filling			ISO	Q9UBT6 	J:164563 	
+MGI:1889000	Poll	polymerase (DNA directed), lambda	19		nucleotide-excision repair			ISO	Q9UGP5 	J:164563 	
+MGI:1889000	Poll	polymerase (DNA directed), lambda	19		nucleotide-excision repair			ISS	Q9UGP5 	J:64833 	
+MGI:1917170	Polr2i	polymerase (RNA) II (DNA directed) polypeptide I	7		transcription-coupled nucleotide-excision repair			IBA	PTN000133107 	J:265628 	
+MGI:105126	Rad23a	RAD23 homolog A, nucleotide excision repair protein	8		nucleotide-excision repair			ISO	P54725 	J:164563 	
+MGI:105128	Rad23b	RAD23 homolog B, nucleotide excision repair protein	4		nucleotide-excision repair			ISO	P54727 	J:164563 	
+MGI:1261809	Rad51d	RAD51 paralog D	11	NOT	nucleotide-excision repair	happens in fibroblast,happens in fibroblast,happens in fibroblast,happens in fibroblast,happens in fibroblast,happens in fibroblast	PR:Q9EP87PR:Q9EP85PR:Q9EPA9PR:Q9EPC0PR:Q9EP65PR:Q9EP92	IMP		J:157288 	
+MGI:1261809	Rad51d	RAD51 paralog D	11		nucleotide-excision repair	happens in fibroblast	PR:O55230-1	IMP		J:157288 	
+MGI:101949	Rad52	RAD52 homolog, DNA repair protein	6		regulation of nucleotide-excision repair			ISO	P43351 	J:151534 	
+MGI:1915525	Rpa1	replication protein A1	11		nucleotide-excision repair			IBA	PTN000588618 	J:265628 	
+MGI:1915525	Rpa1	replication protein A1	11		nucleotide-excision repair			ISO	P27694 	J:164563 	
+MGI:1339939	Rpa2	replication protein A2	4		nucleotide-excision repair			IBA	PTN000360435 	J:265628 	
+MGI:1339939	Rpa2	replication protein A2	4		nucleotide-excision repair			ISO	P15927 	J:164563 	
+MGI:1915490	Rpa3	replication protein A3	6		nucleotide-excision repair			IBA	PTN001031498 	J:265628 	
+MGI:1915490	Rpa3	replication protein A3	6		nucleotide-excision repair			ISO	P35244 	J:164563 	
+MGI:2135607	Sirt1	sirtuin 1	10		pyrimidine dimer repair by nucleotide-excision repair			IMP		J:178433 	
+MGI:2135607	Sirt1	sirtuin 1	10		pyrimidine dimer repair by nucleotide-excision repair			ISO	Q96EB6 	J:164563 	
+MGI:106299	Slx4	SLX4 structure-specific endonuclease subunit homolog (S. cerevisiae)	16		nucleotide-excision repair			ISO	Q8IY92 	J:164563 	
+MGI:99603	Smarca2	SWI/SNF related, matrix associated, actin dependent regulator of chromatin, subfamily a, member 2	19		regulation of nucleotide-excision repair			NAS		J:320041 	
+MGI:88192	Smarca4	SWI/SNF related, matrix associated, actin dependent regulator of chromatin, subfamily a, member 4	9		regulation of nucleotide-excision repair			NAS		J:320041 	
+MGI:1328366	Smarcb1	SWI/SNF related, matrix associated, actin dependent regulator of chromatin, subfamily b, member 1	10		regulation of nucleotide-excision repair			NAS		J:320041 	
+MGI:1203524	Smarcc1	SWI/SNF related, matrix associated, actin dependent regulator of chromatin, subfamily c, member 1	9		regulation of nucleotide-excision repair			NAS		J:320041 	
+MGI:1915344	Smarcc2	SWI/SNF related, matrix associated, actin dependent regulator of chromatin, subfamily c, member 2	10		regulation of nucleotide-excision repair			NAS		J:320041 	
+MGI:1933623	Smarcd1	SWI/SNF related, matrix associated, actin dependent regulator of chromatin, subfamily d, member 1	15		regulation of nucleotide-excision repair			NAS		J:320041 	
+MGI:1933621	Smarcd2	SWI/SNF related, matrix associated, actin dependent regulator of chromatin, subfamily d, member 2	11		regulation of nucleotide-excision repair			NAS		J:320041 	
+MGI:1914243	Smarcd3	SWI/SNF related, matrix associated, actin dependent regulator of chromatin, subfamily d, member 3	5		regulation of nucleotide-excision repair			NAS		J:320041 	
+MGI:1927347	Smarce1	SWI/SNF related, matrix associated, actin dependent regulator of chromatin, subfamily e, member 1	11		regulation of nucleotide-excision repair			NAS		J:320041 	
+MGI:98834	Trp53	transformation related protein 53	11		nucleotide-excision repair			ISO	P04637 	J:164563 	
+MGI:2182061	Usp7	ubiquitin specific peptidase 7	16		transcription-coupled nucleotide-excision repair			ISO	Q93009 	J:164563 	
+MGI:1918351	Uvssa	UV stimulated scaffold protein A	5		transcription-coupled nucleotide-excision repair			IBA	PTN002010268 	J:265628 	
+MGI:1918351	Uvssa	UV stimulated scaffold protein A	5		transcription-coupled nucleotide-excision repair			ISO	Q2YD98 	J:164563 	
+MGI:1914689	Xab2	XPA binding protein 2	8		transcription-coupled nucleotide-excision repair			ISO	Q9HCS7 	J:164563 	
+MGI:99135	Xpa	xeroderma pigmentosum, complementation group A	4		nucleotide-excision repair			IMP	MGI:1857939 	J:76608 	
+MGI:99135	Xpa	xeroderma pigmentosum, complementation group A	4		nucleotide-excision repair			IMP	MGI:1857939 	J:81189 	
+MGI:99135	Xpa	xeroderma pigmentosum, complementation group A	4		nucleotide-excision repair			ISO	P23025 	J:164563 	
+MGI:99135	Xpa	xeroderma pigmentosum, complementation group A	4		nucleotide-excision repair involved in interstrand cross-link repair			IBA	PTN000015717 	J:265628 	
+MGI:99135	Xpa	xeroderma pigmentosum, complementation group A	4		nucleotide-excision repair, DNA damage recognition			IBA	PTN000015717 	J:265628 	
+MGI:103557	Xpc	xeroderma pigmentosum, complementation group C	6		nucleotide-excision repair			IBA	PTN000253194 	J:265628 	
+MGI:103557	Xpc	xeroderma pigmentosum, complementation group C	6		nucleotide-excision repair			IDA		J:185050 	
+MGI:103557	Xpc	xeroderma pigmentosum, complementation group C	6		nucleotide-excision repair			IDA		J:84299 	
+MGI:103557	Xpc	xeroderma pigmentosum, complementation group C	6		nucleotide-excision repair			IMP	MGI:1859840 	J:38645 	
+MGI:103557	Xpc	xeroderma pigmentosum, complementation group C	6		nucleotide-excision repair			IMP	MGI:1931883 	J:117815 	
+MGI:103557	Xpc	xeroderma pigmentosum, complementation group C	6		nucleotide-excision repair	happens in lung,happens in liver,happens in heart,happens in spleen		IMP	MGI:1931883 	J:153645 	
+MGI:103557	Xpc	xeroderma pigmentosum, complementation group C	6		nucleotide-excision repair			ISO	Q01831 	J:164563 	
+MGI:103557	Xpc	xeroderma pigmentosum, complementation group C	6		pyrimidine dimer repair by nucleotide-excision repair			IMP	MGI:1931883 	J:117815 	
+

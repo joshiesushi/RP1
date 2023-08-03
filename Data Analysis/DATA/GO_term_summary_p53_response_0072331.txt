@@ -1,0 +1,274 @@
+MGI Gene/Marker ID	Symbol	Name	Chr	Qualifier	Annotated Term	Context	Proteoform	Evidence	Inferred From	Reference(s)
+MGI:1920932	Acer2	alkaline ceramidase 2	4		DNA damage response, signal transduction by p53 class mediator			ISO	Q5QJU3 	J:164563 	
+MGI:1915298	Aen	apoptosis enhancing nuclease	7		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			IBA	PTN008542726 	J:265628 	
+MGI:1915298	Aen	apoptosis enhancing nuclease	7		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			ISO	Q8WTP8 	J:164563 	
+MGI:1097717	Ankrd1	ankyrin repeat domain 1 (cardiac muscle)	19		positive regulation of DNA damage response, signal transduction by p53 class mediator			ISO	Q15327 	J:164563 	
+MGI:1861447	Ankrd2	ankyrin repeat domain 2 (stretch responsive muscle)	19		regulation of intrinsic apoptotic signaling pathway by p53 class mediator	happens in myoblast,regulates intrinsic apoptotic signaling pathway by p53 class mediator		IDA		J:136778 	
+MGI:1861447	Ankrd2	ankyrin repeat domain 2 (stretch responsive muscle)	19		regulation of intrinsic apoptotic signaling pathway by p53 class mediator	happens in myoblast,regulates intrinsic apoptotic signaling pathway by p53 class mediator		IMP		J:136778 	
+MGI:1914461	Armc10	armadillo repeat containing 10	5		negative regulation of intrinsic apoptotic signaling pathway by p53 class mediator			IBA	PTN000404139 	J:265628 	
+MGI:1914461	Armc10	armadillo repeat containing 10	5		negative regulation of intrinsic apoptotic signaling pathway by p53 class mediator			ISO	Q8N2F6 	J:164563 	
+MGI:2442925	Atad5	ATPase family, AAA domain containing 5	11		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			IGI	MGI:1336991 	J:99862 	
+MGI:2442925	Atad5	ATPase family, AAA domain containing 5	11		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			IGI	MGI:98834 	J:99862 	
+MGI:2442925	Atad5	ATPase family, AAA domain containing 5	11		negative regulation of intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			IMP		J:99862 	
+MGI:107202	Atm	ataxia telangiectasia mutated	9		positive regulation of DNA damage response, signal transduction by p53 class mediator			ISO	Q13315 	J:164563 	
+MGI:108028	Atr	ataxia telangiectasia and Rad3 related	9		positive regulation of DNA damage response, signal transduction by p53 class mediator			ISO	Q13535 	J:164563 	
+MGI:103067	Atrx	ATRX, chromatin remodeler	X		DNA damage response, signal transduction by p53 class mediator			IMP		J:209584 	
+MGI:1919439	Bag6	BCL2-associated athanogene 6	17		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			ISO	P46379 	J:164563 	
+MGI:1859147	Batf	basic leucine zipper transcription factor, ATF-like	12		DNA damage response, signal transduction by p53 class mediator			IMP		J:190258 	
+MGI:99702	Bax	BCL2-associated X protein	7		intrinsic apoptotic signaling pathway by p53 class mediator			IMP		J:57545 	
+MGI:2181667	Bbc3	BCL2 binding component 3	7		intrinsic apoptotic signaling pathway by p53 class mediator			ISO	AF322558 	J:76185 	
+MGI:2181667	Bbc3	BCL2 binding component 3	7		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator	happens in fibroblast		IMP	MGI:2681654 	J:101198 	
+MGI:1922986	Bcl2l12	BCL2-like 12 (proline rich)	7		negative regulation of intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			IDA		J:164679 	
+MGI:88140	Bcl3	B cell leukemia/lymphoma 3	7		DNA damage response, signal transduction by p53 class mediator			ISO	P20749 	J:164563 	
+MGI:88140	Bcl3	B cell leukemia/lymphoma 3	7		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			ISO	P20749 	J:73065 	
+MGI:102845	Bdkrb2	bradykinin receptor, beta 2	12		intrinsic apoptotic signaling pathway in response to osmotic stress by p53 class mediator	happens in metanephros		IGI	MGI:98834 	J:111678 	
+MGI:102845	Bdkrb2	bradykinin receptor, beta 2	12		intrinsic apoptotic signaling pathway in response to osmotic stress by p53 class mediator	happens in metanephros		IGI	MGI:99702 	J:111678 	
+MGI:102845	Bdkrb2	bradykinin receptor, beta 2	12		negative regulation of intrinsic apoptotic signaling pathway in response to osmotic stress by p53 class mediator	negatively regulates intrinsic apoptotic signaling pathway in response to osmotic stress by p53 class mediator		IGI	MGI:98834 	J:111678 	
+MGI:102845	Bdkrb2	bradykinin receptor, beta 2	12		negative regulation of intrinsic apoptotic signaling pathway in response to osmotic stress by p53 class mediator	negatively regulates intrinsic apoptotic signaling pathway in response to osmotic stress by p53 class mediator		IGI	MGI:99702 	J:111678 	
+MGI:88184	Bmyc	brain expressed myelocytomatosis oncogene	2		positive regulation of intrinsic apoptotic signaling pathway by p53 class mediator			ISO	P01106 	J:164563 	
+MGI:1858494	Bok	BCL2-related ovarian killer	1		intrinsic apoptotic signaling pathway by p53 class mediator			ISO	Q9UMX3 	J:164563 	
+MGI:1334460	Bop1	block of proliferation 1	15		regulation of signal transduction by p53 class mediator			ISO	Q14137 	J:164563 	
+MGI:109337	Brca2	breast cancer 2, early onset	5		DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			IMP	MGI:1930616 	J:37362 	
+MGI:109337	Brca2	breast cancer 2, early onset	5		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			IGI	MGI:98834 	J:122559 	
+MGI:109337	Brca2	breast cancer 2, early onset	5		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator	happens in small intestine		IMP	MGI:2429691 MGI:3052655 	J:98772 	
+MGI:97295	Casp2	caspase 2	6		DNA damage response, signal transduction by p53 class mediator resulting in cell cycle arrest			ISO	P42575 	J:164563 	
+MGI:1312921	Casp6	caspase 6	3		intrinsic apoptotic signaling pathway by p53 class mediator			ISO	P55212 	J:164563 	
+MGI:88338	Cd44	CD44 antigen	2		negative regulation of DNA damage response, signal transduction by p53 class mediator			IMP		J:114878 	
+MGI:88338	Cd44	CD44 antigen	2		negative regulation of DNA damage response, signal transduction by p53 class mediator			ISO	P16070 	J:164563 	
+MGI:88338	Cd44	CD44 antigen	2		negative regulation of intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			IMP		J:114878 	
+MGI:88338	Cd44	CD44 antigen	2		negative regulation of intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			ISO	P16070 	J:164563 	
+MGI:96534	Cd74	CD74 antigen (invariant polypeptide of major histocompatibility complex, class II antigen-associated)	18		negative regulation of DNA damage response, signal transduction by p53 class mediator			IBA	PTN002679661 	J:265628 	
+MGI:96534	Cd74	CD74 antigen (invariant polypeptide of major histocompatibility complex, class II antigen-associated)	18		negative regulation of DNA damage response, signal transduction by p53 class mediator			IMP		J:114878 	
+MGI:96534	Cd74	CD74 antigen (invariant polypeptide of major histocompatibility complex, class II antigen-associated)	18		negative regulation of DNA damage response, signal transduction by p53 class mediator			ISO	P04233 	J:164563 	
+MGI:96534	Cd74	CD74 antigen (invariant polypeptide of major histocompatibility complex, class II antigen-associated)	18		negative regulation of intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			IBA	PTN002679661 	J:265628 	
+MGI:96534	Cd74	CD74 antigen (invariant polypeptide of major histocompatibility complex, class II antigen-associated)	18		negative regulation of intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			IMP		J:114878 	
+MGI:96534	Cd74	CD74 antigen (invariant polypeptide of major histocompatibility complex, class II antigen-associated)	18		negative regulation of intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			ISO	P04233 	J:164563 	
+MGI:1913876	Cdip1	cell death inducing Trp53 target 1	16		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			IBA	PTN002761105 	J:265628 	
+MGI:1913876	Cdip1	cell death inducing Trp53 target 1	16		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			ISO	Q9H305 	J:73065 	
+MGI:1933126	Cdk5rap3	CDK5 regulatory subunit associated protein 3	11		positive regulation of signal transduction by p53 class mediator			ISO	Q96JB5 	J:164563 	
+MGI:104556	Cdkn1a	cyclin dependent kinase inhibitor 1A (P21)	17		DNA damage response, signal transduction by p53 class mediator resulting in cell cycle arrest			ISO	P38936 	J:164563 	
+MGI:104556	Cdkn1a	cyclin dependent kinase inhibitor 1A (P21)	17		DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			IDA		J:60946 	
+MGI:104556	Cdkn1a	cyclin dependent kinase inhibitor 1A (P21)	17		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			IMP	MGI:1933751 	J:85569 	
+MGI:104556	Cdkn1a	cyclin dependent kinase inhibitor 1A (P21)	17		signal transduction by p53 class mediator			IEA	IPR029841 	J:72247 	
+MGI:104738	Cdkn2a	cyclin dependent kinase inhibitor 2A	4		positive regulation of DNA damage response, signal transduction by p53 class mediator			IC	GO:0051444 	J:51904 	
+MGI:104738	Cdkn2a	cyclin dependent kinase inhibitor 2A	4		positive regulation of DNA damage response, signal transduction by p53 class mediator			ISO	Q8N726 	J:164563 	
+MGI:104738	Cdkn2a	cyclin dependent kinase inhibitor 2A	4		positive regulation of signal transduction by p53 class mediator			ISO	Q8N726 	J:164563 	
+MGI:2158560	Cep63	centrosomal protein 63	9		intrinsic apoptotic signaling pathway by p53 class mediator	happens in neural stem cell,happens in cerebral cortex,happens in cerebral cortex		IGI	MGI:98834 	J:224364 	
+MGI:2158560	Cep63	centrosomal protein 63	9		negative regulation of intrinsic apoptotic signaling pathway by p53 class mediator	happens in neural stem cell,happens in cerebral cortex,negatively regulates intrinsic apoptotic signaling pathway by p53 class mediator		IGI	MGI:98834 	J:224364 	
+MGI:3036258	Chd5	chromodomain helicase DNA binding protein 5	4		positive regulation of signal transduction by p53 class mediator			IMP		J:121726 	
+MGI:1355321	Chek2	checkpoint kinase 2	5		DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			IMP	MGI:2386905 	J:60946 	
+MGI:1355321	Chek2	checkpoint kinase 2	5		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			IMP	MGI:2386905 	J:60946 	
+MGI:1349409	Cops3	COP9 signalosome subunit 3	11		regulation of DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			ISO	Q9UNS2 	J:164563 	
+MGI:1336168	Cradd	CASP2 and RIPK1 domain containing adaptor with death domain	10		DNA damage response, signal transduction by p53 class mediator resulting in cell cycle arrest			IBA	PTN000385750 	J:265628 	
+MGI:1336168	Cradd	CASP2 and RIPK1 domain containing adaptor with death domain	10		DNA damage response, signal transduction by p53 class mediator resulting in cell cycle arrest			ISO	P78560 	J:164563 	
+MGI:1921997	Ddit4	DNA-damage-inducible transcript 4	10		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			IMP		J:178326 	
+MGI:105037	Ddx5	DEAD box helicase 5	11		intrinsic apoptotic signaling pathway by p53 class mediator			ISO	P17844 	J:164563 	
+MGI:105037	Ddx5	DEAD box helicase 5	11		positive regulation of DNA damage response, signal transduction by p53 class mediator			ISO	P17844 	J:164563 	
+MGI:1330299	Dyrk1a	dual-specificity tyrosine-(Y)-phosphorylation regulated kinase 1a	16		negative regulation of DNA damage response, signal transduction by p53 class mediator			IDA		J:183209 	
+MGI:1330301	Dyrk2	dual-specificity tyrosine-(Y)-phosphorylation regulated kinase 2	10		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			ISO	Q92630 	J:164563 	
+MGI:1330300	Dyrk3	dual-specificity tyrosine-(Y)-phosphorylation regulated kinase 3	1		negative regulation of DNA damage response, signal transduction by p53 class mediator			IMP		J:165940 	
+MGI:101941	E2f1	E2F transcription factor 1	2		intrinsic apoptotic signaling pathway by p53 class mediator			IDA		J:65993 	
+MGI:1096341	E2f2	E2F transcription factor 2	4		intrinsic apoptotic signaling pathway by p53 class mediator			IDA		J:65993 	
+MGI:1289147	E2f7	E2F transcription factor 7	10		DNA damage response, signal transduction by p53 class mediator			ISO	Q96AV8 	J:164563 	
+MGI:2442860	Eda2r	ectodysplasin A2 receptor	X		intrinsic apoptotic signaling pathway by p53 class mediator			IGI	MGI:98834 	J:160291 	
+MGI:1913393	Eef1e1	eukaryotic translation elongation factor 1 epsilon 1	13		positive regulation of DNA damage response, signal transduction by p53 class mediator			IMP	MGI:3574590 	J:96923 	
+MGI:2673679	Ell3	elongation factor RNA polymerase II-like 3	2		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator	happens in embryonic stem cell		IMP		J:187901 	
+MGI:2673679	Ell3	elongation factor RNA polymerase II-like 3	2		negative regulation of intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator	negatively regulates intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator		IMP		J:187901 	
+MGI:2673679	Ell3	elongation factor RNA polymerase II-like 3	2		negative regulation of signal transduction by p53 class mediator	negatively regulates signal transduction by p53 class mediator		IDA		J:187901 	
+MGI:2673679	Ell3	elongation factor RNA polymerase II-like 3	2		signal transduction by p53 class mediator	happens in embryonic stem cell		IDA		J:187901 	
+MGI:1276116	Ep300	E1A binding protein p300	15		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			ISO	Q09472 	J:164563 	
+MGI:95413	Ercc2	excision repair cross-complementing rodent repair deficiency, complementation group 2	7		intrinsic apoptotic signaling pathway by p53 class mediator			IMP	MGI:2183949 	J:137150 	
+MGI:1277947	Fhit	fragile histidine triad gene	14		intrinsic apoptotic signaling pathway by p53 class mediator			IBA	PTN005327820 	J:265628 	
+MGI:1277947	Fhit	fragile histidine triad gene	14		intrinsic apoptotic signaling pathway by p53 class mediator			ISO	P49789 	J:164563 	
+MGI:1347487	Foxm1	forkhead box M1	6		DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			IMP		J:118161 	
+MGI:1347487	Foxm1	forkhead box M1	6		DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			ISO	Q08050 	J:164563 	
+MGI:1890081	Foxo3	forkhead box O3	10		DNA damage response, signal transduction by p53 class mediator			IDA		J:93432 	
+MGI:1344337	Grem1	gremlin 1, DAN family BMP antagonist	2	NOT	signal transduction by p53 class mediator			IGI	P04637 	J:183226 	
+MGI:1916303	Hapstr1	HUWE1 associated protein modifying stress responses	16		negative regulation of signal transduction by p53 class mediator			ISO	Q14CZ0 	J:164563 	
+MGI:2385923	Hexim1	hexamethylene bis-acetamide inducible 1	11		positive regulation of signal transduction by p53 class mediator			ISO	O94992 	J:164563 	
+MGI:1338010	Hic1	hypermethylated in cancer 1	11		positive regulation of DNA damage response, signal transduction by p53 class mediator			IMP		J:178278 	
+MGI:1321133	Hint1	histidine triad nucleotide binding protein 1	11		intrinsic apoptotic signaling pathway by p53 class mediator			ISO	P49773 	J:164563 	
+MGI:1314873	Hipk1	homeodomain interacting protein kinase 1	3		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			IBA	PTN002780582 	J:265628 	
+MGI:1314873	Hipk1	homeodomain interacting protein kinase 1	3		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator	happens in fibroblast		IGI	MGI:1314872 	J:106931 	
+MGI:1314873	Hipk1	homeodomain interacting protein kinase 1	3		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator	happens in fibroblast		IGI	MGI:98834 	J:106931 	
+MGI:1314872	Hipk2	homeodomain interacting protein kinase 2	6		DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			ISO	Q9H2X6 	J:164563 	
+MGI:1314872	Hipk2	homeodomain interacting protein kinase 2	6		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			IBA	PTN002780562 	J:265628 	
+MGI:1314872	Hipk2	homeodomain interacting protein kinase 2	6		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator	happens in fibroblast		IGI	MGI:1314872 	J:106931 	
+MGI:1314872	Hipk2	homeodomain interacting protein kinase 2	6		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator	happens in fibroblast		IGI	MGI:98834 	J:106931 	
+MGI:2685008	Hipk4	homeodomain interacting protein kinase 4	7		regulation of signal transduction by p53 class mediator			IDA		J:127713 	
+MGI:99894	Hnrnpk	heterogeneous nuclear ribonucleoprotein K	13		regulation of intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			IMP		J:167935 	
+MGI:96429	Ifi204	interferon activated gene 204	1		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			ISO	Q16666 	J:87001 	
+MGI:107307	Ing4	inhibitor of growth family, member 4	6		positive regulation of DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			ISO	Q9UNL4 	J:164563 	
+MGI:1913096	Jmy	junction-mediating and regulatory protein	13		intrinsic apoptotic signaling pathway by p53 class mediator			IBA	PTN002762713 	J:265628 	
+MGI:1913096	Jmy	junction-mediating and regulatory protein	13		intrinsic apoptotic signaling pathway by p53 class mediator			IDA		J:64939 	
+MGI:1932051	Kat5	K(lysine) acetyltransferase 5	19		DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			ISO	Q92993 	J:164563 	
+MGI:1196256	Kdm1a	lysine (K)-specific demethylase 1A	4		negative regulation of DNA damage response, signal transduction by p53 class mediator			ISO	O60341 	J:164563 	
+MGI:1196256	Kdm1a	lysine (K)-specific demethylase 1A	4		negative regulation of intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			ISO	O60341 	J:164563 	
+MGI:1915206	Kmt5a	lysine methyltransferase 5A	5		regulation of DNA damage response, signal transduction by p53 class mediator			IBA	PTN002920257 	J:265628 	
+MGI:1915206	Kmt5a	lysine methyltransferase 5A	5		regulation of DNA damage response, signal transduction by p53 class mediator			ISO	Q9NQR1 	J:164563 	
+MGI:1931053	Marchf7	membrane associated ring-CH-type finger 7	2		negative regulation of DNA damage response, signal transduction by p53 class mediator			ISO	Q9H992 	J:164563 	
+MGI:1931053	Marchf7	membrane associated ring-CH-type finger 7	2		negative regulation of intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			ISO	Q9H992 	J:164563 	
+MGI:96952	Mdm2	transformed mouse 3T3 cell double minute 2	10		DNA damage response, signal transduction by p53 class mediator resulting in cell cycle arrest			ISO	Q00987 	J:164563 	
+MGI:96952	Mdm2	transformed mouse 3T3 cell double minute 2	10		negative regulation of DNA damage response, signal transduction by p53 class mediator			ISO	Q00987 	J:164563 	
+MGI:96952	Mdm2	transformed mouse 3T3 cell double minute 2	10		negative regulation of intrinsic apoptotic signaling pathway by p53 class mediator			ISO	Q00987 	J:164563 	
+MGI:96952	Mdm2	transformed mouse 3T3 cell double minute 2	10		negative regulation of signal transduction by p53 class mediator			ISO	Q00987 	J:164563 	
+MGI:107934	Mdm4	transformed mouse 3T3 cell double minute 4	1		negative regulation of intrinsic apoptotic signaling pathway by p53 class mediator			IMP		J:77907 	
+MGI:96982	Mif	macrophage migration inhibitory factor (glycosylation-inhibiting factor)	10		DNA damage response, signal transduction by p53 class mediator			IMP	MGI:2673280 	J:84791 	
+MGI:96982	Mif	macrophage migration inhibitory factor (glycosylation-inhibiting factor)	10		negative regulation of DNA damage response, signal transduction by p53 class mediator			IDA		J:114878 	
+MGI:96982	Mif	macrophage migration inhibitory factor (glycosylation-inhibiting factor)	10		negative regulation of DNA damage response, signal transduction by p53 class mediator			ISO	P14174 	J:164563 	
+MGI:96982	Mif	macrophage migration inhibitory factor (glycosylation-inhibiting factor)	10		negative regulation of intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			ISO	P14174 	J:164563 	
+MGI:1341819	Mlf1	myeloid leukemia factor 1	3		regulation of signal transduction by p53 class mediator			ISO	P58340 	J:164563 	
+MGI:101816	Msh2	mutS homolog 2	17		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator	happens in large intestine crypt of lieberkuhn		IGI	MGI:98834 	J:54082 	
+MGI:97168	Msx1	msh homeobox 1	5		positive regulation of intrinsic apoptotic signaling pathway by p53 class mediator			ISO	P28360 	J:164563 	
+MGI:97231	Muc1	mucin 1, transmembrane	3		DNA damage response, signal transduction by p53 class mediator resulting in cell cycle arrest			ISO	P15941 	J:164563 	
+MGI:97231	Muc1	mucin 1, transmembrane	3		DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			ISO	P15941 	J:164563 	
+MGI:97231	Muc1	mucin 1, transmembrane	3		negative regulation of intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			ISO	P15941 	J:164563 	
+MGI:106181	Mybbp1a	MYB binding protein (P160) 1a	11		intrinsic apoptotic signaling pathway by p53 class mediator			ISO	Q9BQG0 	J:164563 	
+MGI:97250	Myc	myelocytomatosis oncogene	15		positive regulation of intrinsic apoptotic signaling pathway by p53 class mediator			ISO	P01106 	J:164563 	
+MGI:104785	Myo6	myosin VI	9		DNA damage response, signal transduction by p53 class mediator			ISO	Q9UM54 	J:164563 	
+MGI:107891	Nop2	NOP2 nucleolar protein	6		regulation of signal transduction by p53 class mediator			ISO	P46087 	J:164563 	
+MGI:2154441	Nop53	NOP53 ribosome biogenesis factor	7		negative regulation of signal transduction by p53 class mediator			IMP		J:241062 	
+MGI:2154441	Nop53	NOP53 ribosome biogenesis factor	7		regulation of signal transduction by p53 class mediator			ISO	Q9NZM5 	J:164563 	
+MGI:106184	Npm1	nucleophosmin 1	11		regulation of DNA damage response, signal transduction by p53 class mediator	regulates DNA damage response, signal transduction by p53 class mediator		IGI	MGI:98834 	J:101353 	
+MGI:1891834	Nupr1	nuclear protein transcription regulator 1	7		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator	happens in fibroblast		IMP	MGI:3784016 	J:133728 	
+MGI:1915333	Pak1ip1	PAK1 interacting protein 1	13		regulation of signal transduction by p53 class mediator			ISO	Q9NWT1 	J:164563 	
+MGI:1890430	Paxip1	PAX interacting (with transcription-activation domain) protein 1	5		DNA damage response, signal transduction by p53 class mediator			ISO	Q6ZW49 	J:164563 	
+MGI:1890471	Pcbp4	poly(rC) binding protein 4	9		negative regulation of DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			IMP		J:173815 	
+MGI:1343087	Pdk2	pyruvate dehydrogenase kinase, isoenzyme 2	11		intrinsic apoptotic signaling pathway by p53 class mediator			ISO	Q15119 	J:164563 	
+MGI:1929938	Perp	PERP, TP53 apoptosis effector	10		intrinsic apoptotic signaling pathway by p53 class mediator			IDA		J:67123 	
+MGI:1351485	Phlda3	pleckstrin homology like domain, family A, member 3	1		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			IBA	PTN001036011 	J:265628 	
+MGI:1351485	Phlda3	pleckstrin homology like domain, family A, member 3	1		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			ISO	Q9Y5J5 	J:164563 	
+MGI:1889507	Pidd1	p53 induced death domain protein 1	7		DNA damage response, signal transduction by p53 class mediator resulting in cell cycle arrest			ISO	Q9HB75 	J:164563 	
+MGI:102468	Pla2r1	phospholipase A2 receptor 1	2		positive regulation of DNA damage response, signal transduction by p53 class mediator			ISO	Q13018 	J:164563 	
+MGI:1930146	Pmaip1	phorbol-12-myristate-13-acetate-induced protein 1	18		intrinsic apoptotic signaling pathway by p53 class mediator			IMP		J:86466 	
+MGI:1930146	Pmaip1	phorbol-12-myristate-13-acetate-induced protein 1	18		intrinsic apoptotic signaling pathway by p53 class mediator			ISO	Q13794 	J:164563 	
+MGI:1930146	Pmaip1	phorbol-12-myristate-13-acetate-induced protein 1	18		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			IDA		J:62057 	
+MGI:1930146	Pmaip1	phorbol-12-myristate-13-acetate-induced protein 1	18		positive regulation of DNA damage response, signal transduction by p53 class mediator			IMP		J:86466 	
+MGI:1930146	Pmaip1	phorbol-12-myristate-13-acetate-induced protein 1	18		positive regulation of DNA damage response, signal transduction by p53 class mediator			ISO	Q13794 	J:164563 	
+MGI:104662	Pml	promyelocytic leukemia	9		DNA damage response, signal transduction by p53 class mediator resulting in cell cycle arrest			IMP		J:98981 	
+MGI:104662	Pml	promyelocytic leukemia	9		intrinsic apoptotic signaling pathway by p53 class mediator			IMP		J:88573 	
+MGI:104662	Pml	promyelocytic leukemia	9		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			IMP		J:98981 	
+MGI:104662	Pml	promyelocytic leukemia	9		positive regulation of signal transduction by p53 class mediator			IMP		J:123219 	
+MGI:102525	Pou4f1	POU domain, class 4, transcription factor 1	14		intrinsic apoptotic signaling pathway by p53 class mediator			IMP		J:239207 	
+MGI:102524	Pou4f2	POU domain, class 4, transcription factor 2	8		intrinsic apoptotic signaling pathway by p53 class mediator			IMP		J:239207 	
+MGI:1858214	Ppm1d	protein phosphatase 1D magnesium-dependent, delta isoform	11		DNA damage response, signal transduction by p53 class mediator			IDA		J:173189 	
+MGI:1336199	Ppp1r13b	protein phosphatase 1, regulatory subunit 13B	12		intrinsic apoptotic signaling pathway by p53 class mediator			ISO	Q96KQ4 	J:164563 	
+MGI:1349475	Ppp2r5c	protein phosphatase 2, regulatory subunit B', gamma	12		DNA damage response, signal transduction by p53 class mediator resulting in cell cycle arrest			ISO	Q13362 	J:164563 	
+MGI:1349475	Ppp2r5c	protein phosphatase 2, regulatory subunit B', gamma	12		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			ISO	Q13362 	J:164563 	
+MGI:893573	Prap1	proline-rich acidic protein 1	7		DNA damage response, signal transduction by p53 class mediator resulting in cell cycle arrest			ISO	Q96NZ9 	J:164563 	
+MGI:1355296	Prkn	parkin RBR E3 ubiquitin protein ligase	17		negative regulation of intrinsic apoptotic signaling pathway by p53 class mediator			ISO	O60260 	J:164563 	
+MGI:2139971	Prmt6	protein arginine N-methyltransferase 6	3		regulation of signal transduction by p53 class mediator			IMP		J:199753 	
+MGI:1858898	Psmd10	proteasome (prosome, macropain) 26S subunit, non-ATPase, 10	X		negative regulation of DNA damage response, signal transduction by p53 class mediator			ISO	O75832 	J:164563 	
+MGI:108027	Ptprv	protein tyrosine phosphatase receptor type V	1		DNA damage response, signal transduction by p53 class mediator resulting in cell cycle arrest	happens in fibroblast		IGI	MGI:98834 	J:100764 	
+MGI:108027	Ptprv	protein tyrosine phosphatase receptor type V	1	NOT	intrinsic apoptotic signaling pathway by p53 class mediator	happens in fibroblast		IGI	MGI:98834 	J:100764 	
+MGI:2652132	Pttg1ip	pituitary tumor-transforming 1 interacting protein	10		negative regulation of DNA damage response, signal transduction by p53 class mediator			ISO	P53801 	J:73065 	
+MGI:2652132	Pttg1ip	pituitary tumor-transforming 1 interacting protein	10		negative regulation of intrinsic apoptotic signaling pathway by p53 class mediator			ISO	P53801 	J:73065 	
+MGI:1931465	Pycard	PYD and CARD domain containing	7		intrinsic apoptotic signaling pathway by p53 class mediator			ISO	Q9ULZ3 	J:164563 	
+MGI:1931465	Pycard	PYD and CARD domain containing	7		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			ISO	Q9ULZ3 	J:164563 	
+MGI:1889294	Rbm38	RNA binding motif protein 38	2		DNA damage response, signal transduction by p53 class mediator resulting in cell cycle arrest			ISO	Q9H0Z9 	J:164563 	
+MGI:1889294	Rbm38	RNA binding motif protein 38	2		DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			ISO	Q9H0Z9 	J:164563 	
+MGI:1914588	Rffl	ring finger and FYVE like domain containing protein	11		negative regulation of signal transduction by p53 class mediator			ISO	Q8WZ73 	J:164563 	
+MGI:2153340	Rnf34	ring finger protein 34	5		negative regulation of signal transduction by p53 class mediator			ISO	Q969K3 	J:164563 	
+MGI:1914489	Rpf2	ribosome production factor 2 homolog	10		regulation of signal transduction by p53 class mediator			ISO	Q9H7B2 	J:164563 	
+MGI:102854	Rpl5	ribosomal protein L5	5		regulation of signal transduction by p53 class mediator			ISO	P46777 	J:164563 	
+MGI:1914275	Rpl11	ribosomal protein L11	4		positive regulation of intrinsic apoptotic signaling pathway by p53 class mediator			IMP		J:240382 	
+MGI:1914275	Rpl11	ribosomal protein L11	4		positive regulation of signal transduction by p53 class mediator			IMP		J:241062 	
+MGI:1914275	Rpl11	ribosomal protein L11	4		regulation of signal transduction by p53 class mediator			ISO	P62913 	J:164563 	
+MGI:1929455	Rpl23	ribosomal protein L23	11		positive regulation of signal transduction by p53 class mediator			ISO	P62829 	J:164563 	
+MGI:106022	Rpl26	ribosomal protein L26	11		DNA damage response, signal transduction by p53 class mediator resulting in cell cycle arrest			IDA		J:240282 	
+MGI:106022	Rpl26	ribosomal protein L26	11		DNA damage response, signal transduction by p53 class mediator resulting in cell cycle arrest			ISO	P61254 	J:164563 	
+MGI:106022	Rpl26	ribosomal protein L26	11		positive regulation of DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			ISO	P61254 	J:164563 	
+MGI:106022	Rpl26	ribosomal protein L26	11		positive regulation of intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			IMP		J:240282 	
+MGI:106022	Rpl26	ribosomal protein L26	11		positive regulation of intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			ISO	P61254 	J:164563 	
+MGI:1914531	Rpl37	ribosomal protein L37	15		positive regulation of signal transduction by p53 class mediator			ISO	P61927 	J:164563 	
+MGI:3651519	Rpl37rt	ribosomal protein L37, retrotransposed	5		positive regulation of signal transduction by p53 class mediator			ISO	P61927 	J:164563 	
+MGI:1914321	Rps6ka6	ribosomal protein S6 kinase polypeptide 6	X		DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			IBA	PTN002806567 	J:265628 	
+MGI:1914321	Rps6ka6	ribosomal protein S6 kinase polypeptide 6	X		DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			ISO	Q9UK32 	J:164563 	
+MGI:1333818	Rps7	ribosomal protein S7	12		positive regulation of intrinsic apoptotic signaling pathway by p53 class mediator			ISO	P62081 	J:164563 	
+MGI:98117	Rps15	ribosomal protein S15	10		positive regulation of signal transduction by p53 class mediator			ISO	P62841 	J:164563 	
+MGI:1914677	Rps20	ribosomal protein S20	4		positive regulation of signal transduction by p53 class mediator			ISO	P60866 	J:164563 	
+MGI:1915191	Rps27l	ribosomal protein S27-like	9		DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			ISO	Q71UM5 	J:164563 	
+MGI:1915191	Rps27l	ribosomal protein S27-like	9		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			ISO	Q71UM5 	J:164563 	
+MGI:2155865	Rrm2b	ribonucleotide reductase M2 B (TP53 inducible)	15		negative regulation of intrinsic apoptotic signaling pathway by p53 class mediator			IMP	MGI:2672883 	J:84841 	
+MGI:1925255	Rrn3	RRN3 RNA polymerase I transcription factor homolog (yeast)	16		intrinsic apoptotic signaling pathway by p53 class mediator	happens in neural tube		IMP	MGI:3584037 	J:99711 	
+MGI:1925255	Rrn3	RRN3 RNA polymerase I transcription factor homolog (yeast)	16		negative regulation of intrinsic apoptotic signaling pathway by p53 class mediator	negatively regulates intrinsic apoptotic signaling pathway by p53 class mediator		IMP	MGI:3584037 	J:99711 	
+MGI:1914251	Rrp8	ribosomal RNA processing 8	7		intrinsic apoptotic signaling pathway by p53 class mediator			ISO	O43159 	J:164563 	
+MGI:1929721	Rrs1	ribosome biogenesis regulator 1	1		regulation of signal transduction by p53 class mediator			ISO	Q15050 	J:164563 	
+MGI:1923076	Senp2	SUMO/sentrin specific peptidase 2	16		negative regulation of DNA damage response, signal transduction by p53 class mediator		PR:Q91ZX6-1	IDA		J:186966 	
+MGI:1923076	Senp2	SUMO/sentrin specific peptidase 2	16		negative regulation of signal transduction by p53 class mediator		PR:Q91ZX6-1	IDA		J:186966 	
+MGI:2651874	Sesn2	sestrin 2	4		DNA damage response, signal transduction by p53 class mediator			IMP		J:139563 	
+MGI:2651874	Sesn2	sestrin 2	4		DNA damage response, signal transduction by p53 class mediator			ISO	P58004 	J:164563 	
+MGI:1859730	Sh3glb1	SH3-domain GRB2-like B1 (endophilin)	3		negative regulation of intrinsic apoptotic signaling pathway by p53 class mediator			IMP		J:206937 	
+MGI:1859730	Sh3glb1	SH3-domain GRB2-like B1 (endophilin)	3		positive regulation of intrinsic apoptotic signaling pathway by p53 class mediator			IDA		J:206937 	
+MGI:1915044	Shisa5	shisa family member 5	9		intrinsic apoptotic signaling pathway by p53 class mediator			IMP		J:78076 	
+MGI:1915044	Shisa5	shisa family member 5	9		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			IDA		J:78076 	
+MGI:2135607	Sirt1	sirtuin 1	10		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			ISO	Q96EB6 	J:164563 	
+MGI:2135607	Sirt1	sirtuin 1	10		negative regulation of DNA damage response, signal transduction by p53 class mediator			ISO	Q96EB6 	J:164563 	
+MGI:2135607	Sirt1	sirtuin 1	10		negative regulation of intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			IMP		J:72328 	
+MGI:1915889	Smyd2	SET and MYND domain containing 2	1		regulation of DNA damage response, signal transduction by p53 class mediator			ISO	Q9NRG4 	J:164563 	
+MGI:98330	Snai1	snail family zinc finger 1	2		negative regulation of DNA damage response, signal transduction by p53 class mediator			ISO	O95863 	J:164563 	
+MGI:1096393	Snai2	snail family zinc finger 2	16		negative regulation of DNA damage response, signal transduction by p53 class mediator			ISO	O43623 	J:164563 	
+MGI:1913604	Snw1	SNW domain containing 1	12		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			ISO	Q13573 	J:164563 	
+MGI:98366	Sox4	SRY (sex determining region Y)-box 4	13		regulation of DNA damage response, signal transduction by p53 class mediator			ISO	Q06945 	J:164563 	
+MGI:109561	Sp100	nuclear antigen Sp100	1		DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			ISO	P23497 	J:164563 	
+MGI:2150016	Spred1	sprouty protein with EVH-1 domain 1, related sequence	2		positive regulation of DNA damage response, signal transduction by p53 class mediator			IDA		J:183209 	
+MGI:2150019	Spred2	sprouty-related EVH1 domain containing 2	11		positive regulation of DNA damage response, signal transduction by p53 class mediator			IDA		J:183209 	
+MGI:1915678	Steap3	STEAP family member 3	1		positive regulation of intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			IMP	MGI:4398911 	J:154356 	
+MGI:1341870	Stk11	serine/threonine kinase 11	10		intrinsic apoptotic signaling pathway by p53 class mediator			ISO	Q15831 	J:164563 	
+MGI:103239	Tfap4	transcription factor AP4	16		DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			ISO	Q01664 	J:164563 	
+MGI:2385852	Tifab	TRAF-interacting protein with forkhead-associated domain, family member B	13		regulation of intrinsic apoptotic signaling pathway in response to osmotic stress by p53 class mediator	happens in hematopoietic stem cell,happens in cellular_component		IMP		J:287555 	
+MGI:1915789	Tmem109	transmembrane protein 109	19		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			IBA	PTN002684508 	J:265628 	
+MGI:1915789	Tmem109	transmembrane protein 109	19		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator	happens in ciliated cell		IMP	MGI:4453832 	J:157864 	
+MGI:2146189	Topors	topoisomerase I binding, arginine/serine-rich	4		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			IDA		J:98384 	
+MGI:1916326	Triap1	TP53 regulated inhibitor of apoptosis 1	5		DNA damage response, signal transduction by p53 class mediator			ISO	O43715 	J:164563 	
+MGI:1916326	Triap1	TP53 regulated inhibitor of apoptosis 1	5		negative regulation of intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			ISO	O43715 	J:164563 	
+MGI:109275	Trim24	tripartite motif-containing 24	6		regulation of signal transduction by p53 class mediator			IGI	MGI:98834 	J:150816 	
+MGI:98834	Trp53	transformation related protein 53	11		DNA damage response, signal transduction by p53 class mediator			IDA		J:73858 	
+MGI:98834	Trp53	transformation related protein 53	11		DNA damage response, signal transduction by p53 class mediator			IDA		J:88409 	
+MGI:98834	Trp53	transformation related protein 53	11		DNA damage response, signal transduction by p53 class mediator	happens in fibroblast		IGI	MGI:106184 	J:101353 	
+MGI:98834	Trp53	transformation related protein 53	11		DNA damage response, signal transduction by p53 class mediator			IGI	MGI:109337 	J:122559 	
+MGI:98834	Trp53	transformation related protein 53	11		DNA damage response, signal transduction by p53 class mediator			ISO	P04637 	J:164563 	
+MGI:98834	Trp53	transformation related protein 53	11		DNA damage response, signal transduction by p53 class mediator resulting in cell cycle arrest	happens in fibroblast		IGI	MGI:108027 	J:100764 	
+MGI:98834	Trp53	transformation related protein 53	11		DNA damage response, signal transduction by p53 class mediator resulting in cell cycle arrest			ISO	P04637 	J:164563 	
+MGI:98834	Trp53	transformation related protein 53	11		DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			IDA		J:60946 	
+MGI:98834	Trp53	transformation related protein 53	11		DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			ISO	P04637 	J:164563 	
+MGI:98834	Trp53	transformation related protein 53	11		intrinsic apoptotic signaling pathway by p53 class mediator	happens in fibroblast		IDA		J:100764 	
+MGI:98834	Trp53	transformation related protein 53	11		intrinsic apoptotic signaling pathway by p53 class mediator			IDA		J:240382 	
+MGI:98834	Trp53	transformation related protein 53	11		intrinsic apoptotic signaling pathway by p53 class mediator			IDA		J:78076 	
+MGI:98834	Trp53	transformation related protein 53	11		intrinsic apoptotic signaling pathway by p53 class mediator			IGI	MGI:2442860 	J:160291 	
+MGI:98834	Trp53	transformation related protein 53	11		intrinsic apoptotic signaling pathway by p53 class mediator			ISO	P04637 	J:164563 	
+MGI:98834	Trp53	transformation related protein 53	11		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			IDA		J:240282 	
+MGI:98834	Trp53	transformation related protein 53	11		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			IGI	MGI:109337 	J:122559 	
+MGI:98834	Trp53	transformation related protein 53	11		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator	happens in myeloid cell		IGI	MGI:1096393 	J:115191 	
+MGI:98834	Trp53	transformation related protein 53	11		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			IGI	MGI:1336991 	J:99862 	
+MGI:98834	Trp53	transformation related protein 53	11		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			IGI	MGI:2442925 	J:99862 	
+MGI:98834	Trp53	transformation related protein 53	11		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator	happens in forebrain		IMP	MGI:1857263 	J:111068 	
+MGI:98834	Trp53	transformation related protein 53	11		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			IMP	MGI:1926340 	J:85569 	
+MGI:98834	Trp53	transformation related protein 53	11		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			IMP		J:170216 	
+MGI:98834	Trp53	transformation related protein 53	11		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			IMP		J:78076 	
+MGI:98834	Trp53	transformation related protein 53	11		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			ISO	P04637 	J:73065 	
+MGI:98834	Trp53	transformation related protein 53	11		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			ISO	P04637 	J:87001 	
+MGI:98834	Trp53	transformation related protein 53	11		regulation of DNA damage response, signal transduction by p53 class mediator			IGI	MGI:1890508 	J:173189 	
+MGI:98834	Trp53	transformation related protein 53	11		regulation of intrinsic apoptotic signaling pathway by p53 class mediator			IMP		J:141360 	
+MGI:98834	Trp53	transformation related protein 53	11		signal transduction by p53 class mediator			ISO	P04637 	J:164563 	
+MGI:2138319	Trp53bp2	transformation related protein 53 binding protein 2	1		intrinsic apoptotic signaling pathway by p53 class mediator			ISO	Q13625 	J:164563 	
+MGI:1330810	Trp63	transformation related protein 63	16		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator	happens in oocyte,happens in ovary		IMP	MGI:1934269 	J:116176 	
+MGI:1336991	Trp73	transformation related protein 73	4		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator	happens in fibroblast		IGI	MGI:2442925 	J:99862 	
+MGI:1336991	Trp73	transformation related protein 73	4		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator	happens in fibroblast		IGI	MGI:98834 	J:99862 	
+MGI:1336991	Trp73	transformation related protein 73	4		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			ISO	O15350 	J:164563 	
+MGI:1336991	Trp73	transformation related protein 73	4		positive regulation of intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator	positively regulates intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator		IGI	MGI:2442925 	J:99862 	
+MGI:1336991	Trp73	transformation related protein 73	4		positive regulation of intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator	positively regulates intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator		IGI	MGI:98834 	J:99862 	
+MGI:98872	Twist1	twist basic helix-loop-helix transcription factor 1	12		negative regulation of DNA damage response, signal transduction by p53 class mediator			ISO	Q15672 	J:164563 	
+MGI:98888	Ubb	ubiquitin B	11		positive regulation of intrinsic apoptotic signaling pathway by p53 class mediator			ISO	P0CG47 	J:141360 	
+MGI:894652	Usp10	ubiquitin specific peptidase 10	8		DNA damage response, signal transduction by p53 class mediator			IBA	PTN002551655 	J:265628 	
+MGI:894652	Usp10	ubiquitin specific peptidase 10	8		DNA damage response, signal transduction by p53 class mediator			ISO	Q14694 	J:164563 	
+MGI:101857	Usp15	ubiquitin specific peptidase 15	10		regulation of intrinsic apoptotic signaling pathway in response to osmotic stress by p53 class mediator	happens in hematopoietic stem cell		IMP		J:287555 	
+MGI:2442293	Usp28	ubiquitin specific peptidase 28	9		intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			ISO	Q96RU2 	J:164563 	
+MGI:1931237	Wwox	WW domain-containing oxidoreductase	8		intrinsic apoptotic signaling pathway by p53 class mediator			IGI	MGI:98834 	J:67264 	
+MGI:1352495	Zfp385a	zinc finger protein 385A	15		negative regulation of intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			ISO	Q96PM9 	J:164563 	
+MGI:1352495	Zfp385a	zinc finger protein 385A	15		positive regulation of DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			ISO	Q96PM9 	J:164563 	
+MGI:2444734	Zfp385b	zinc finger protein 385B	2		intrinsic apoptotic signaling pathway by p53 class mediator			ISO	Q569K4 	J:164563 	
+MGI:1890508	Zmpste24	zinc metallopeptidase, STE24	4		regulation of DNA damage response, signal transduction by p53 class mediator			IGI	MGI:98834 	J:173189 	
+MGI:1890508	Zmpste24	zinc metallopeptidase, STE24	4		regulation of DNA damage response, signal transduction by p53 class mediator			IMP	MGI:2180033 	J:134546 	
+MGI:1917353	Znhit1	zinc finger, HIT domain containing 1	5		positive regulation of DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			ISO	O43257 	J:164563 	
+

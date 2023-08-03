@@ -1,0 +1,196 @@
+MGI Gene/Marker ID	Symbol	Name	Chr	Qualifier	Annotated Term	Context	Proteoform	Evidence	Inferred From	Reference(s)
+MGI:2140364	Adprs	ADP-ribosylserine hydrolase	4		negative regulation of necroptotic process			IDA		J:291285 	
+MGI:1349419	Aifm1	apoptosis-inducing factor, mitochondrion-associated 1	X		positive regulation of necroptotic process			IDA		J:186001 	
+MGI:1349419	Aifm1	apoptosis-inducing factor, mitochondrion-associated 1	X		positive regulation of necroptotic process			IDA		J:77719 	
+MGI:1913650	Alkbh7	alkB homolog 7	17		regulation of mitochondrial membrane permeability involved in programmed necrotic cell death			ISO	Q9BT30 	J:164563 	
+MGI:1277124	Asah1	N-acylsphingosine amidohydrolase 1	8		regulation of programmed necrotic cell death			IMP		J:269643 	
+MGI:2138446	Atg9a	autophagy related 9A	1		programmed necrotic cell death			IMP		J:242727 	
+MGI:99702	Bax	BCL2-associated X protein	7		regulation of mitochondrial membrane permeability involved in programmed necrotic cell death	happens in fibroblast		IMP	MGI:3589203 	J:183839 	
+MGI:1197009	Birc2	baculoviral IAP repeat-containing 2	9		necroptotic process			IMP		J:182381 	
+MGI:1197009	Birc2	baculoviral IAP repeat-containing 2	9		negative regulation of necroptotic process			IBA	PTN002559449 	J:265628 	
+MGI:1197009	Birc2	baculoviral IAP repeat-containing 2	9		negative regulation of necroptotic process			IGI	MGI:104798 	J:182381 	
+MGI:1197009	Birc2	baculoviral IAP repeat-containing 2	9		negative regulation of ripoptosome assembly involved in necroptotic process			IGI	MGI:104798 	J:182381 	
+MGI:1197009	Birc2	baculoviral IAP repeat-containing 2	9		negative regulation of ripoptosome assembly involved in necroptotic process			IGI	MGI:108212 	J:182381 	
+MGI:1197009	Birc2	baculoviral IAP repeat-containing 2	9		regulation of necroptotic process			ISO	Q13490 	J:164563 	
+MGI:1197007	Birc3	baculoviral IAP repeat-containing 3	9		necroptotic process			IDA		J:182381 	
+MGI:1197007	Birc3	baculoviral IAP repeat-containing 3	9		negative regulation of necroptotic process			IBA	PTN002559449 	J:265628 	
+MGI:1197007	Birc3	baculoviral IAP repeat-containing 3	9		negative regulation of necroptotic process			IMP		J:182381 	
+MGI:1197007	Birc3	baculoviral IAP repeat-containing 3	9		regulation of necroptotic process			ISO	Q13489 	J:164563 	
+MGI:1858494	Bok	BCL2-related ovarian killer	1		negative regulation of necroptotic process			IMP		J:235305 	
+MGI:96544	Casp1	caspase 1	9		programmed necrotic cell death			IDA		J:99748 	
+MGI:97295	Casp2	caspase 2	6		negative regulation of necroptotic process			ISO	P42575 	J:164563 	
+MGI:1312921	Casp6	caspase 6	3		positive regulation of necroptotic process			ISO	P55212 	J:164563 	
+MGI:1261423	Casp8	caspase 8	1		necroptotic process	happens in fibroblast		IGI	MGI:104798 	J:170814 	
+MGI:1261423	Casp8	caspase 8	1		necroptotic process	happens in fibroblast		IGI	MGI:104798 	J:180684 	
+MGI:1261423	Casp8	caspase 8	1		necroptotic process	happens in fibroblast		IGI	MGI:1336166 	J:170814 	
+MGI:1261423	Casp8	caspase 8	1		necroptotic process	happens in fibroblast		IGI	MGI:1921506 	J:180684 	
+MGI:1261423	Casp8	caspase 8	1		necroptotic process	happens in fibroblast		IGI	MGI:2154952 	J:170814 	
+MGI:1261423	Casp8	caspase 8	1		necroptotic process	happens in ciliated cell		IGI	MGI:2154952 	J:177328 	
+MGI:1261423	Casp8	caspase 8	1		negative regulation of necroptotic process	negatively regulates necroptotic process		IGI	MGI:104798 	J:170814 	
+MGI:1261423	Casp8	caspase 8	1		negative regulation of necroptotic process	negatively regulates necroptotic process		IGI	MGI:104798 	J:180684 	
+MGI:1261423	Casp8	caspase 8	1		negative regulation of necroptotic process			IGI	MGI:104798 	J:202809 	
+MGI:1261423	Casp8	caspase 8	1		negative regulation of necroptotic process	negatively regulates necroptotic process		IGI	MGI:1336166 	J:170814 	
+MGI:1261423	Casp8	caspase 8	1		negative regulation of necroptotic process	negatively regulates necroptotic process		IGI	MGI:1921506 	J:180684 	
+MGI:1261423	Casp8	caspase 8	1		negative regulation of necroptotic process	negatively regulates necroptotic process		IGI	MGI:2154952 	J:170814 	
+MGI:1261423	Casp8	caspase 8	1		negative regulation of necroptotic process	negatively regulates necroptotic process		IGI	MGI:2154952 	J:177328 	
+MGI:1261423	Casp8	caspase 8	1		negative regulation of necroptotic process			IMP		J:281456 	
+MGI:1261423	Casp8	caspase 8	1		negative regulation of necroptotic process			IMP		J:285930 	
+MGI:1261423	Casp8	caspase 8	1		negative regulation of necroptotic process			IMP		J:285926 	
+MGI:1261423	Casp8	caspase 8	1		negative regulation of necroptotic process			ISO	Q14790 	J:164563 	
+MGI:102709	Cav1	caveolin 1, caveolae protein	6		negative regulation of necroptotic process			IMP		J:192110 	
+MGI:1336166	Cflar	CASP8 and FADD-like apoptosis regulator	1		necroptotic process	happens in fibroblast		IGI	MGI:104798 	J:170814 	
+MGI:1336166	Cflar	CASP8 and FADD-like apoptosis regulator	1		necroptotic process	happens in fibroblast		IGI	MGI:1261423 	J:170814 	
+MGI:1336166	Cflar	CASP8 and FADD-like apoptosis regulator	1		necroptotic process	happens in fibroblast		IGI	MGI:2154952 	J:170814 	
+MGI:1336166	Cflar	CASP8 and FADD-like apoptosis regulator	1		negative regulation of necroptotic process	negatively regulates necroptotic process		IGI	MGI:104798 	J:170814 	
+MGI:1336166	Cflar	CASP8 and FADD-like apoptosis regulator	1		negative regulation of necroptotic process			IGI	MGI:104798 	J:202809 	
+MGI:1336166	Cflar	CASP8 and FADD-like apoptosis regulator	1		negative regulation of necroptotic process	negatively regulates necroptotic process		IGI	MGI:1261423 	J:170814 	
+MGI:1336166	Cflar	CASP8 and FADD-like apoptosis regulator	1		negative regulation of necroptotic process	negatively regulates necroptotic process		IGI	MGI:2154952 	J:170814 	
+MGI:1336166	Cflar	CASP8 and FADD-like apoptosis regulator	1		negative regulation of necroptotic process			IGI	MGI:2154952 	J:196028 	
+MGI:1336166	Cflar	CASP8 and FADD-like apoptosis regulator	1		regulation of necroptotic process			ISO	O15519 	J:164563 	
+MGI:1921506	Cyld	CYLD lysine 63 deubiquitinase	8		necroptotic process			IBA	PTN002625528 	J:265628 	
+MGI:1921506	Cyld	CYLD lysine 63 deubiquitinase	8		necroptotic process	happens in fibroblast		IGI	MGI:104798 	J:180684 	
+MGI:1921506	Cyld	CYLD lysine 63 deubiquitinase	8		necroptotic process			IGI	MGI:104798 	J:182381 	
+MGI:1921506	Cyld	CYLD lysine 63 deubiquitinase	8		necroptotic process	happens in fibroblast		IGI	MGI:108212 	J:180684 	
+MGI:1921506	Cyld	CYLD lysine 63 deubiquitinase	8		necroptotic process	happens in fibroblast		IGI	MGI:1261423 	J:180684 	
+MGI:1921506	Cyld	CYLD lysine 63 deubiquitinase	8		necroptotic process	happens in fibroblast		IGI	MGI:2154952 	J:180684 	
+MGI:1921506	Cyld	CYLD lysine 63 deubiquitinase	8		necroptotic process			IMP		J:238931 	
+MGI:1921506	Cyld	CYLD lysine 63 deubiquitinase	8		regulation of necroptotic process			IDA		J:244164 	
+MGI:1921506	Cyld	CYLD lysine 63 deubiquitinase	8		regulation of necroptotic process			ISO	Q9NQC7 	J:164563 	
+MGI:1921506	Cyld	CYLD lysine 63 deubiquitinase	8		ripoptosome assembly involved in necroptotic process	happens in fibroblast		IMP		J:180684 	
+MGI:1921256	Dnm1l	dynamin 1-like	16		necroptotic process			IMP		J:201937 	
+MGI:1921256	Dnm1l	dynamin 1-like	16		necroptotic process			ISO	O00429 	J:164563 	
+MGI:109324	Fadd	Fas (TNFRSF6)-associated via death domain	7		necroptotic signaling pathway			ISO	Q13158 	J:164563 	
+MGI:109324	Fadd	Fas (TNFRSF6)-associated via death domain	7		negative regulation of necroptotic process			IGI	MGI:104798 	J:202809 	
+MGI:109324	Fadd	Fas (TNFRSF6)-associated via death domain	7		negative regulation of necroptotic process			IGI	MGI:2154952 	J:196028 	
+MGI:109324	Fadd	Fas (TNFRSF6)-associated via death domain	7		regulation of necroptotic process			ISO	RGD:628700 	J:155856 	
+MGI:95484	Fas	Fas (TNF receptor superfamily member 6)	19		necroptotic signaling pathway			IBA	PTN002930185 	J:265628 	
+MGI:95484	Fas	Fas (TNF receptor superfamily member 6)	19		necroptotic signaling pathway			IGI	MGI:108212 	J:182381 	
+MGI:95484	Fas	Fas (TNF receptor superfamily member 6)	19		necroptotic signaling pathway			ISO	P25445 	J:164563 	
+MGI:99255	Fasl	Fas ligand (TNF superfamily, member 6)	1		necroptotic process			ISO	P48023 	J:164563 	
+MGI:99255	Fasl	Fas ligand (TNF superfamily, member 6)	1		necroptotic signaling pathway			ISO	P48023 	J:164563 	
+MGI:1916968	Ipmk	inositol polyphosphate multikinase	10		necroptotic process			ISO	Q8NFU5 	J:164563 	
+MGI:1859179	Irf3	interferon regulatory factor 3	7		programmed necrotic cell death	happens in macrophage		IMP	MGI:3577601 	J:199310 	
+MGI:2446159	Itpk1	inositol 1,3,4-triphosphate 5/6 kinase	12		necroptotic process			ISO	Q13572 	J:164563 	
+MGI:1346876	Map3k5	mitogen-activated protein kinase kinase kinase 5	10		programmed necrotic cell death	happens in fibroblast		IMP		J:146389 	
+MGI:1346877	Map3k7	mitogen-activated protein kinase kinase kinase 7	4		negative regulation of necroptotic process			IMP		J:182381 	
+MGI:1346877	Map3k7	mitogen-activated protein kinase kinase kinase 7	4		negative regulation of ripoptosome assembly involved in necroptotic process			IGI	MGI:104798 	J:182381 	
+MGI:1346877	Map3k7	mitogen-activated protein kinase kinase kinase 7	4		negative regulation of ripoptosome assembly involved in necroptotic process			IGI	MGI:108212 	J:182381 	
+MGI:1346861	Mapk8	mitogen-activated protein kinase 8	14		programmed necrotic cell death	happens in fibroblast		IMP		J:146389 	
+MGI:1921818	Mlkl	mixed lineage kinase domain-like	8		execution phase of necroptosis			IDA		J:289452 	
+MGI:1921818	Mlkl	mixed lineage kinase domain-like	8		execution phase of necroptosis			IDA		J:289082 	
+MGI:1921818	Mlkl	mixed lineage kinase domain-like	8		execution phase of necroptosis			IMP		J:289088 	
+MGI:1921818	Mlkl	mixed lineage kinase domain-like	8		execution phase of necroptosis			ISO	Q8NB16 	J:164563 	
+MGI:1921818	Mlkl	mixed lineage kinase domain-like	8		necroptotic process			IMP		J:204620 	
+MGI:1921818	Mlkl	mixed lineage kinase domain-like	8		necroptotic process			IMP		J:204622 	
+MGI:1921818	Mlkl	mixed lineage kinase domain-like	8		necroptotic process			ISO	Q8NB16 	J:164563 	
+MGI:1921818	Mlkl	mixed lineage kinase domain-like	8		necroptotic signaling pathway			IMP		J:201938 	
+MGI:1921818	Mlkl	mixed lineage kinase domain-like	8		necroptotic signaling pathway			ISO	Q8NB16 	J:164563 	
+MGI:1917853	Mutyh	mutY DNA glycosylase	4		negative regulation of necroptotic process			IMP		J:281454 	
+MGI:2684861	Nlrp1a	NLR family, pyrin domain containing 1A	11		programmed necrotic cell death			IDA		J:99748 	
+MGI:2141990	Nlrp6	NLR family, pyrin domain containing 6	7		necroptotic process	happens in macrophage,happens in lung,happens at the same time as defense response to Gram-positive bacterium,uses PR:Q9QZL0,happens in neutrophil,happens in lung,happens at the same time as defense response to Gram-positive bacterium,uses PR:Q9QZL0		IMP		J:295244 	
+MGI:1925938	Nol3	nucleolar protein 3 (apoptosis repressor with CARD domain)	8		negative regulation of programmed necrotic cell death			IMP		J:218360 	
+MGI:1891834	Nupr1	nuclear protein transcription regulator 1	7		negative regulation of programmed necrotic cell death			ISO	O60356 	J:164563 	
+MGI:1340806	Parp1	poly (ADP-ribose) polymerase family, member 1	1		positive regulation of necroptotic process			IDA		J:117094 	
+MGI:1340806	Parp1	poly (ADP-ribose) polymerase family, member 1	1		positive regulation of necroptotic process			IDA		J:77719 	
+MGI:1914495	Peli1	pellino 1	11		negative regulation of necroptotic process			IMP		J:263339 	
+MGI:1914495	Peli1	pellino 1	11		negative regulation of necroptotic process			ISO	Q96FA3 	J:164563 	
+MGI:1919792	Pgam5	phosphoglycerate mutase family member 5	5		necroptotic process			IMP		J:201937 	
+MGI:1919792	Pgam5	phosphoglycerate mutase family member 5	5		necroptotic process			ISO	Q96HS1 	J:164563 	
+MGI:2145814	Ppif	peptidylprolyl isomerase F (cyclophilin F)	14		necroptotic process	happens in fibroblast		IGI	MGI:98834 	J:186254 	
+MGI:2145814	Ppif	peptidylprolyl isomerase F (cyclophilin F)	14		regulation of mitochondrial membrane permeability involved in programmed necrotic cell death			IBA	PTN002594555 	J:265628 	
+MGI:2145814	Ppif	peptidylprolyl isomerase F (cyclophilin F)	14		regulation of mitochondrial membrane permeability involved in programmed necrotic cell death			IMP		J:101149 	
+MGI:2145814	Ppif	peptidylprolyl isomerase F (cyclophilin F)	14		regulation of mitochondrial membrane permeability involved in programmed necrotic cell death			IMP		J:186254 	
+MGI:2145814	Ppif	peptidylprolyl isomerase F (cyclophilin F)	14		regulation of mitochondrial membrane permeability involved in programmed necrotic cell death			IMP		J:97673 	
+MGI:2145814	Ppif	peptidylprolyl isomerase F (cyclophilin F)	14		regulation of mitochondrial membrane permeability involved in programmed necrotic cell death			ISO	P30405 	J:164563 	
+MGI:97829	Pygl	liver glycogen phosphorylase	12		necroptotic process			IGI	MGI:2154952 	J:200967 	
+MGI:1344372	Rbck1	RanBP-type and C3HC4-type zinc finger containing 1	2		negative regulation of necroptotic process			IGI	MGI:104798 	J:202809 	
+MGI:108212	Ripk1	receptor (TNFRSF)-interacting serine-threonine kinase 1	13		necroptotic process			IDA		J:244164 	
+MGI:108212	Ripk1	receptor (TNFRSF)-interacting serine-threonine kinase 1	13		necroptotic process			IGI	MGI:104798 	J:182381 	
+MGI:108212	Ripk1	receptor (TNFRSF)-interacting serine-threonine kinase 1	13		necroptotic process	happens in fibroblast		IGI	MGI:104798 	J:200967 	
+MGI:108212	Ripk1	receptor (TNFRSF)-interacting serine-threonine kinase 1	13		necroptotic process			IGI	MGI:1921506 	J:180684 	
+MGI:108212	Ripk1	receptor (TNFRSF)-interacting serine-threonine kinase 1	13		necroptotic process			IGI	MGI:2154952 	J:180684 	
+MGI:108212	Ripk1	receptor (TNFRSF)-interacting serine-threonine kinase 1	13		necroptotic process	happens in fibroblast		IGI	MGI:2154952 	J:200967 	
+MGI:108212	Ripk1	receptor (TNFRSF)-interacting serine-threonine kinase 1	13		necroptotic process			IGI	MGI:95484 	J:182381 	
+MGI:108212	Ripk1	receptor (TNFRSF)-interacting serine-threonine kinase 1	13		necroptotic process			IMP		J:251915 	
+MGI:108212	Ripk1	receptor (TNFRSF)-interacting serine-threonine kinase 1	13		necroptotic process			IMP		J:265780 	
+MGI:108212	Ripk1	receptor (TNFRSF)-interacting serine-threonine kinase 1	13		necroptotic process			IMP		J:275558 	
+MGI:108212	Ripk1	receptor (TNFRSF)-interacting serine-threonine kinase 1	13		necroptotic process			IMP		J:281166 	
+MGI:108212	Ripk1	receptor (TNFRSF)-interacting serine-threonine kinase 1	13		necroptotic process			IMP		J:279494 	
+MGI:108212	Ripk1	receptor (TNFRSF)-interacting serine-threonine kinase 1	13		necroptotic process			IMP		J:280188 	
+MGI:108212	Ripk1	receptor (TNFRSF)-interacting serine-threonine kinase 1	13		necroptotic process			ISO	Q13546 	J:164563 	
+MGI:108212	Ripk1	receptor (TNFRSF)-interacting serine-threonine kinase 1	13		necroptotic signaling pathway			IMP		J:176448 	
+MGI:108212	Ripk1	receptor (TNFRSF)-interacting serine-threonine kinase 1	13		necroptotic signaling pathway			IMP		J:285926 	
+MGI:108212	Ripk1	receptor (TNFRSF)-interacting serine-threonine kinase 1	13		necroptotic signaling pathway			ISO	Q13546 	J:164563 	
+MGI:108212	Ripk1	receptor (TNFRSF)-interacting serine-threonine kinase 1	13		negative regulation of necroptotic process			IMP		J:214393 	
+MGI:108212	Ripk1	receptor (TNFRSF)-interacting serine-threonine kinase 1	13		negative regulation of necroptotic process			IMP		J:214394 	
+MGI:108212	Ripk1	receptor (TNFRSF)-interacting serine-threonine kinase 1	13		negative regulation of necroptotic process			IMP		J:242990 	
+MGI:108212	Ripk1	receptor (TNFRSF)-interacting serine-threonine kinase 1	13		negative regulation of necroptotic process			IMP		J:242991 	
+MGI:108212	Ripk1	receptor (TNFRSF)-interacting serine-threonine kinase 1	13		positive regulation of necroptotic process			ISO	RGD:1310158 	J:155856 	
+MGI:108212	Ripk1	receptor (TNFRSF)-interacting serine-threonine kinase 1	13		positive regulation of necroptotic process			ISO	Q13546 	J:164563 	
+MGI:108212	Ripk1	receptor (TNFRSF)-interacting serine-threonine kinase 1	13		positive regulation of programmed necrotic cell death			ISO	Q13546 	J:164563 	
+MGI:108212	Ripk1	receptor (TNFRSF)-interacting serine-threonine kinase 1	13		programmed necrotic cell death	happens in cardiac muscle cell,is a part of cellular response to hydrogen peroxide		IMP		J:259866 	
+MGI:108212	Ripk1	receptor (TNFRSF)-interacting serine-threonine kinase 1	13		ripoptosome assembly involved in necroptotic process			IGI	MGI:104798 	J:182381 	
+MGI:108212	Ripk1	receptor (TNFRSF)-interacting serine-threonine kinase 1	13		ripoptosome assembly involved in necroptotic process			IGI	MGI:1197009 	J:182381 	
+MGI:108212	Ripk1	receptor (TNFRSF)-interacting serine-threonine kinase 1	13		ripoptosome assembly involved in necroptotic process			IGI	MGI:1346877 	J:182381 	
+MGI:2154952	Ripk3	receptor-interacting serine-threonine kinase 3	14		execution phase of necroptosis			IMP		J:289096 	
+MGI:2154952	Ripk3	receptor-interacting serine-threonine kinase 3	14		execution phase of necroptosis			IMP		J:290369 	
+MGI:2154952	Ripk3	receptor-interacting serine-threonine kinase 3	14		necroptotic process	happens in fibroblast		IGI	MGI:104798 	J:170814 	
+MGI:2154952	Ripk3	receptor-interacting serine-threonine kinase 3	14		necroptotic process	happens in fibroblast		IGI	MGI:104798 	J:200967 	
+MGI:2154952	Ripk3	receptor-interacting serine-threonine kinase 3	14		necroptotic process			IGI	MGI:108212 	J:180684 	
+MGI:2154952	Ripk3	receptor-interacting serine-threonine kinase 3	14		necroptotic process			IGI	MGI:109324 	J:196028 	
+MGI:2154952	Ripk3	receptor-interacting serine-threonine kinase 3	14		necroptotic process	happens in fibroblast		IGI	MGI:1261423 	J:170814 	
+MGI:2154952	Ripk3	receptor-interacting serine-threonine kinase 3	14		necroptotic process			IGI	MGI:1261423 	J:177328 	
+MGI:2154952	Ripk3	receptor-interacting serine-threonine kinase 3	14		necroptotic process	happens in fibroblast		IGI	MGI:1336166 	J:170814 	
+MGI:2154952	Ripk3	receptor-interacting serine-threonine kinase 3	14		necroptotic process			IGI	MGI:1336166 	J:196028 	
+MGI:2154952	Ripk3	receptor-interacting serine-threonine kinase 3	14		necroptotic process			IGI	MGI:1921506 	J:180684 	
+MGI:2154952	Ripk3	receptor-interacting serine-threonine kinase 3	14		necroptotic process			IMP		J:204620 	
+MGI:2154952	Ripk3	receptor-interacting serine-threonine kinase 3	14		necroptotic process			ISO	Q9Y572 	J:164563 	
+MGI:2154952	Ripk3	receptor-interacting serine-threonine kinase 3	14		necroptotic signaling pathway			ISO	Q9Y572 	J:164563 	
+MGI:2154952	Ripk3	receptor-interacting serine-threonine kinase 3	14		positive regulation of necroptotic process			IDA		J:289452 	
+MGI:2154952	Ripk3	receptor-interacting serine-threonine kinase 3	14		positive regulation of necroptotic process			IDA		J:289066 	
+MGI:2154952	Ripk3	receptor-interacting serine-threonine kinase 3	14		positive regulation of necroptotic process			IDA		J:289082 	
+MGI:2154952	Ripk3	receptor-interacting serine-threonine kinase 3	14		positive regulation of necroptotic process			IMP		J:182381 	
+MGI:2154952	Ripk3	receptor-interacting serine-threonine kinase 3	14		positive regulation of necroptotic process			IMP		J:201937 	
+MGI:2154952	Ripk3	receptor-interacting serine-threonine kinase 3	14		positive regulation of necroptotic process			IMP		J:214393 	
+MGI:2154952	Ripk3	receptor-interacting serine-threonine kinase 3	14		positive regulation of necroptotic process			IMP		J:214394 	
+MGI:2154952	Ripk3	receptor-interacting serine-threonine kinase 3	14		positive regulation of necroptotic process			IMP		J:289088 	
+MGI:2154952	Ripk3	receptor-interacting serine-threonine kinase 3	14		positive regulation of necroptotic process			ISO	Q9Y572 	J:164563 	
+MGI:2154952	Ripk3	receptor-interacting serine-threonine kinase 3	14		programmed necrotic cell death	happens in cardiac muscle cell,is a part of cellular response to hydrogen peroxide		IMP		J:259866 	
+MGI:1934704	Rnf31	ring finger protein 31	14		negative regulation of necroptotic process			IGI	MGI:104798 	J:202809 	
+MGI:1353495	Slc25a4	solute carrier family 25 (mitochondrial carrier, adenine nucleotide translocator), member 4	8		negative regulation of necroptotic process			ISO	P12235 	J:164563 	
+MGI:2146885	Spata2	spermatogenesis associated 2	2		necroptotic process			IMP		J:238931 	
+MGI:2146885	Spata2	spermatogenesis associated 2	2		regulation of necroptotic process			IBA	PTN002691991 	J:265628 	
+MGI:2146885	Spata2	spermatogenesis associated 2	2		regulation of necroptotic process			IMP		J:244164 	
+MGI:2146885	Spata2	spermatogenesis associated 2	2		regulation of necroptotic process			ISO	Q9UM82 	J:164563 	
+MGI:2156367	Tlr3	toll-like receptor 3	8		necroptotic signaling pathway			ISO	O15455 	J:164563 	
+MGI:104798	Tnf	tumor necrosis factor	17		necroptotic signaling pathway			IGI	MGI:108212 	J:182381 	
+MGI:104798	Tnf	tumor necrosis factor	17		necroptotic signaling pathway			IGI	MGI:108212 	J:200967 	
+MGI:104798	Tnf	tumor necrosis factor	17		necroptotic signaling pathway			IGI	MGI:1197009 	J:182381 	
+MGI:104798	Tnf	tumor necrosis factor	17		necroptotic signaling pathway	happens in fibroblast		IGI	MGI:1261423 	J:170814 	
+MGI:104798	Tnf	tumor necrosis factor	17		necroptotic signaling pathway	happens in fibroblast		IGI	MGI:1261423 	J:180684 	
+MGI:104798	Tnf	tumor necrosis factor	17		necroptotic signaling pathway	happens in fibroblast		IGI	MGI:1336166 	J:170814 	
+MGI:104798	Tnf	tumor necrosis factor	17		necroptotic signaling pathway			IGI	MGI:1346877 	J:182381 	
+MGI:104798	Tnf	tumor necrosis factor	17		necroptotic signaling pathway	happens in fibroblast		IGI	MGI:1921506 	J:180684 	
+MGI:104798	Tnf	tumor necrosis factor	17		necroptotic signaling pathway	happens in fibroblast		IGI	MGI:2154952 	J:170814 	
+MGI:104798	Tnf	tumor necrosis factor	17		necroptotic signaling pathway			IGI	MGI:2154952 	J:200967 	
+MGI:104798	Tnf	tumor necrosis factor	17		necroptotic signaling pathway			ISO	P01375 	J:164563 	
+MGI:1930269	Tnfrsf23	tumor necrosis factor receptor superfamily, member 23	7		necroptotic signaling pathway			IBA	PTN002930185 	J:265628 	
+MGI:101835	Traf2	TNF receptor-associated factor 2	2		programmed necrotic cell death	happens in fibroblast		IMP		J:146389 	
+MGI:98834	Trp53	transformation related protein 53	11		necroptotic process			IGI	MGI:2145814 	J:186254 	
+MGI:98834	Trp53	transformation related protein 53	11		positive regulation of programmed necrotic cell death	happens in cardiac muscle cell,is a part of cellular response to hydrogen peroxide		IMP		J:259866 	
+MGI:1929996	Trpm7	transient receptor potential cation channel, subfamily M, member 7	2		necroptotic process			ISO	Q96QT4 	J:164563 	
+MGI:88222	Tspo	translocator protein	15		positive regulation of programmed necrotic cell death			ISO	RGD:2228 	J:155856 	
+MGI:2137670	Ybx3	Y box protein 3	6		negative regulation of necroptotic process			ISO	P16989 	J:164563 	
+MGI:1927449	Zbp1	Z-DNA binding protein 1	2		positive regulation of necroptotic process			IDA		J:289445 	
+MGI:1927449	Zbp1	Z-DNA binding protein 1	2		positive regulation of necroptotic process			IDA		J:289452 	
+MGI:1927449	Zbp1	Z-DNA binding protein 1	2		positive regulation of necroptotic process			IDA		J:289066 	
+MGI:1927449	Zbp1	Z-DNA binding protein 1	2		positive regulation of necroptotic process			IDA		J:289074 	
+MGI:1927449	Zbp1	Z-DNA binding protein 1	2		positive regulation of necroptotic process			IDA		J:289082 	
+MGI:1927449	Zbp1	Z-DNA binding protein 1	2		positive regulation of necroptotic process			IDA		J:289096 	
+MGI:1927449	Zbp1	Z-DNA binding protein 1	2		positive regulation of necroptotic process			IMP		J:242990 	
+MGI:1927449	Zbp1	Z-DNA binding protein 1	2		positive regulation of necroptotic process			IMP		J:242991 	
+MGI:1927449	Zbp1	Z-DNA binding protein 1	2		positive regulation of necroptotic process			IMP		J:290369 	
+MGI:1927449	Zbp1	Z-DNA binding protein 1	2		positive regulation of necroptotic process			IMP		J:295921 	
+MGI:1927449	Zbp1	Z-DNA binding protein 1	2		positive regulation of necroptotic process			IMP		J:300942 	
+MGI:1927449	Zbp1	Z-DNA binding protein 1	2		positive regulation of necroptotic process			ISO	Q9H171 	J:164563 	
+

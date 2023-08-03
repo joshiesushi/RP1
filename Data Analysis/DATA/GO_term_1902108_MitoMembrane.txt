@@ -1,0 +1,69 @@
+MGI Gene/Marker ID	Symbol	Name	Chr	Qualifier	Annotated Term	Context	Proteoform	Evidence	Inferred From	Reference(s)
+MGI:1098623	Acaa2	acetyl-CoA acyltransferase 2	18		negative regulation of mitochondrial membrane permeability involved in apoptotic process			ISO	P42765 	J:164563 	
+MGI:1098623	Acaa2	acetyl-CoA acyltransferase 2	18		negative regulation of mitochondrial outer membrane permeabilization involved in apoptotic signaling pathway			ISO	P42765 	J:164563 	
+MGI:109349	Atf2	activating transcription factor 2	2		positive regulation of mitochondrial membrane permeability involved in apoptotic process			ISO	P15336 	J:164563 	
+MGI:1196457	Atp5if1	ATP synthase inhibitory factor subunit 1	4		positive regulation of mitochondrial outer membrane permeabilization involved in apoptotic signaling pathway			IMP		J:158073 	
+MGI:1097161	Bak1	BCL2-antagonist/killer 1	17		negative regulation of mitochondrial outer membrane permeabilization involved in apoptotic signaling pathway			ISO	Q16611 	J:164563 	
+MGI:1097161	Bak1	BCL2-antagonist/killer 1	17		positive regulation of mitochondrial outer membrane permeabilization involved in apoptotic signaling pathway			NAS		J:313851 	
+MGI:99702	Bax	BCL2-associated X protein	7		positive regulation of mitochondrial membrane permeability involved in apoptotic process			IGI	MGI:1197519 	J:99285 	
+MGI:99702	Bax	BCL2-associated X protein	7		protein insertion into mitochondrial membrane involved in apoptotic signaling pathway			IMP	MGI:1857429 	J:85569 	
+MGI:99702	Bax	BCL2-associated X protein	7		regulation of mitochondrial membrane permeability involved in apoptotic process			IGI	MGI:108093 	J:202721 	
+MGI:99702	Bax	BCL2-associated X protein	7		regulation of mitochondrial membrane permeability involved in apoptotic process			IGI	MGI:108093 	J:90012 	
+MGI:99702	Bax	BCL2-associated X protein	7		regulation of mitochondrial membrane permeability involved in apoptotic process			IGI	MGI:1929260 	J:202721 	
+MGI:99702	Bax	BCL2-associated X protein	7		regulation of mitochondrial membrane permeability involved in apoptotic process			IGI	MGI:98834 	J:90012 	
+MGI:2181667	Bbc3	BCL2 binding component 3	7		positive regulation of protein insertion into mitochondrial membrane involved in apoptotic signaling pathway			IBA	PTN002008808 	J:265628 	
+MGI:2181667	Bbc3	BCL2 binding component 3	7		positive regulation of protein insertion into mitochondrial membrane involved in apoptotic signaling pathway	positively regulates protein insertion into mitochondrial membrane involved in apoptotic signaling pathway		IMP	MGI:2681654 	J:138066 	
+MGI:2181667	Bbc3	BCL2 binding component 3	7		positive regulation of protein insertion into mitochondrial membrane involved in apoptotic signaling pathway			ISO	Q9BXH1 	J:164563 	
+MGI:2181667	Bbc3	BCL2 binding component 3	7		protein insertion into mitochondrial membrane involved in apoptotic signaling pathway	happens in myeloid leukocyte		IMP	MGI:2681654 	J:138066 	
+MGI:88139	Bcl2l1	BCL2-like 1	2		negative regulation of mitochondrial outer membrane permeabilization involved in apoptotic signaling pathway			ISO	Q07817 	J:164563 	
+MGI:1197519	Bcl2l11	BCL2 like 11	2		positive regulation of mitochondrial membrane permeability involved in apoptotic process			IGI	MGI:99702 	J:99285 	
+MGI:108093	Bid	BH3 interacting domain death agonist	6		mitochondrial outer membrane permeabilization			IGI	MGI:1929260 	J:209127 	
+MGI:108093	Bid	BH3 interacting domain death agonist	6		regulation of mitochondrial membrane permeability involved in apoptotic process			IGI	MGI:1929260 	J:202721 	
+MGI:108093	Bid	BH3 interacting domain death agonist	6		regulation of mitochondrial membrane permeability involved in apoptotic process			IGI	MGI:99702 	J:202721 	
+MGI:108093	Bid	BH3 interacting domain death agonist	6		regulation of mitochondrial membrane permeability involved in apoptotic process			IGI	MGI:99702 	J:90012 	
+MGI:1920939	Bloc1s2	biogenesis of lysosomal organelles complex-1, subunit 2	19		mitochondrial outer membrane permeabilization			ISO	Q6QNY1 	J:164563 	
+MGI:1920939	Bloc1s2	biogenesis of lysosomal organelles complex-1, subunit 2	19		mitochondrial outer membrane permeabilization			ISS	Q6QNY1 	J:201466 	
+MGI:109326	Bnip3	BCL2/adenovirus E1B interacting protein 3	7		mitochondrial outer membrane permeabilization			IBA	PTN001032684 	J:265628 	
+MGI:109326	Bnip3	BCL2/adenovirus E1B interacting protein 3	7		mitochondrial outer membrane permeabilization			ISO	Q12983 	J:164563 	
+MGI:109326	Bnip3	BCL2/adenovirus E1B interacting protein 3	7		negative regulation of mitochondrial membrane permeability involved in apoptotic process			ISO	RGD:620800 	J:155856 	
+MGI:1332659	Bnip3l	BCL2/adenovirus E1B interacting protein 3-like	14		mitochondrial outer membrane permeabilization			IBA	PTN001032684 	J:265628 	
+MGI:1858494	Bok	BCL2-related ovarian killer	1		negative regulation of mitochondrial outer membrane permeabilization involved in apoptotic signaling pathway			IMP		J:235305 	
+MGI:1858494	Bok	BCL2-related ovarian killer	1		positive regulation of mitochondrial outer membrane permeabilization involved in apoptotic signaling pathway			IDA		J:235310 	
+MGI:88256	Camk2a	calcium/calmodulin-dependent protein kinase II alpha	18		regulation of mitochondrial membrane permeability involved in apoptotic process	happens in heart		IMP		J:189223 	
+MGI:1312921	Casp6	caspase 6	3		regulation of mitochondrial outer membrane permeabilization involved in apoptotic signaling pathway			NAS		J:320401 	
+MGI:2143558	Chchd10	coiled-coil-helix-coiled-coil-helix domain containing 10	10		positive regulation of mitochondrial outer membrane permeabilization involved in apoptotic signaling pathway			ISO	Q8WYQ3 	J:164563 	
+MGI:109341	Eya2	EYA transcriptional coactivator and phosphatase 2	2		mitochondrial outer membrane permeabilization			IDA		J:74329 	
+MGI:104990	Gclc	glutamate-cysteine ligase, catalytic subunit	9		negative regulation of mitochondrial outer membrane permeabilization involved in apoptotic signaling pathway			IGI	MGI:104995 	J:91536 	
+MGI:2152453	Gsk3a	glycogen synthase kinase 3 alpha	7		positive regulation of mitochondrial outer membrane permeabilization involved in apoptotic signaling pathway			IDA		J:201566 	
+MGI:1861437	Gsk3b	glycogen synthase kinase 3 beta	16		positive regulation of mitochondrial outer membrane permeabilization involved in apoptotic signaling pathway			IDA		J:201566 	
+MGI:1352504	Hip1r	huntingtin interacting protein 1 related	5		positive regulation of mitochondrial outer membrane permeabilization involved in apoptotic signaling pathway			ISO	O75146 	J:164563 	
+MGI:104814	Ier3	immediate early response 3	17		negative regulation of mitochondrial outer membrane permeabilization involved in apoptotic signaling pathway			IDA		J:158073 	
+MGI:1915555	Moap1	modulator of apoptosis 1	12		protein insertion into mitochondrial membrane involved in apoptotic signaling pathway			ISO	Q96BY2 	J:164563 	
+MGI:2135951	Mpv17l	Mpv17 transgene, kidney disease mutant-like	16		negative regulation of mitochondrial outer membrane permeabilization involved in apoptotic signaling pathway			ISO	Q2QL34 	J:164563 	
+MGI:1929260	Mtch2	mitochondrial carrier 2	2		regulation of mitochondrial membrane permeability involved in apoptotic process			IGI	MGI:108093 	J:202721 	
+MGI:1929260	Mtch2	mitochondrial carrier 2	2		regulation of mitochondrial membrane permeability involved in apoptotic process			IGI	MGI:108093 	J:209127 	
+MGI:1929260	Mtch2	mitochondrial carrier 2	2		regulation of mitochondrial membrane permeability involved in apoptotic process			IGI	MGI:99702 	J:202721 	
+MGI:1915600	Mul1	mitochondrial ubiquitin ligase activator of NFKB 1	4		regulation of mitochondrial outer membrane permeabilization involved in apoptotic signaling pathway			ISO	Q969V5 	J:164563 	
+MGI:1918504	Naif1	nuclear apoptosis inducing factor 1	2		regulation of mitochondrial membrane permeability involved in apoptotic process			ISO	Q69YI7 	J:164563 	
+MGI:1918504	Naif1	nuclear apoptosis inducing factor 1	2		regulation of mitochondrial membrane permeability involved in apoptotic process			ISS	Q69YI7 	J:135469 	
+MGI:1925938	Nol3	nucleolar protein 3 (apoptosis repressor with CARD domain)	8		negative regulation of mitochondrial membrane permeability involved in apoptotic process			IMP		J:211017 	
+MGI:1930146	Pmaip1	phorbol-12-myristate-13-acetate-induced protein 1	18		positive regulation of protein insertion into mitochondrial membrane involved in apoptotic signaling pathway			IMP	MGI:2678372 	J:85569 	
+MGI:1926078	Rhot1	ras homolog family member T1	11		mitochondrial outer membrane permeabilization			ISO	Q8IXI2 	J:164563 	
+MGI:2384892	Rhot2	ras homolog family member T2	17		mitochondrial outer membrane permeabilization			ISO	Q8IXI1 	J:164563 	
+MGI:1859730	Sh3glb1	SH3-domain GRB2-like B1 (endophilin)	3		positive regulation of protein insertion into mitochondrial membrane involved in apoptotic signaling pathway			IMP		J:102178 	
+MGI:1353606	Siva1	SIVA1, apoptosis-inducing factor	12		positive regulation of mitochondrial outer membrane permeabilization involved in apoptotic signaling pathway			ISO	O15304 	J:164563 	
+MGI:1353495	Slc25a4	solute carrier family 25 (mitochondrial carrier, adenine nucleotide translocator), member 4	8		negative regulation of mitochondrial membrane permeability involved in apoptotic process			ISO	RGD:620352 	J:155856 	
+MGI:1353495	Slc25a4	solute carrier family 25 (mitochondrial carrier, adenine nucleotide translocator), member 4	8		negative regulation of mitochondrial outer membrane permeabilization involved in apoptotic signaling pathway			IBA	PTN001183263 	J:265628 	
+MGI:1353496	Slc25a5	solute carrier family 25 (mitochondrial carrier, adenine nucleotide translocator), member 5	X		negative regulation of mitochondrial outer membrane permeabilization involved in apoptotic signaling pathway			IBA	PTN001183263 	J:265628 	
+MGI:1353496	Slc25a5	solute carrier family 25 (mitochondrial carrier, adenine nucleotide translocator), member 5	X		negative regulation of mitochondrial outer membrane permeabilization involved in apoptotic signaling pathway			ISO	P05141 	J:164563 	
+MGI:1920583	Slc25a31	solute carrier family 25 (mitochondrial carrier; adenine nucleotide translocator), member 31	3		negative regulation of mitochondrial outer membrane permeabilization involved in apoptotic signaling pathway			IBA	PTN001183263 	J:265628 	
+MGI:1922169	Slc35f6	solute carrier family 35, member F6	5		negative regulation of mitochondrial outer membrane permeabilization involved in apoptotic signaling pathway			ISO	Q8N357 	J:164563 	
+MGI:1926056	Stpg1	sperm tail PG rich repeat containing 1	4		positive regulation of mitochondrial membrane permeability involved in apoptotic process			IBA	PTN001854190 	J:265628 	
+MGI:1926056	Stpg1	sperm tail PG rich repeat containing 1	4		positive regulation of mitochondrial membrane permeability involved in apoptotic process			ISO	Q5TH74 	J:164563 	
+MGI:1923028	Them4	thioesterase superfamily member 4	3		regulation of mitochondrial membrane permeability involved in apoptotic process			ISO	Q5T1C6 	J:164563 	
+MGI:1922962	Tmem14a	transmembrane protein 14A	1		negative regulation of mitochondrial outer membrane permeabilization involved in apoptotic signaling pathway			ISO	Q9Y6G1 	J:164563 	
+MGI:1921591	Tmem102	transmembrane protein 102	11		regulation of mitochondrial outer membrane permeabilization involved in apoptotic signaling pathway			ISO	Q8N9M5 	J:164563 	
+MGI:98834	Trp53	transformation related protein 53	11		regulation of mitochondrial membrane permeability involved in apoptotic process			IGI	MGI:99702 	J:90012 	
+MGI:106915	Vdac2	voltage-dependent anion channel 2	14		mitochondrial outer membrane permeabilization			ISO	P45880 	J:164563 	
+MGI:99159	Zfp13	zinc finger protein 13	17		positive regulation of mitochondrial outer membrane permeabilization involved in apoptotic signaling pathway			ISO	O95201 	J:164563 	
+

@@ -1,0 +1,59 @@
+---
+title: "Plotting Histo"
+author: "Joshua Eugenio"
+date: "2023-07-20"
+output: html_document
+---
+
+```{r}
+Kim1<-read.csv("Kim1/Isolated Kim-1/Imaging Histo.csv") %>% group_by(Segment) %>% mutate(corrIntDen = IntDen/IntDen[Time==0])
+
+ggplot(Kim1,aes(x = Time, y = Control.Normalized, fill = Segment)) +
+  geom_col(position = "dodge") +
+  labs(x = " time in days", y = "Normalized Integrated Density", title = "Kim-1 levels per segment")
+  
+```
+
+```{r}
+setwd(dirname(getActiveDocumentContext()$path))
+Clusterin<-read.csv("Clusterin/Isolated Clusterin/Results.csv") %>% group_by(Segment) %>% mutate(corrIntDen = IntDen/IntDen[Time==0])
+
+ggplot(Clusterin %>% dplyr::filter(Time != 28),aes(x = Time, y = corrIntDen, col = Segment)) +
+  geom_line() +
+  labs(x = " time in days", y = "Normalized Integrated Density", title = "Clusterin levels per segment")
+  
+```
+
+```{r}
+Sim1240 <-read.csv("Simulations/Plasma_45_Final/Simulation_1240/logger_1.csv", sep="\t") %>%
+  mutate(Segment = ifelse(cell.center.y<=600,"PPT","CPT")) %>%
+  rbind(data.frame(time = 0, cell.id = 1, cell.id.1 =1, cell.center.y=1,Segment = "CPT"),data.frame(time = 0, cell.id = 1, cell.id.1 =1, cell.center.y=1,Segment = "PPT")) %>%
+  group_by(Segment,time) %>%
+  summarize(n_death = n()) %>%
+  mutate(n=as.factor(1))
+  
+Sim1241 <-read.csv("Simulations/Plasma_45_Final/Simulation_1241/logger_1.csv", sep="\t")%>%
+  mutate(Segment = ifelse(cell.center.y<=600,"PPT","CPT")) %>%
+  rbind(data.frame(time = 0, cell.id = 1, cell.id.1 =1, cell.center.y=1,Segment = "CPT"),data.frame(time = 0, cell.id = 1, cell.id.1 =1, cell.center.y=1,Segment = "PPT")) %>%
+  group_by(Segment,time) %>%
+  summarize(n_death = n()) %>%
+  mutate(n=as.factor(2))
+
+Sim1242 <-read.csv("Simulations/Plasma_45_Final/Simulation_1242/logger_1.csv", sep="\t")%>%
+  mutate(Segment = ifelse(cell.center.y<=600,"PPT","CPT")) %>%
+  rbind(data.frame(time = 0, cell.id = 1, cell.id.1 =1, cell.center.y=1,Segment = "CPT"),data.frame(time = 0, cell.id = 1, cell.id.1 =1, cell.center.y=1,Segment = "PPT")) %>%
+  group_by(Segment,time) %>%
+  summarize(n_death = n()) %>%
+  mutate(n=as.factor(3))
+
+
+
+
+ggplot(rbind(Sim1240,Sim1241,Sim1242),aes(x = time, y = n_death, col = n)) +
+  geom_col() +
+  labs(x = " time in days", y = "Cell death count", title = "Cell death over time") +
+  facet_wrap(vars(Segment))
+  
+```
+
+

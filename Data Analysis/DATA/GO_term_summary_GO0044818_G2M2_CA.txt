@@ -1,0 +1,95 @@
+MGI Gene/Marker ID	Symbol	Name	Chr	Qualifier	Annotated Term	Context	Proteoform	Evidence	Inferred From	Reference(s)
+MGI:1917931	Abraxas1	BRCA1 A complex subunit	5		mitotic G2 DNA damage checkpoint signaling			ISO	Q6UWZ7 	J:164563 	
+MGI:1917931	Abraxas1	BRCA1 A complex subunit	5		mitotic G2/M transition checkpoint			NAS		J:320080 	
+MGI:107202	Atm	ataxia telangiectasia mutated	9		mitotic G2 DNA damage checkpoint signaling			ISO	Q13315 	J:164563 	
+MGI:1921518	Aven	apoptosis, caspase activation inhibitor	2		negative regulation of G2/M transition of mitotic cell cycle			IBA	PTN001047187 	J:265628 	
+MGI:1915501	Babam1	BRISC and BRCA1 A complex member 1	8		mitotic G2 DNA damage checkpoint signaling			IBA	PTN001437420 	J:265628 	
+MGI:1915501	Babam1	BRISC and BRCA1 A complex member 1	8		mitotic G2 DNA damage checkpoint signaling			ISO	Q9NWV8 	J:164563 	
+MGI:1915501	Babam1	BRISC and BRCA1 A complex member 1	8		mitotic G2/M transition checkpoint			NAS		J:320080 	
+MGI:1333875	Babam2	BRISC and BRCA1 A complex member 2	5		mitotic G2 DNA damage checkpoint signaling			ISO	Q9NXR7 	J:164563 	
+MGI:1333875	Babam2	BRISC and BRCA1 A complex member 2	5		mitotic G2/M transition checkpoint			NAS		J:320080 	
+MGI:1328361	Bard1	BRCA1 associated RING domain 1	1		mitotic G2/M transition checkpoint			NAS		J:320080 	
+MGI:1328362	Blm	Bloom syndrome, RecQ like helicase	7		mitotic G2 DNA damage checkpoint signaling			ISO	P54132 	J:164563 	
+MGI:104537	Brca1	breast cancer 1, early onset	11		mitotic G2 DNA damage checkpoint signaling			ISO	P38398 	J:164563 	
+MGI:104537	Brca1	breast cancer 1, early onset	11		mitotic G2/M transition checkpoint			IMP		J:92253 	
+MGI:104537	Brca1	breast cancer 1, early onset	11		mitotic G2/M transition checkpoint			NAS		J:320080 	
+MGI:2389572	Brcc3	BRCA1/BRCA2-containing complex, subunit 3	X		mitotic G2 DNA damage checkpoint signaling			ISO	P46736 	J:164563 	
+MGI:2389572	Brcc3	BRCA1/BRCA2-containing complex, subunit 3	X		mitotic G2/M transition checkpoint			NAS		J:320080 	
+MGI:3647286	Brcc3dc	BRCA1/BRCA2-containing complex, subunit 3, domain containing	10		mitotic G2 DNA damage checkpoint signaling			ISO	P46736 	J:164563 	
+MGI:2685946	Brsk1	BR serine/threonine kinase 1	7		mitotic G2 DNA damage checkpoint signaling			ISO	Q8TDC3 	J:164563 	
+MGI:102890	Ccng1	cyclin G1	11		mitotic G2 DNA damage checkpoint signaling			ISO	RGD:2295 	J:155856 	
+MGI:1345150	Cdc6	cell division cycle 6	11		mitotic DNA replication checkpoint signaling			IBA	PTN000080055 	J:265628 	
+MGI:88351	Cdk1	cyclin dependent kinase 1	10		mitotic G2 DNA damage checkpoint signaling			IBA	PTN002514139 	J:265628 	
+MGI:88351	Cdk1	cyclin dependent kinase 1	10		mitotic G2 DNA damage checkpoint signaling			IDA		J:86382 	
+MGI:1933126	Cdk5rap3	CDK5 regulatory subunit associated protein 3	11		mitotic G2 DNA damage checkpoint signaling			ISO	Q96JB5 	J:164563 	
+MGI:1933126	Cdk5rap3	CDK5 regulatory subunit associated protein 3	11		mitotic G2/M transition checkpoint			ISO	Q96JB5 	J:164563 	
+MGI:104556	Cdkn1a	cyclin dependent kinase inhibitor 1A (P21)	17		mitotic G2 DNA damage checkpoint signaling			ISO	P38936 	J:164563 	
+MGI:1202065	Chek1	checkpoint kinase 1	9		mitotic G2 DNA damage checkpoint signaling			ISO	O14757 	J:164563 	
+MGI:1202065	Chek1	checkpoint kinase 1	9		mitotic G2/M transition checkpoint			ISO	O14757 	J:164563 	
+MGI:1202065	Chek1	checkpoint kinase 1	9		negative regulation of G2/M transition of mitotic cell cycle			ISO	RGD:620545 	J:155856 	
+MGI:2444898	Chfr	checkpoint with forkhead and ring finger domains	5		mitotic G2/M transition checkpoint			ISO	Q96EP1 	J:164563 	
+MGI:1913621	Chmp4c	charged multivesicular body protein 4C	3		mitotic cytokinesis checkpoint signaling			ISO	Q96CF2 	J:164563 	
+MGI:2445153	Clspn	claspin	4		mitotic DNA replication checkpoint signaling			IBA	PTN001801959 	J:265628 	
+MGI:2445153	Clspn	claspin	4		mitotic DNA replication checkpoint signaling			ISO	Q9HAW4 	J:164563 	
+MGI:2445153	Clspn	claspin	4		mitotic G2 DNA damage checkpoint signaling			IBA	PTN001801959 	J:265628 	
+MGI:2445153	Clspn	claspin	4		mitotic G2 DNA damage checkpoint signaling			ISO	Q9HAW4 	J:164563 	
+MGI:1196431	D7Ertd443e	DNA segment, Chr 7, ERATO Doi 443, expressed	7		mitotic G2 DNA damage checkpoint signaling			IDA		J:160788 	
+MGI:1890621	Donson	downstream neighbor of SON	16		mitotic G2 DNA damage checkpoint signaling			ISO	Q9NYP3 	J:164563 	
+MGI:1924093	Dtl	denticleless E3 ubiquitin protein ligase	1		mitotic G2 DNA damage checkpoint signaling			IBA	PTN000523288 	J:265628 	
+MGI:1924093	Dtl	denticleless E3 ubiquitin protein ligase	1		mitotic G2 DNA damage checkpoint signaling			ISO	Q9NZJ0 	J:164563 	
+MGI:1298387	Fhl1	four and a half LIM domains 1	X		negative regulation of G2/M transition of mitotic cell cycle			ISO	Q13642 	J:164563 	
+MGI:1918625	Foxn3	forkhead box N3	12		mitotic G2 DNA damage checkpoint signaling			ISO	O00409 	J:164563 	
+MGI:1891915	Foxo4	forkhead box O4	X		mitotic G2 DNA damage checkpoint signaling			IDA		J:78043 	
+MGI:1926790	Fzr1	fizzy and cell division cycle 20 related 1	10		mitotic G2 DNA damage checkpoint signaling			ISO	Q9UM11 	J:164563 	
+MGI:1890220	Gpr132	G protein-coupled receptor 132	12		negative regulation of G2/M transition of mitotic cell cycle			IBA	PTN002796762 	J:265628 	
+MGI:1890220	Gpr132	G protein-coupled receptor 132	12		negative regulation of G2/M transition of mitotic cell cycle			IDA		J:64928 	
+MGI:1277962	Hus1	HUS1 checkpoint clamp component	11		mitotic DNA replication checkpoint signaling			IBA	PTN000307391 	J:265628 	
+MGI:2671003	Hus1b	HUS1 checkpoint clamp component B	13		mitotic DNA replication checkpoint signaling			IBA	PTN000307391 	J:265628 	
+MGI:104814	Ier3	immediate early response 3	17		mitotic G2 DNA damage checkpoint signaling	happens in fibroblast		IMP	MGI:3773690 	J:186356 	
+MGI:1913459	Inip	INTS3 and NABP interacting protein	4		mitotic G2/M transition checkpoint			ISO	Q9NRY2 	J:164563 	
+MGI:2140050	Ints3	integrator complex subunit 3	3		mitotic G2/M transition checkpoint			ISO	Q68E01 	J:164563 	
+MGI:1333850	Mbd4	methyl-CpG binding domain protein 4	6		mitotic G2 DNA damage checkpoint signaling	happens in fibroblast		IMP	MGI:2684310 	J:86981 	
+MGI:106506	Miip	migration and invasion inhibitory protein	4		negative regulation of G2/M transition of mitotic cell cycle			IEA	IPR031466 	J:72247 	
+MGI:1100512	Mre11a	MRE11A homolog A, double strand break repair nuclease	9		mitotic G2 DNA damage checkpoint signaling			IBA	PTN000015644 	J:265628 	
+MGI:1100512	Mre11a	MRE11A homolog A, double strand break repair nuclease	9		mitotic G2 DNA damage checkpoint signaling	happens in fibroblast		IMP	MGI:3027036 	J:87088 	
+MGI:1100512	Mre11a	MRE11A homolog A, double strand break repair nuclease	9		mitotic G2/M transition checkpoint			NAS		J:320080 	
+MGI:1915317	Mrnip	MRN complex interacting protein	11		mitotic G2 DNA damage checkpoint signaling			IBA	PTN001439267 	J:265628 	
+MGI:1915317	Mrnip	MRN complex interacting protein	11		mitotic G2 DNA damage checkpoint signaling			ISO	Q6NTE8 	J:164563 	
+MGI:1923258	Nabp1	nucleic acid binding protein 1	1		mitotic G2/M transition checkpoint			ISO	Q96AH0 	J:164563 	
+MGI:1917167	Nabp2	nucleic acid binding protein 2	10		mitotic G2/M transition checkpoint			ISO	Q9BQ15 	J:164563 	
+MGI:2384561	Nae1	NEDD8 activating enzyme E1 subunit 1	8		mitotic DNA replication checkpoint signaling			ISO	Q13564 	J:164563 	
+MGI:1351625	Nbn	nibrin	4		mitotic G2 DNA damage checkpoint signaling			IBA	PTN000255549 	J:265628 	
+MGI:1351625	Nbn	nibrin	4		mitotic G2 DNA damage checkpoint signaling	happens in fibroblast		IMP	MGI:2183796 	J:138550 	
+MGI:1351625	Nbn	nibrin	4		mitotic G2 DNA damage checkpoint signaling			ISO	O60934 	J:164563 	
+MGI:1351625	Nbn	nibrin	4		mitotic G2/M transition checkpoint			NAS		J:320080 	
+MGI:2154441	Nop53	NOP53 ribosome biogenesis factor	7		mitotic G2 DNA damage checkpoint signaling			ISO	Q9NZM5 	J:164563 	
+MGI:1328337	Orc1	origin recognition complex, subunit 1	4		mitotic DNA replication checkpoint signaling			IBA	PTN000080055 	J:265628 	
+MGI:1915284	Pabir1	PP2A A alpha (PPP2R1A) and B55A (PPP2R2A) interacting phosphatase regulator 1	19		mitotic G2/M transition checkpoint			IBA	PTN002503010 	J:265628 	
+MGI:1915284	Pabir1	PP2A A alpha (PPP2R1A) and B55A (PPP2R2A) interacting phosphatase regulator 1	19		mitotic G2/M transition checkpoint			ISO	Q96E09 	J:164563 	
+MGI:1921116	Pabir3	PABIR family member 3	X		mitotic G2/M transition checkpoint			IBA	PTN002503010 	J:265628 	
+MGI:1919650	Pinx1	PIN2/TERF1 interacting, telomerase inhibitor 1	14		negative regulation of G2/M transition of mitotic cell cycle			ISO	Q96BK5 	J:164563 	
+MGI:97621	Plk1	polo like kinase 1	7		mitotic G2 DNA damage checkpoint signaling			ISO	P53350 	J:164563 	
+MGI:1333807	Rad17	RAD17 checkpoint clamp loader component	13		mitotic DNA replication checkpoint signaling			IBA	PTN000255944 	J:265628 	
+MGI:108016	Rad21	RAD21 cohesin complex component	15		negative regulation of G2/M transition of mitotic cell cycle			IMP		J:56371 	
+MGI:109292	Rad50	RAD50 double strand break repair protein	11		mitotic G2/M transition checkpoint			NAS		J:320080 	
+MGI:2442995	Rbbp8	retinoblastoma binding protein 8, endonuclease	18		mitotic G2/M transition checkpoint			NAS		J:320080 	
+MGI:1916233	Rint1	RAD50 interactor 1	5		mitotic G2 DNA damage checkpoint signaling			ISO	Q6NUQ1 	J:164563 	
+MGI:1915842	Syf2	SYF2 homolog, RNA splicing factor (S. cerevisiae)	4		mitotic G2 DNA damage checkpoint signaling			IMP	MGI:3904866 	J:187030 	
+MGI:1914490	Taok1	TAO kinase 1	11		mitotic G2 DNA damage checkpoint signaling			ISO	Q7L7X3 	J:164563 	
+MGI:1915919	Taok2	TAO kinase 2	7		mitotic G2 DNA damage checkpoint signaling			ISO	Q9UL54 	J:164563 	
+MGI:3041177	Taok3	TAO kinase 3	5		mitotic G2 DNA damage checkpoint signaling			ISO	Q9H2K8 	J:164563 	
+MGI:1924261	Ticrr	TOPBP1-interacting checkpoint and replication regulator	7		mitotic DNA replication checkpoint signaling			IBA	PTN001470787 	J:265628 	
+MGI:1924261	Ticrr	TOPBP1-interacting checkpoint and replication regulator	7		mitotic G2 DNA damage checkpoint signaling			IBA	PTN001470787 	J:265628 	
+MGI:1920018	Topbp1	topoisomerase (DNA) II binding protein 1	9		mitotic DNA replication checkpoint signaling			IBA	PTN000339410 	J:265628 	
+MGI:1920018	Topbp1	topoisomerase (DNA) II binding protein 1	9		mitotic G2 DNA damage checkpoint signaling			IBA	PTN000339410 	J:265628 	
+MGI:1890659	Trim39	tripartite motif-containing 39	17		mitotic G2 DNA damage checkpoint signaling			ISO	Q9HCM9 	J:164563 	
+MGI:103185	Uimc1	ubiquitin interaction motif containing 1	13		mitotic G2 DNA damage checkpoint signaling			ISO	Q96RL1 	J:164563 	
+MGI:103185	Uimc1	ubiquitin interaction motif containing 1	13		mitotic G2/M transition checkpoint			NAS		J:320080 	
+MGI:1922246	Usp47	ubiquitin specific peptidase 47	7		negative regulation of G2/M transition of mitotic cell cycle			ISO	Q96K76 	J:164563 	
+MGI:1922246	Usp47	ubiquitin specific peptidase 47	7		negative regulation of G2/M transition of mitotic cell cycle			ISS	Q96K76 	J:166002 	
+MGI:1890520	Vps4a	vacuolar protein sorting 4A	8		mitotic cytokinesis checkpoint signaling			ISO	Q9UN37 	J:164563 	
+MGI:1914233	Zfp830	zinc finger protein 830	11		mitotic DNA replication checkpoint signaling			IBA	PTN000328334 	J:265628 	
+MGI:1914233	Zfp830	zinc finger protein 830	11		mitotic DNA replication checkpoint signaling			IMP		J:171647 	
+MGI:1919258	Zfyve19	zinc finger, FYVE domain containing 19	2		mitotic cytokinesis checkpoint signaling			IBA	PTN002504326 	J:265628 	
+MGI:1919258	Zfyve19	zinc finger, FYVE domain containing 19	2		mitotic cytokinesis checkpoint signaling			ISO	Q96K21 	J:164563 	
+

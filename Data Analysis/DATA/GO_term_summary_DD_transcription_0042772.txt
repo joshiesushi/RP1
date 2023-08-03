@@ -1,0 +1,25 @@
+MGI Gene/Marker ID	Symbol	Name	Chr	Qualifier	Annotated Term	Context	Proteoform	Evidence	Inferred From	Reference(s)
+MGI:109337	Brca2	breast cancer 2, early onset	5		DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			IMP	MGI:1930616 	J:37362 	
+MGI:104556	Cdkn1a	cyclin dependent kinase inhibitor 1A (P21)	17		DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			IDA		J:60946 	
+MGI:1355321	Chek2	checkpoint kinase 2	5		DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			IMP	MGI:2386905 	J:60946 	
+MGI:1349409	Cops3	COP9 signalosome subunit 3	11		regulation of DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			ISO	Q9UNS2 	J:164563 	
+MGI:1347487	Foxm1	forkhead box M1	6		DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			IMP		J:118161 	
+MGI:1347487	Foxm1	forkhead box M1	6		DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			ISO	Q08050 	J:164563 	
+MGI:1314872	Hipk2	homeodomain interacting protein kinase 2	6		DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			ISO	Q9H2X6 	J:164563 	
+MGI:107307	Ing4	inhibitor of growth family, member 4	6		positive regulation of DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			ISO	Q9UNL4 	J:164563 	
+MGI:1932051	Kat5	K(lysine) acetyltransferase 5	19		DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			ISO	Q92993 	J:164563 	
+MGI:1919140	Mad2l2	MAD2 mitotic arrest deficient-like 2	4		DNA damage response, signal transduction resulting in transcription			ISO	Q9UI95 	J:164563 	
+MGI:97231	Muc1	mucin 1, transmembrane	3		DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			ISO	P15941 	J:164563 	
+MGI:1890471	Pcbp4	poly(rC) binding protein 4	9		negative regulation of DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			IMP		J:173815 	
+MGI:1889294	Rbm38	RNA binding motif protein 38	2		DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			ISO	Q9H0Z9 	J:164563 	
+MGI:106022	Rpl26	ribosomal protein L26	11		positive regulation of DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			ISO	P61254 	J:164563 	
+MGI:1914321	Rps6ka6	ribosomal protein S6 kinase polypeptide 6	X		DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			IBA	PTN002806567 	J:265628 	
+MGI:1914321	Rps6ka6	ribosomal protein S6 kinase polypeptide 6	X		DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			ISO	Q9UK32 	J:164563 	
+MGI:1915191	Rps27l	ribosomal protein S27-like	9		DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			ISO	Q71UM5 	J:164563 	
+MGI:109561	Sp100	nuclear antigen Sp100	1		DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			ISO	P23497 	J:164563 	
+MGI:103239	Tfap4	transcription factor AP4	16		DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			ISO	Q01664 	J:164563 	
+MGI:98834	Trp53	transformation related protein 53	11		DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			IDA		J:60946 	
+MGI:98834	Trp53	transformation related protein 53	11		DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			ISO	P04637 	J:164563 	
+MGI:1352495	Zfp385a	zinc finger protein 385A	15		positive regulation of DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			ISO	Q96PM9 	J:164563 	
+MGI:1917353	Znhit1	zinc finger, HIT domain containing 1	5		positive regulation of DNA damage response, signal transduction by p53 class mediator resulting in transcription of p21 class mediator			ISO	O43257 	J:164563 	
+

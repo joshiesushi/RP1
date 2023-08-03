@@ -1,0 +1,95 @@
+MGI Gene/Marker ID	Symbol	Name	Chr	Qualifier	Annotated Term	Context	Proteoform	Evidence	Inferred From	Reference(s)
+MGI:2660854	Adcy10	adenylate cyclase 10	1		positive regulation of oxidative stress-induced neuron intrinsic apoptotic signaling pathway			ISO	RGD:708450 	J:155856 	
+MGI:1096330	Bad	BCL2-associated agonist of cell death	19		positive regulation of intrinsic apoptotic signaling pathway in response to osmotic stress			IDA		J:194718 	
+MGI:99702	Bax	BCL2-associated X protein	7		positive regulation of intrinsic apoptotic signaling pathway	positively regulates intrinsic apoptotic signaling pathway		IMP	MGI:2158306 	J:115656 	
+MGI:99702	Bax	BCL2-associated X protein	7		positive regulation of intrinsic apoptotic signaling pathway			ISO	Q07812 	J:164563 	
+MGI:2181667	Bbc3	BCL2 binding component 3	7		positive regulation of intrinsic apoptotic signaling pathway			ISO	RGD:631434 	J:155856 	
+MGI:2181667	Bbc3	BCL2 binding component 3	7		positive regulation of intrinsic apoptotic signaling pathway			ISO	Q9BXH1 	J:164563 	
+MGI:1350933	Bcap31	B cell receptor associated protein 31	X		positive regulation of intrinsic apoptotic signaling pathway			ISO	P51572 	J:164563 	
+MGI:1197519	Bcl2l11	BCL2-like 11 (apoptosis facilitator)	2		positive regulation of intrinsic apoptotic signaling pathway			ISO	O43521 	J:164563 	
+MGI:1917580	Bclaf1	BCL2-associated transcription factor 1	10		positive regulation of intrinsic apoptotic signaling pathway			ISO	Q9NYF8 	J:164563 	
+MGI:1891828	Becn1	beclin 1, autophagy related	11		positive regulation of intrinsic apoptotic signaling pathway			ISO	RGD:620190 	J:155856 	
+MGI:1891828	Becn1	beclin 1, autophagy related	11		positive regulation of intrinsic apoptotic signaling pathway			ISO	Q14457 	J:164563 	
+MGI:108093	Bid	BH3 interacting domain death agonist	6		positive regulation of intrinsic apoptotic signaling pathway			IBA	PTN002860227 	J:265628 	
+MGI:108093	Bid	BH3 interacting domain death agonist	6		positive regulation of intrinsic apoptotic signaling pathway			ISO	P55957 	J:164563 	
+MGI:88184	Bmyc	brain expressed myelocytomatosis oncogene	2		positive regulation of intrinsic apoptotic signaling pathway by p53 class mediator			ISO	P01106 	J:164563 	
+MGI:1858494	Bok	BCL2-related ovarian killer	1		positive regulation of endoplasmic reticulum stress-induced intrinsic apoptotic signaling pathway			IDA		J:235310 	
+MGI:1858494	Bok	BCL2-related ovarian killer	1		positive regulation of endoplasmic reticulum stress-induced intrinsic apoptotic signaling pathway			IMP		J:223399 	
+MGI:1858494	Bok	BCL2-related ovarian killer	1		positive regulation of intrinsic apoptotic signaling pathway			IDA		J:228257 	
+MGI:1100510	Bub1	BUB1, mitotic checkpoint serine/threonine kinase	2		positive regulation of intrinsic apoptotic signaling pathway	positively regulates intrinsic apoptotic signaling pathway		IMP	MGI:3793294 	J:135093 	
+MGI:102709	Cav1	caveolin 1, caveolae protein	6		positive regulation of intrinsic apoptotic signaling pathway			ISO	Q03135 	J:164563 	
+MGI:88423	Clu	clusterin	14		positive regulation of intrinsic apoptotic signaling pathway			ISO	P10909 	J:164563 	
+MGI:88579	Cyct	cytochrome c, testis	2		positive regulation of intrinsic apoptotic signaling pathway			IDA		J:111056 	
+MGI:109247	Ddit3	DNA-damage inducible transcript 3	10		positive regulation of intrinsic apoptotic signaling pathway			IBA	PTN002703959 	J:265628 	
+MGI:109247	Ddit3	DNA-damage inducible transcript 3	10		positive regulation of intrinsic apoptotic signaling pathway			ISO	P35638 	J:164563 	
+MGI:1921256	Dnm1l	dynamin 1-like	16		positive regulation of intrinsic apoptotic signaling pathway			ISO	O00429 	J:164563 	
+MGI:108090	Ei24	etoposide induced 2.4 mRNA	9		positive regulation of intrinsic apoptotic signaling pathway			IMP		J:127736 	
+MGI:1341830	Eif2ak3	eukaryotic translation initiation factor 2 alpha kinase 3	6		positive regulation of endoplasmic reticulum stress-induced intrinsic apoptotic signaling pathway			IGI	MGI:1913418 	J:203180 	
+MGI:1354699	Fbh1	F-box DNA helicase 1	2		positive regulation of intrinsic apoptotic signaling pathway in response to DNA damage			ISO	Q8NFZ0 	J:73065 	
+MGI:1354695	Fbxw7	F-box and WD-40 domain protein 7	3		positive regulation of oxidative stress-induced neuron intrinsic apoptotic signaling pathway			IMP		J:204747 	
+MGI:1354695	Fbxw7	F-box and WD-40 domain protein 7	3		positive regulation of oxidative stress-induced neuron intrinsic apoptotic signaling pathway			ISO	Q969H0 	J:164563 	
+MGI:1913687	Fis1	fission, mitochondrial 1	5		positive regulation of intrinsic apoptotic signaling pathway			ISO	Q9Y3D6 	J:164563 	
+MGI:2442184	Flcn	folliculin	11		positive regulation of intrinsic apoptotic signaling pathway	positively regulates intrinsic apoptotic signaling pathway		IMP	MGI:4348628 	J:173708 	
+MGI:1889850	Gsdme	gasdermin E	6		positive regulation of intrinsic apoptotic signaling pathway			ISO	O60443 	J:164563 	
+MGI:1890472	Il19	interleukin 19	1		positive regulation of intrinsic apoptotic signaling pathway			IGI	MGI:3605069 	J:197173 	
+MGI:3605069	Il20ra	interleukin 20 receptor, alpha	10		positive regulation of intrinsic apoptotic signaling pathway			IGI	MGI:1890472 	J:197173 	
+MGI:96756	Lck	lymphocyte protein tyrosine kinase	4		positive regulation of intrinsic apoptotic signaling pathway			ISO	P06239 	J:164563 	
+MGI:101769	Mcl1	myeloid cell leukemia sequence 1	3		positive regulation of oxidative stress-induced neuron intrinsic apoptotic signaling pathway	happens in primary neuron,happens in brain		IMP		J:204747 	
+MGI:101769	Mcl1	myeloid cell leukemia sequence 1	3		positive regulation of oxidative stress-induced neuron intrinsic apoptotic signaling pathway			ISO	Q07820 	J:164563 	
+MGI:97168	Msx1	msh homeobox 1	5		positive regulation of intrinsic apoptotic signaling pathway by p53 class mediator			ISO	P28360 	J:164563 	
+MGI:1929260	Mtch2	mitochondrial carrier 2	2		positive regulation of intrinsic apoptotic signaling pathway in response to DNA damage	happens in hematopoietic stem cell		IMP	MGI:2449949 MGI:5566664 	J:224442 	
+MGI:97250	Myc	myelocytomatosis oncogene	15		positive regulation of intrinsic apoptotic signaling pathway by p53 class mediator			ISO	P01106 	J:164563 	
+MGI:1915241	Nacc2	nucleus accumbens associated 2, BEN and BTB (POZ) domain containing	2		positive regulation of intrinsic apoptotic signaling pathway in response to DNA damage			ISO	Q96BF6 	J:164563 	
+MGI:109601	Nck1	non-catalytic region of tyrosine kinase adaptor protein 1	9		positive regulation of endoplasmic reticulum stress-induced intrinsic apoptotic signaling pathway			IBA	PTN000517518 	J:265628 	
+MGI:109601	Nck1	non-catalytic region of tyrosine kinase adaptor protein 1	9		positive regulation of endoplasmic reticulum stress-induced intrinsic apoptotic signaling pathway			IGI	O55033 	J:217282 	
+MGI:109601	Nck1	non-catalytic region of tyrosine kinase adaptor protein 1	9		positive regulation of endoplasmic reticulum stress-induced intrinsic apoptotic signaling pathway			ISO	P16333 	J:164563 	
+MGI:1306821	Nck2	non-catalytic region of tyrosine kinase adaptor protein 2	1		positive regulation of endoplasmic reticulum stress-induced intrinsic apoptotic signaling pathway			IBA	PTN000517518 	J:265628 	
+MGI:1306821	Nck2	non-catalytic region of tyrosine kinase adaptor protein 2	1		positive regulation of endoplasmic reticulum stress-induced intrinsic apoptotic signaling pathway			IGI	Q99M51 	J:217282 	
+MGI:1349482	Nherf1	NHERF family PDZ scaffold protein 1	11		positive regulation of intrinsic apoptotic signaling pathway			ISO	O14745 	J:164563 	
+MGI:97352	Nkx3-1	NK3 homeobox 1	14		positive regulation of intrinsic apoptotic signaling pathway			ISO	Q99801 	J:164563 	
+MGI:2450016	Nox1	NADPH oxidase 1	X		positive regulation of oxidative stress-induced intrinsic apoptotic signaling pathway	positively regulates intrinsic apoptotic signaling pathway in response to oxidative stress		IMP	MGI:3616995 	J:167959 	
+MGI:1891834	Nupr1	nuclear protein transcription regulator 1	7		positive regulation of intrinsic apoptotic signaling pathway			ISO	RGD:69363 	J:155856 	
+MGI:1891834	Nupr1	nuclear protein transcription regulator 1	7		positive regulation of intrinsic apoptotic signaling pathway			ISO	O60356 	J:164563 	
+MGI:2135637	Park7	Parkinson disease (autosomal recessive, early onset) 7	4		positive regulation of oxidative stress-induced intrinsic apoptotic signaling pathway			IMP		J:204791 	
+MGI:2136940	Pias4	protein inhibitor of activated STAT 4	10		positive regulation of intrinsic apoptotic signaling pathway in response to DNA damage			IDA		J:172990 	
+MGI:1933165	Plagl2	pleiomorphic adenoma gene-like 2	2		positive regulation of intrinsic apoptotic signaling pathway			IDA		J:76354 	
+MGI:1919537	Plekhf1	pleckstrin homology domain containing, family F (with FYVE domain) member 1	7		positive regulation of intrinsic apoptotic signaling pathway			IBA	PTN002922305 	J:265628 	
+MGI:1919537	Plekhf1	pleckstrin homology domain containing, family F (with FYVE domain) member 1	7		positive regulation of intrinsic apoptotic signaling pathway			IDA		J:104095 	
+MGI:893575	Plscr1	phospholipid scramblase 1	9		positive regulation of intrinsic apoptotic signaling pathway in response to DNA damage			IDA		J:175205 	
+MGI:1930146	Pmaip1	phorbol-12-myristate-13-acetate-induced protein 1	18		positive regulation of intrinsic apoptotic signaling pathway			ISO	Q13794 	J:164563 	
+MGI:1344375	Prkra	protein kinase, interferon inducible double stranded RNA dependent activator	2		positive regulation of intrinsic apoptotic signaling pathway			IDA		J:78899 	
+MGI:97806	Ptpn2	protein tyrosine phosphatase, non-receptor type 2	18		positive regulation of endoplasmic reticulum stress-induced intrinsic apoptotic signaling pathway	happens in pancreas		IMP		J:219081 	
+MGI:101849	Rack1	receptor for activated C kinase 1	11		positive regulation of intrinsic apoptotic signaling pathway			ISO	P63244 	J:164563 	
+MGI:1328356	Rad9a	RAD9 checkpoint clamp component A	19		positive regulation of intrinsic apoptotic signaling pathway in response to DNA damage	positively regulates intrinsic apoptotic signaling pathway in response to DNA damage		IGI	MGI:2442925 	J:99862 	
+MGI:1328356	Rad9a	RAD9 checkpoint clamp component A	19		positive regulation of intrinsic apoptotic signaling pathway in response to DNA damage	positively regulates intrinsic apoptotic signaling pathway in response to DNA damage		IMP		J:99862 	
+MGI:2154952	Ripk3	receptor-interacting serine-threonine kinase 3	14		positive regulation of intrinsic apoptotic signaling pathway			IDA		J:57772 	
+MGI:1923322	Rnf183	ring finger protein 183	4		positive regulation of endoplasmic reticulum stress-induced intrinsic apoptotic signaling pathway			IBA	PTN000513194 	J:265628 	
+MGI:1923322	Rnf183	ring finger protein 183	4		positive regulation of endoplasmic reticulum stress-induced intrinsic apoptotic signaling pathway			ISO	Q96D59 	J:164563 	
+MGI:1914275	Rpl11	ribosomal protein L11	4		positive regulation of intrinsic apoptotic signaling pathway by p53 class mediator			IMP		J:240382 	
+MGI:106022	Rpl26	ribosomal protein L26	11		positive regulation of intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			IMP		J:240282 	
+MGI:106022	Rpl26	ribosomal protein L26	11		positive regulation of intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			ISO	P61254 	J:164563 	
+MGI:1350917	Rps3	ribosomal protein S3	7		positive regulation of intrinsic apoptotic signaling pathway in response to DNA damage			ISO	P23396 	J:164563 	
+MGI:1333818	Rps7	ribosomal protein S7	12		positive regulation of intrinsic apoptotic signaling pathway by p53 class mediator			ISO	P62081 	J:164563 	
+MGI:88244	S100a8	S100 calcium binding protein A8 (calgranulin A)	3		positive regulation of intrinsic apoptotic signaling pathway			ISO	P05109 	J:164563 	
+MGI:1338947	S100a9	S100 calcium binding protein A9 (calgranulin B)	3		positive regulation of intrinsic apoptotic signaling pathway			ISO	P06702 	J:164563 	
+MGI:1270156	Septin4	septin 4	11		positive regulation of intrinsic apoptotic signaling pathway			ISO	O43236 	J:164563 	
+MGI:1349457	Serinc3	serine incorporator 3	2		positive regulation of endoplasmic reticulum stress-induced intrinsic apoptotic signaling pathway			IDA		J:84965 	
+MGI:1918764	Sfpq	splicing factor proline/glutamine rich (polypyrimidine tract binding protein associated)	4		positive regulation of oxidative stress-induced intrinsic apoptotic signaling pathway			ISO	P23246 	J:164563 	
+MGI:1859730	Sh3glb1	SH3-domain GRB2-like B1 (endophilin)	3		positive regulation of intrinsic apoptotic signaling pathway by p53 class mediator			IDA		J:206937 	
+MGI:108064	Siah1a	siah E3 ubiquitin protein ligase 1A	8		positive regulation of intrinsic apoptotic signaling pathway			ISO	Q8IUQ4 	J:164563 	
+MGI:108063	Siah1b	siah E3 ubiquitin protein ligase 1B	X		positive regulation of intrinsic apoptotic signaling pathway			ISO	Q8IUQ4 	J:164563 	
+MGI:2135607	Sirt1	sirtuin 1	10		positive regulation of endoplasmic reticulum stress-induced intrinsic apoptotic signaling pathway			IMP		J:215876 	
+MGI:106203	Skil	SKI-like	3		positive regulation of intrinsic apoptotic signaling pathway in response to DNA damage	positively regulates intrinsic apoptotic signaling pathway in response to DNA damage		IMP	MGI:2387096 	J:62174 	
+MGI:98351	Sod1	superoxide dismutase 1, soluble	16		positive regulation of oxidative stress-induced intrinsic apoptotic signaling pathway			ISO	P00441 	J:164563 	
+MGI:1343085	Spop	speckle-type BTB/POZ protein	11		positive regulation of endoplasmic reticulum stress-induced intrinsic apoptotic signaling pathway	positively regulates intrinsic apoptotic signaling pathway in response to endoplasmic reticulum stress		IGI	MGI:102851 	J:165268 	
+MGI:1915678	Steap3	STEAP family member 3	1		positive regulation of intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator			IMP	MGI:4398911 	J:154356 	
+MGI:1923821	Styxl1	serine/threonine/tyrosine interacting-like 1	5		positive regulation of intrinsic apoptotic signaling pathway			IBA	PTN000807171 	J:265628 	
+MGI:1923821	Styxl1	serine/threonine/tyrosine interacting-like 1	5		positive regulation of intrinsic apoptotic signaling pathway			ISO	Q9Y6J8 	J:164563 	
+MGI:109129	Taf6	TATA-box binding protein associated factor 6	5		positive regulation of intrinsic apoptotic signaling pathway			ISO	P49848 	J:164563 	
+MGI:98834	Trp53	transformation related protein 53	11		positive regulation of intrinsic apoptotic signaling pathway			ISO	RGD:3889 	J:155856 	
+MGI:98834	Trp53	transformation related protein 53	11		positive regulation of intrinsic apoptotic signaling pathway			ISO	P04637 	J:164563 	
+MGI:1336991	Trp73	transformation related protein 73	4		positive regulation of intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator	positively regulates intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator		IGI	MGI:2442925 	J:99862 	
+MGI:1336991	Trp73	transformation related protein 73	4		positive regulation of intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator	positively regulates intrinsic apoptotic signaling pathway in response to DNA damage by p53 class mediator		IGI	MGI:98834 	J:99862 	
+MGI:98888	Ubb	ubiquitin B	11		positive regulation of intrinsic apoptotic signaling pathway by p53 class mediator			ISO	P0CG47 	J:141360 	
+MGI:108395	Vnn1	vanin 1	10		positive regulation of oxidative stress-induced intrinsic apoptotic signaling pathway			IMP		J:92268 	
+

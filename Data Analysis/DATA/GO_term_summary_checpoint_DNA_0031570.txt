@@ -1,0 +1,208 @@
+MGI Gene/Marker ID	Symbol	Name	Chr	Qualifier	Annotated Term	Context	Proteoform	Evidence	Inferred From	Reference(s)
+MGI:1917931	Abraxas1	BRCA1 A complex subunit	5		mitotic G2 DNA damage checkpoint signaling			ISO	Q6UWZ7 	J:164563 	
+MGI:109349	Atf2	activating transcription factor 2	2		mitotic intra-S DNA damage checkpoint signaling			ISO	P15336 	J:164563 	
+MGI:107202	Atm	ataxia telangiectasia mutated	9		DNA damage checkpoint signaling			IBA	PTN001673294 	J:265628 	
+MGI:107202	Atm	ataxia telangiectasia mutated	9		DNA damage checkpoint signaling			IMP		J:86382 	
+MGI:107202	Atm	ataxia telangiectasia mutated	9		DNA damage checkpoint signaling			ISO	Q13315 	J:164563 	
+MGI:107202	Atm	ataxia telangiectasia mutated	9		mitotic G2 DNA damage checkpoint signaling			ISO	Q13315 	J:164563 	
+MGI:108028	Atr	ataxia telangiectasia and Rad3 related	9		DNA damage checkpoint signaling			IBA	PTN001673376 	J:265628 	
+MGI:108028	Atr	ataxia telangiectasia and Rad3 related	9		DNA damage checkpoint signaling			IMP		J:86382 	
+MGI:108028	Atr	ataxia telangiectasia and Rad3 related	9		DNA damage checkpoint signaling			ISO	Q13535 	J:164563 	
+MGI:1925349	Atrip	ATR interacting protein	9		DNA damage checkpoint signaling			IEA	IPR033349 	J:72247 	
+MGI:1915501	Babam1	BRISC and BRCA1 A complex member 1	8		mitotic G2 DNA damage checkpoint signaling			IBA	PTN001437420 	J:265628 	
+MGI:1915501	Babam1	BRISC and BRCA1 A complex member 1	8		mitotic G2 DNA damage checkpoint signaling			ISO	Q9NWV8 	J:164563 	
+MGI:1333875	Babam2	BRISC and BRCA1 A complex member 2	5		mitotic G2 DNA damage checkpoint signaling			ISO	Q9NXR7 	J:164563 	
+MGI:1333875	Babam2	BRISC and BRCA1 A complex member 2	5		regulation of DNA damage checkpoint			NAS		J:320084 	
+MGI:1328361	Bard1	BRCA1 associated RING domain 1	1		regulation of DNA damage checkpoint			NAS		J:320084 	
+MGI:1328362	Blm	Bloom syndrome, RecQ like helicase	7		mitotic G2 DNA damage checkpoint signaling			ISO	P54132 	J:164563 	
+MGI:104537	Brca1	breast cancer 1, early onset	11		mitotic G2 DNA damage checkpoint signaling			ISO	P38398 	J:164563 	
+MGI:104537	Brca1	breast cancer 1, early onset	11		regulation of DNA damage checkpoint			NAS		J:320084 	
+MGI:109337	Brca2	breast cancer 2, early onset	5		regulation of DNA damage checkpoint			NAS		J:320084 	
+MGI:2389572	Brcc3	BRCA1/BRCA2-containing complex, subunit 3	X		mitotic G2 DNA damage checkpoint signaling			ISO	P46736 	J:164563 	
+MGI:2389572	Brcc3	BRCA1/BRCA2-containing complex, subunit 3	X		regulation of DNA damage checkpoint			NAS		J:320084 	
+MGI:3647286	Brcc3dc	BRCA1/BRCA2-containing complex, subunit 3, domain containing	10		mitotic G2 DNA damage checkpoint signaling			ISO	P46736 	J:164563 	
+MGI:1888520	Brd4	bromodomain containing 4	17		negative regulation of DNA damage checkpoint			ISO	O60885 	J:164563 	
+MGI:2685946	Brsk1	BR serine/threonine kinase 1	7		mitotic G2 DNA damage checkpoint signaling			ISO	Q8TDC3 	J:164563 	
+MGI:97295	Casp2	caspase 2	6		DNA damage response, signal transduction by p53 class mediator resulting in cell cycle arrest			ISO	P42575 	J:164563 	
+MGI:2444228	Ccar2	cell cycle activator and apoptosis regulator 2	14		positive regulation of DNA damage checkpoint			ISO	Q8N163 	J:164563 	
+MGI:88313	Ccnd1	cyclin D1	7		mitotic G1 DNA damage checkpoint signaling			ISO	P24385 	J:164563 	
+MGI:102890	Ccng1	cyclin G1	11		mitotic G2 DNA damage checkpoint signaling			ISO	RGD:2295 	J:155856 	
+MGI:1918952	Cdc5l	cell division cycle 5-like	17		DNA damage checkpoint signaling			ISO	Q99459 	J:164563 	
+MGI:5591876	Cdc5lrt1	cell division cycle 5 like, retrotransposed 1	10		DNA damage checkpoint signaling			ISO	Q99459 	J:164563 	
+MGI:5591961	Cdc5lrt4	cell division cycle 5 like, retrotransposed 4	10		DNA damage checkpoint signaling			ISO	Q99459 	J:164563 	
+MGI:3643524	Cdc5lrt5	cell division cycle 5 like, retrotransposed 5	10		DNA damage checkpoint signaling			ISO	Q99459 	J:164563 	
+MGI:3647148	Cdc5lrt6	cell division cycle 5 like, retrotransposed 6	10		DNA damage checkpoint signaling			ISO	Q99459 	J:164563 	
+MGI:3647146	Cdc5lrt7	cell division cycle 5 like, retrotransposed 7	10		DNA damage checkpoint signaling			ISO	Q99459 	J:164563 	
+MGI:3647143	Cdc5lrt8	cell division cycle 5 like, retrotransposed 8	10		DNA damage checkpoint signaling			ISO	Q99459 	J:164563 	
+MGI:3644213	Cdc5lrt9	cell division cycle 5 like, retrotransposed 9	10		DNA damage checkpoint signaling			ISO	Q99459 	J:164563 	
+MGI:3644216	Cdc5lrt10	cell division cycle 5 like, retrotransposed 10	10		DNA damage checkpoint signaling			ISO	Q99459 	J:164563 	
+MGI:1345150	Cdc6	cell division cycle 6	11		mitotic DNA replication checkpoint signaling			IBA	PTN000080055 	J:265628 	
+MGI:88351	Cdk1	cyclin dependent kinase 1	10		mitotic G2 DNA damage checkpoint signaling			IBA	PTN002514139 	J:265628 	
+MGI:88351	Cdk1	cyclin dependent kinase 1	10		mitotic G2 DNA damage checkpoint signaling			IDA		J:86382 	
+MGI:1933126	Cdk5rap3	CDK5 regulatory subunit associated protein 3	11		mitotic G2 DNA damage checkpoint signaling			ISO	Q96JB5 	J:164563 	
+MGI:104556	Cdkn1a	cyclin dependent kinase inhibitor 1A (P21)	17		DNA damage response, signal transduction by p53 class mediator resulting in cell cycle arrest			ISO	P38936 	J:164563 	
+MGI:104556	Cdkn1a	cyclin dependent kinase inhibitor 1A (P21)	17		mitotic G2 DNA damage checkpoint signaling			ISO	P38936 	J:164563 	
+MGI:1914427	Cdt1	chromatin licensing and DNA replication factor 1	8		DNA replication checkpoint signaling			IBA	PTN002008627 	J:265628 	
+MGI:1914427	Cdt1	chromatin licensing and DNA replication factor 1	8		DNA replication checkpoint signaling			IDA		J:79742 	
+MGI:1914427	Cdt1	chromatin licensing and DNA replication factor 1	8		DNA replication checkpoint signaling			ISO	Q9H211 	J:164563 	
+MGI:1202065	Chek1	checkpoint kinase 1	9		DNA damage checkpoint signaling			IDA		J:81636 	
+MGI:1202065	Chek1	checkpoint kinase 1	9		DNA damage checkpoint signaling			IMP	MGI:1926528 	J:62919 	
+MGI:1202065	Chek1	checkpoint kinase 1	9		DNA damage checkpoint signaling			ISO	O14757 	J:164563 	
+MGI:1202065	Chek1	checkpoint kinase 1	9		mitotic G2 DNA damage checkpoint signaling			ISO	O14757 	J:164563 	
+MGI:1355321	Chek2	checkpoint kinase 2	5		DNA damage checkpoint signaling			ISO	RGD:621543 	J:155856 	
+MGI:1355321	Chek2	checkpoint kinase 2	5		mitotic DNA damage checkpoint signaling			IBA	PTN005196447 	J:265628 	
+MGI:1355321	Chek2	checkpoint kinase 2	5		mitotic intra-S DNA damage checkpoint signaling			ISO	O96017 	J:164563 	
+MGI:1355321	Chek2	checkpoint kinase 2	5		negative regulation of DNA damage checkpoint			ISO	RGD:621543 	J:155856 	
+MGI:99698	Clock	circadian locomotor output cycles kaput	5		DNA damage checkpoint signaling			ISO	O15516 	J:164563 	
+MGI:2445153	Clspn	claspin	4		DNA damage checkpoint signaling			ISO	Q9HAW4 	J:164563 	
+MGI:2445153	Clspn	claspin	4		DNA replication checkpoint signaling			ISO	Q9HAW4 	J:73065 	
+MGI:2445153	Clspn	claspin	4		mitotic DNA replication checkpoint signaling			IBA	PTN001801959 	J:265628 	
+MGI:2445153	Clspn	claspin	4		mitotic DNA replication checkpoint signaling			ISO	Q9HAW4 	J:164563 	
+MGI:2445153	Clspn	claspin	4		mitotic G2 DNA damage checkpoint signaling			IBA	PTN001801959 	J:265628 	
+MGI:2445153	Clspn	claspin	4		mitotic G2 DNA damage checkpoint signaling			ISO	Q9HAW4 	J:164563 	
+MGI:1336168	Cradd	CASP2 and RIPK1 domain containing adaptor with death domain	10		DNA damage response, signal transduction by p53 class mediator resulting in cell cycle arrest			IBA	PTN000385750 	J:265628 	
+MGI:1336168	Cradd	CASP2 and RIPK1 domain containing adaptor with death domain	10		DNA damage response, signal transduction by p53 class mediator resulting in cell cycle arrest			ISO	P78560 	J:164563 	
+MGI:1270841	Cry1	cryptochrome 1 (photolyase-like)	10		regulation of DNA damage checkpoint			IDA		J:209425 	
+MGI:1914487	Cul4a	cullin 4A	8		regulation of DNA damage checkpoint			IMP	MGI:3851025 	J:150427 	
+MGI:1196431	D7Ertd443e	DNA segment, Chr 7, ERATO Doi 443, expressed	7		mitotic G2 DNA damage checkpoint signaling			IDA		J:160788 	
+MGI:99240	Ddx39b	DEAD box helicase 39b	17		negative regulation of DNA damage checkpoint			ISO	Q13838 	J:164563 	
+MGI:1278339	Dgkz	diacylglycerol kinase zeta	2		mitotic G1 DNA damage checkpoint signaling			ISO	Q13574 	J:164563 	
+MGI:2443732	Dna2	DNA replication helicase/nuclease 2	10		DNA replication checkpoint signaling			ISO	P51530 	J:164563 	
+MGI:1890621	Donson	downstream neighbor of SON	16		DNA damage checkpoint signaling			ISO	Q9NYP3 	J:164563 	
+MGI:1890621	Donson	downstream neighbor of SON	16		mitotic G2 DNA damage checkpoint signaling			ISO	Q9NYP3 	J:164563 	
+MGI:2143886	Dot1l	DOT1-like, histone H3 methyltransferase (S. cerevisiae)	10		DNA damage checkpoint signaling			IBA	PTN000485246 	J:265628 	
+MGI:1924093	Dtl	denticleless E3 ubiquitin protein ligase	1		mitotic G2 DNA damage checkpoint signaling			IBA	PTN000523288 	J:265628 	
+MGI:1924093	Dtl	denticleless E3 ubiquitin protein ligase	1		mitotic G2 DNA damage checkpoint signaling			ISO	Q9NZJ0 	J:164563 	
+MGI:2656973	Dtx3l	deltex 3-like, E3 ubiquitin ligase	16		DNA damage checkpoint signaling			ISO	Q8TDB6 	J:164563 	
+MGI:101941	E2f1	E2F transcription factor 1	2		DNA damage checkpoint signaling			ISO	Q01094 	J:164563 	
+MGI:1353427	Eif2ak4	eukaryotic translation initiation factor 2 alpha kinase 4	2		DNA damage checkpoint signaling			IEA	IPR016255 	J:72247 	
+MGI:3576783	Eme1	essential meiotic structure-specific endonuclease 1	11		mitotic intra-S DNA damage checkpoint signaling			IBA	PTN001078409 	J:265628 	
+MGI:1919889	Eme2	essential meiotic structure-specific endonuclease subunit 2	17		mitotic intra-S DNA damage checkpoint signaling			IBA	PTN001078409 	J:265628 	
+MGI:1100494	Ercc6	excision repair cross-complementing rodent repair deficiency, complementation group 6	14		DNA damage checkpoint signaling			ISO	Q03468 	J:164563 	
+MGI:1915395	Etaa1	Ewing tumor-associated antigen 1	11		regulation of DNA damage checkpoint			IBA	PTN002702389 	J:265628 	
+MGI:1915395	Etaa1	Ewing tumor-associated antigen 1	11		regulation of DNA damage checkpoint			ISO	Q9NY74 	J:164563 	
+MGI:2448480	Fancd2	Fanconi anemia, complementation group D2	6		mitotic intra-S DNA damage checkpoint signaling			IBA	PTN000788426 	J:265628 	
+MGI:2146220	Fbxo4	F-box protein 4	15		regulation of DNA damage checkpoint			IMP	MGI:5301830 	J:178645 	
+MGI:1354708	Fbxo31	F-box protein 31	8		mitotic G1 DNA damage checkpoint signaling			ISO	Q5XUX0 	J:164563 	
+MGI:1335087	Fem1b	fem 1 homolog b	9		regulation of DNA damage checkpoint			ISO	Q9UK73 	J:164563 	
+MGI:1918625	Foxn3	forkhead box N3	12		mitotic G2 DNA damage checkpoint signaling			ISO	O00409 	J:164563 	
+MGI:1891915	Foxo4	forkhead box O4	X		mitotic G2 DNA damage checkpoint signaling			IDA		J:78043 	
+MGI:1926790	Fzr1	fizzy and cell division cycle 20 related 1	10		mitotic G2 DNA damage checkpoint signaling			ISO	Q9UM11 	J:164563 	
+MGI:105113	Gcna	germ cell nuclear acidic protein	X		DNA integrity checkpoint signaling			IMP	MGI:5910931 	J:284005 	
+MGI:2138584	Gigyf2	GRB10 interacting GYF protein 2	1		mitotic G1 DNA damage checkpoint signaling	happens in fibroblast		IMP	MGI:4126459 	J:153971 	
+MGI:102688	H2ax	H2A.X variant histone	9	NOT	DNA damage checkpoint signaling			IMP	MGI:2156048 	J:76360 	
+MGI:2429620	Hinfp	histone H4 transcription factor	9		DNA damage checkpoint signaling			ISO	Q9BQA5 	J:164563 	
+MGI:1277962	Hus1	HUS1 checkpoint clamp component	11		DNA damage checkpoint signaling			IMP	MGI:1927769 	J:81636 	
+MGI:1277962	Hus1	HUS1 checkpoint clamp component	11		DNA damage checkpoint signaling			ISO	O60921 	J:164563 	
+MGI:1277962	Hus1	HUS1 checkpoint clamp component	11		meiotic DNA integrity checkpoint signaling			IBA	PTN000307391 	J:265628 	
+MGI:1277962	Hus1	HUS1 checkpoint clamp component	11		mitotic DNA replication checkpoint signaling			IBA	PTN000307391 	J:265628 	
+MGI:1277962	Hus1	HUS1 checkpoint clamp component	11		mitotic intra-S DNA damage checkpoint signaling			IBA	PTN000307391 	J:265628 	
+MGI:2671003	Hus1b	HUS1 checkpoint clamp component B	13		DNA damage checkpoint signaling			IEA	IPR007150 IPR016580 	J:72247 	
+MGI:2671003	Hus1b	HUS1 checkpoint clamp component B	13		meiotic DNA integrity checkpoint signaling			IBA	PTN000307391 	J:265628 	
+MGI:2671003	Hus1b	HUS1 checkpoint clamp component B	13		mitotic DNA replication checkpoint signaling			IBA	PTN000307391 	J:265628 	
+MGI:2671003	Hus1b	HUS1 checkpoint clamp component B	13		mitotic intra-S DNA damage checkpoint signaling			IBA	PTN000307391 	J:265628 	
+MGI:104814	Ier3	immediate early response 3	17		mitotic G2 DNA damage checkpoint signaling	happens in fibroblast		IMP	MGI:3773690 	J:186356 	
+MGI:1924315	Ints7	integrator complex subunit 7	1		DNA damage checkpoint signaling			ISO	Q9NVH2 	J:164563 	
+MGI:2443258	Map3k20	mitogen-activated protein kinase kinase kinase 20	2		DNA damage checkpoint signaling			ISO	Q9NYL2 	J:164563 	
+MGI:2443258	Map3k20	mitogen-activated protein kinase kinase kinase 20	2		positive regulation of mitotic DNA damage checkpoint			ISO	Q9NYL2 	J:164563 	
+MGI:1346865	Mapk14	mitogen-activated protein kinase 14	17		DNA damage checkpoint signaling			IMP		J:86382 	
+MGI:1333850	Mbd4	methyl-CpG binding domain protein 4	6		mitotic G2 DNA damage checkpoint signaling	happens in fibroblast		IMP	MGI:2684310 	J:86981 	
+MGI:96952	Mdm2	transformed mouse 3T3 cell double minute 2	10		DNA damage response, signal transduction by p53 class mediator resulting in cell cycle arrest			ISO	Q00987 	J:164563 	
+MGI:1100512	Mre11a	MRE11A homolog A, double strand break repair nuclease	9		mitotic G2 DNA damage checkpoint signaling			IBA	PTN000015644 	J:265628 	
+MGI:1100512	Mre11a	MRE11A homolog A, double strand break repair nuclease	9		mitotic G2 DNA damage checkpoint signaling	happens in fibroblast		IMP	MGI:3027036 	J:87088 	
+MGI:1100512	Mre11a	MRE11A homolog A, double strand break repair nuclease	9		mitotic intra-S DNA damage checkpoint signaling			IBA	PTN000015646 	J:265628 	
+MGI:1100512	Mre11a	MRE11A homolog A, double strand break repair nuclease	9		mitotic intra-S DNA damage checkpoint signaling	happens in fibroblast		IMP	MGI:3027036 	J:138550 	
+MGI:1100512	Mre11a	MRE11A homolog A, double strand break repair nuclease	9		mitotic intra-S DNA damage checkpoint signaling	happens in fibroblast		IMP	MGI:3027036 	J:87088 	
+MGI:1915317	Mrnip	MRN complex interacting protein	11		mitotic G2 DNA damage checkpoint signaling			IBA	PTN001439267 	J:265628 	
+MGI:1915317	Mrnip	MRN complex interacting protein	11		mitotic G2 DNA damage checkpoint signaling			ISO	Q6NTE8 	J:164563 	
+MGI:101816	Msh2	mutS homolog 2	17		mitotic intra-S DNA damage checkpoint signaling	happens in keratinocyte,happens in epidermis		IGI	MGI:103557 	J:94447 	
+MGI:97231	Muc1	mucin 1, transmembrane	3		DNA damage response, signal transduction by p53 class mediator resulting in cell cycle arrest			ISO	P15941 	J:164563 	
+MGI:1918961	Mus81	MUS81 structure-specific endonuclease subunit	19		mitotic intra-S DNA damage checkpoint signaling			IBA	PTN000335543 	J:265628 	
+MGI:2384561	Nae1	NEDD8 activating enzyme E1 subunit 1	8		mitotic DNA replication checkpoint signaling			ISO	Q13564 	J:164563 	
+MGI:1351625	Nbn	nibrin	4		DNA damage checkpoint signaling			ISO	O60934 	J:81636 	
+MGI:1351625	Nbn	nibrin	4		mitotic G2 DNA damage checkpoint signaling			IBA	PTN000255549 	J:265628 	
+MGI:1351625	Nbn	nibrin	4		mitotic G2 DNA damage checkpoint signaling	happens in fibroblast		IMP	MGI:2183796 	J:138550 	
+MGI:1351625	Nbn	nibrin	4		mitotic G2 DNA damage checkpoint signaling			ISO	O60934 	J:164563 	
+MGI:97303	Nek1	NIMA (never in mitosis gene a)-related expressed kinase 1	8		regulation of DNA damage checkpoint			IMP		J:219092 	
+MGI:2442276	Nek11	NIMA (never in mitosis gene a)-related expressed kinase 11	9		mitotic intra-S DNA damage checkpoint signaling			IBA	PTN002462873 	J:265628 	
+MGI:2442276	Nek11	NIMA (never in mitosis gene a)-related expressed kinase 11	9		mitotic intra-S DNA damage checkpoint signaling			ISO	Q8NG66 	J:164563 	
+MGI:2154441	Nop53	NOP53 ribosome biogenesis factor	7		mitotic G2 DNA damage checkpoint signaling			ISO	Q9NZM5 	J:164563 	
+MGI:1328337	Orc1	origin recognition complex, subunit 1	4		mitotic DNA replication checkpoint signaling			IBA	PTN000080055 	J:265628 	
+MGI:1933117	Parp9	poly (ADP-ribose) polymerase family, member 9	16		DNA damage checkpoint signaling			ISO	Q8IXQ6 	J:164563 	
+MGI:1889507	Pidd1	p53 induced death domain protein 1	7		DNA damage response, signal transduction by p53 class mediator resulting in cell cycle arrest			ISO	Q9HB75 	J:164563 	
+MGI:97621	Plk1	polo like kinase 1	7		mitotic G2 DNA damage checkpoint signaling			ISO	P53350 	J:164563 	
+MGI:104662	Pml	promyelocytic leukemia	9		DNA damage response, signal transduction by p53 class mediator resulting in cell cycle arrest			IMP		J:98981 	
+MGI:1289273	Ppp1r10	protein phosphatase 1, regulatory subunit 10	17		negative regulation of mitotic DNA damage checkpoint			ISO	Q96QC0 	J:164563 	
+MGI:1349475	Ppp2r5c	protein phosphatase 2, regulatory subunit B', gamma	12		DNA damage response, signal transduction by p53 class mediator resulting in cell cycle arrest			ISO	Q13362 	J:164563 	
+MGI:893573	Prap1	proline-rich acidic protein 1	7		DNA damage response, signal transduction by p53 class mediator resulting in cell cycle arrest			ISO	Q96NZ9 	J:164563 	
+MGI:104779	Prkdc	protein kinase, DNA activated, catalytic polypeptide	16		mitotic G1 DNA damage checkpoint signaling			ISO	P78527 	J:164563 	
+MGI:106247	Prpf19	pre-mRNA processing factor 19	19		DNA damage checkpoint signaling			ISO	Q9UMS4 	J:164563 	
+MGI:99511	Ptpn11	protein tyrosine phosphatase, non-receptor type 11	5		DNA damage checkpoint signaling			IMP	MGI:2176524 	J:86382 	
+MGI:108027	Ptprv	protein tyrosine phosphatase receptor type V	1		DNA damage response, signal transduction by p53 class mediator resulting in cell cycle arrest	happens in fibroblast		IGI	MGI:98834 	J:100764 	
+MGI:108027	Ptprv	protein tyrosine phosphatase receptor type V	1		mitotic G1 DNA damage checkpoint signaling	happens in fibroblast		IMP	MGI:3039948 	J:100764 	
+MGI:1316678	Rad1	RAD1 checkpoint DNA exonuclease	15		DNA damage checkpoint signaling			IBA	PTN000093171 	J:265628 	
+MGI:1316678	Rad1	RAD1 checkpoint DNA exonuclease	15		DNA damage checkpoint signaling			ISO	O60671 	J:164563 	
+MGI:1328356	Rad9a	RAD9 checkpoint clamp component A	19		DNA damage checkpoint signaling			ISO	Q99638 	J:164563 	
+MGI:1328356	Rad9a	RAD9 checkpoint clamp component A	19		DNA damage checkpoint signaling			ISS		J:65673 	
+MGI:1328356	Rad9a	RAD9 checkpoint clamp component A	19		DNA replication checkpoint signaling			IBA	PTN000391242 	J:265628 	
+MGI:1328356	Rad9a	RAD9 checkpoint clamp component A	19		mitotic intra-S DNA damage checkpoint signaling			IBA	PTN000391242 	J:265628 	
+MGI:1328356	Rad9a	RAD9 checkpoint clamp component A	19		mitotic intra-S DNA damage checkpoint signaling			IGI	P26306 	J:50119 	
+MGI:2385231	Rad9b	RAD9 checkpoint clamp component B	5		DNA damage checkpoint signaling			IEA	IPR007268 IPR026584 	J:72247 	
+MGI:2385231	Rad9b	RAD9 checkpoint clamp component B	5		DNA replication checkpoint signaling			IBA	PTN000391242 	J:265628 	
+MGI:2385231	Rad9b	RAD9 checkpoint clamp component B	5		mitotic intra-S DNA damage checkpoint signaling			IBA	PTN000391242 	J:265628 	
+MGI:1333807	Rad17	RAD17 checkpoint clamp loader component	13		DNA damage checkpoint signaling			IBA	PTN000255944 	J:265628 	
+MGI:1333807	Rad17	RAD17 checkpoint clamp loader component	13		mitotic DNA replication checkpoint signaling			IBA	PTN000255944 	J:265628 	
+MGI:1333807	Rad17	RAD17 checkpoint clamp loader component	13		mitotic intra-S DNA damage checkpoint signaling			ISO	O75943 	J:164563 	
+MGI:97890	Rad51	RAD51 recombinase	2		regulation of DNA damage checkpoint			NAS		J:320084 	
+MGI:1889294	Rbm38	RNA binding motif protein 38	2		DNA damage response, signal transduction by p53 class mediator resulting in cell cycle arrest			ISO	Q9H0Z9 	J:164563 	
+MGI:2384584	Rfwd3	ring finger and WD repeat domain 3	8		mitotic G1 DNA damage checkpoint signaling			ISO	Q6PCD5 	J:164563 	
+MGI:2384584	Rfwd3	ring finger and WD repeat domain 3	8		regulation of DNA damage checkpoint			ISO	Q6PCD5 	J:164563 	
+MGI:1915315	Rhno1	RAD9-HUS1-RAD1 interacting nuclear orphan 1	6		DNA damage checkpoint signaling			IBA	PTN002441097 	J:265628 	
+MGI:1915315	Rhno1	RAD9-HUS1-RAD1 interacting nuclear orphan 1	6		DNA damage checkpoint signaling			ISO	Q9BSD3 	J:164563 	
+MGI:1916233	Rint1	RAD50 interactor 1	5		mitotic G2 DNA damage checkpoint signaling			ISO	Q6NUQ1 	J:164563 	
+MGI:1914403	Rnaseh2b	ribonuclease H2, subunit B	14		regulation of DNA damage checkpoint			IMP	MGI:4432164 	J:186986 	
+MGI:1339939	Rpa2	replication protein A2	4		mitotic G1 DNA damage checkpoint signaling			ISO	P15927 	J:164563 	
+MGI:1339939	Rpa2	replication protein A2	4		regulation of DNA damage checkpoint			ISO	P15927 	J:164563 	
+MGI:106022	Rpl26	ribosomal protein L26	11		DNA damage response, signal transduction by p53 class mediator resulting in cell cycle arrest			IDA		J:240282 	
+MGI:106022	Rpl26	ribosomal protein L26	11		DNA damage response, signal transduction by p53 class mediator resulting in cell cycle arrest			ISO	P61254 	J:164563 	
+MGI:1915191	Rps27l	ribosomal protein S27-like	9		mitotic G1 DNA damage checkpoint signaling			ISO	Q71UM5 	J:164563 	
+MGI:2384788	Sde2	SDE2 telomere maintenance homolog (S. pombe)	1		mitotic G1 DNA damage checkpoint signaling			ISO	Q6IQ49 	J:164563 	
+MGI:1921979	Setmar	SET domain without mariner transposase fusion	6		mitotic DNA integrity checkpoint signaling			ISO	Q53H47 	J:164563 	
+MGI:2152419	Stk33	serine/threonine kinase 33	7		mitotic DNA damage checkpoint signaling			IBA	PTN005196447 	J:265628 	
+MGI:1915842	Syf2	SYF2 homolog, RNA splicing factor (S. cerevisiae)	4		mitotic G2 DNA damage checkpoint signaling			IMP	MGI:3904866 	J:187030 	
+MGI:1914490	Taok1	TAO kinase 1	11		mitotic G2 DNA damage checkpoint signaling			ISO	Q7L7X3 	J:164563 	
+MGI:1915919	Taok2	TAO kinase 2	7		mitotic G2 DNA damage checkpoint signaling			ISO	Q9UL54 	J:164563 	
+MGI:3041177	Taok3	TAO kinase 3	5		mitotic G2 DNA damage checkpoint signaling			ISO	Q9H2K8 	J:164563 	
+MGI:1919668	Thoc1	THO complex 1	18		negative regulation of DNA damage checkpoint			ISO	Q96FV9 	J:164563 	
+MGI:1351333	Thoc5	THO complex 5	11		negative regulation of DNA damage checkpoint			ISO	Q13769 	J:164563 	
+MGI:1924261	Ticrr	TOPBP1-interacting checkpoint and replication regulator	7		mitotic DNA replication checkpoint signaling			IBA	PTN001470787 	J:265628 	
+MGI:1924261	Ticrr	TOPBP1-interacting checkpoint and replication regulator	7		mitotic G2 DNA damage checkpoint signaling			IBA	PTN001470787 	J:265628 	
+MGI:1321393	Timeless	timeless circadian clock 1	10		DNA replication checkpoint signaling			IBA	PTN000533813 	J:265628 	
+MGI:1921571	Tipin	timeless interacting protein	9		DNA damage checkpoint signaling			IMP		J:120297 	
+MGI:1921571	Tipin	timeless interacting protein	9		DNA replication checkpoint signaling			IBA	PTN000325249 	J:265628 	
+MGI:1921571	Tipin	timeless interacting protein	9		DNA replication checkpoint signaling			ISO	Q9BVW5 	J:164563 	
+MGI:1921571	Tipin	timeless interacting protein	9		mitotic intra-S DNA damage checkpoint signaling			ISO	Q9BVW5 	J:164563 	
+MGI:1915087	Tiprl	TIP41, TOR signalling pathway regulator-like (S. cerevisiae)	1		DNA damage checkpoint signaling			ISO	O75663 	J:164563 	
+MGI:1920018	Topbp1	topoisomerase (DNA) II binding protein 1	9		mitotic DNA replication checkpoint signaling			IBA	PTN000339410 	J:265628 	
+MGI:1920018	Topbp1	topoisomerase (DNA) II binding protein 1	9		mitotic G2 DNA damage checkpoint signaling			IBA	PTN000339410 	J:265628 	
+MGI:1328317	Trex1	three prime repair exonuclease 1	9		DNA damage checkpoint signaling			IMP		J:141548 	
+MGI:1328317	Trex1	three prime repair exonuclease 1	9		mitotic G1 DNA damage checkpoint signaling			IMP	MGI:3052754 	J:208222 	
+MGI:1328317	Trex1	three prime repair exonuclease 1	9		mitotic G1 DNA damage checkpoint signaling			IMP		J:141548 	
+MGI:1890659	Trim39	tripartite motif-containing 39	17		mitotic G2 DNA damage checkpoint signaling			ISO	Q9HCM9 	J:164563 	
+MGI:98834	Trp53	transformation related protein 53	11		DNA damage response, signal transduction by p53 class mediator resulting in cell cycle arrest	happens in fibroblast		IGI	MGI:108027 	J:100764 	
+MGI:98834	Trp53	transformation related protein 53	11		DNA damage response, signal transduction by p53 class mediator resulting in cell cycle arrest			ISO	P04637 	J:164563 	
+MGI:98834	Trp53	transformation related protein 53	11		mitotic G1 DNA damage checkpoint signaling	happens in fibroblast		IMP		J:100764 	
+MGI:98834	Trp53	transformation related protein 53	11		mitotic G1 DNA damage checkpoint signaling			ISO	P04637 	J:164563 	
+MGI:1351320	Trp53bp1	transformation related protein 53 binding protein 1	2		DNA damage checkpoint signaling			IBA	PTN001809041 	J:265628 	
+MGI:1914740	Ufl1	UFM1 specific ligase 1	4		DNA damage checkpoint signaling			ISO	O94874 	J:164563 	
+MGI:103185	Uimc1	ubiquitin interaction motif containing 1	13		mitotic G2 DNA damage checkpoint signaling			ISO	Q96RL1 	J:164563 	
+MGI:2442293	Usp28	ubiquitin specific peptidase 28	9		DNA damage checkpoint signaling			IBA	PTN002768249 	J:265628 	
+MGI:2442293	Usp28	ubiquitin specific peptidase 28	9		DNA damage checkpoint signaling			ISO	Q96RU2 	J:164563 	
+MGI:2387357	Wac	WW domain containing adaptor with coiled-coil	18		mitotic G1 DNA damage checkpoint signaling			ISO	Q9BTA9 	J:164563 	
+MGI:1926186	Wdr76	WD repeat domain 76	2		regulation of DNA damage checkpoint			IBA	PTN000381277 	J:265628 	
+MGI:103557	Xpc	xeroderma pigmentosum, complementation group C	6		mitotic intra-S DNA damage checkpoint signaling			IGI	MGI:101816 	J:94447 	
+MGI:1914233	Zfp830	zinc finger protein 830	11		mitotic DNA damage checkpoint signaling			IBA	PTN000328334 	J:265628 	
+MGI:1914233	Zfp830	zinc finger protein 830	11		mitotic DNA damage checkpoint signaling	happens in crypt of lieberkuhn		IMP	MGI:3583779 	J:185339 	
+MGI:1914233	Zfp830	zinc finger protein 830	11		mitotic DNA replication checkpoint signaling			IBA	PTN000328334 	J:265628 	
+MGI:1914233	Zfp830	zinc finger protein 830	11		mitotic DNA replication checkpoint signaling			IMP		J:171647 	
+
