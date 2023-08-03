@@ -1,0 +1,1352 @@
+---
+title: "Fitting Both Cells"
+author: "Joshua Eugenio"
+date: "2023-07-19"
+output: html_document
+editor_options: 
+  chunk_output_type: inline
+---
+
+
+```{r}
+library(cmdstanr)
+library(bayesplot)
+library(tidyverse)
+library(deSolve)
+library(rstudioapi)
+library(conflicted)
+
+options(mc.cores = parallel::detectCores())
+setwd(dirname(getActiveDocumentContext()$path))
+
+```
+
+# Loading Data
+
+```{r}
+
+S2<-S %>% group_by(Time) %>% summarise(mean = mean(Score),sd = sd(Score))
+
+
+plot(x=S2$Time,y=S2$mean,type="p", pch=19,cex = 0.5, ylab="Pt concentration in Plasma (µM)", xlab="Time in hours",main = "",xlim=c(0,700),ylim=c(0,60))
+
+arrows(S2$Time, S2$mean - S2$sd, S2$Time, S2$mean + S2$sd, length=0, angle=90, code=3, lty=2, lwd=0.8)
+
+Accu2<-Accu %>% group_by(Time) %>% summarise(mean = mean(Score),sd = sd(Score))
+
+
+plot(x=Accu2$Time,y=Accu2$mean,type="p", pch=19,cex = 0.5, ylab="Pt in Kidney (µg/Protein)", xlab="Time in hours",main = "",xlim=c(0,700),ylim=c(0,200))
+
+arrows(Accu2$Time, Accu2$mean - Accu2$sd, Accu2$Time, Accu2$mean + Accu2$sd, length=0, angle=90, code=3, lty=2, lwd=0.8)
+
+```
+
+##A.) CPT
+
+```{r}
+
+conflicts_prefer(dplyr::filter)
+
+SE_calc <- function(x){(sd(x)/sqrt(n()))}
+
+Score_data_CPT = read.csv("Inputdata/Cisplatin_Exposure_data.csv") %>% filter(Segment == "CPT") %>% group_by(timepoints,StateVar) %>% summarize(Score=mean(data4modelInterpol)) %>% filter(timepoints !=1)
+
+SD_data_CPT = read.csv("Inputdata/Cisplatin_Exposure_data.csv") %>% filter(Segment == "CPT") %>% group_by(timepoints,StateVar) %>% summarize(SD= SE_calc(data4modelInterpol)) %>% filter(timepoints !=1)
+
+DDRep_data_CPT <- Score_data_CPT %>% filter(StateVar == "DD" | StateVar == "Rep") %>% pivot_wider(names_from = "StateVar", values_from = "Score") %>% ungroup()#  %>% select(-timepoints) %>% as.matrix()
+
+DDRep_sd_CPT <- SD_data_CPT %>% filter(StateVar == "DD" | StateVar == "Rep") %>% pivot_wider(names_from = "StateVar", values_from = "SD") %>% ungroup()#  %>% select(-timepoints) %>% as.matrix()
+
+timepoints_data_CPT <- Score_data_CPT %>% filter(StateVar == "DD" | StateVar == "Rep") %>% pivot_wider(names_from = "StateVar", values_from = "Score") %>% ungroup() %>% pull(timepoints)
+
+
+ggplot(cbind(DDRep_data_CPT %>% pivot_longer(2:3,names_to = "var",values_to = "Score"), DDRep_sd_CPT %>% pivot_longer(2:3,names_to = "var",values_to = "SD")%>% select(SD)), aes(x=timepoints,y=Score))+
+  geom_point(col = "#ed7168") +
+  geom_errorbar(col = "#ed7168",aes(y = Score, ymin = Score - SD, ymax = Score + SD, fill=var), lty=2)+
+  facet_wrap(vars(var),scales = "free_y") +
+  xlab("Time in days")
+
+```
+## B. PPT
+
+```{r}
+timepoints_data_CPT
+
+conflicts_prefer(dplyr::filter)
+
+SE_calc <- function(x){(sd(x)/sqrt(n()))}
+
+Score_data_PPT = read.csv("Inputdata/Cisplatin_Exposure_data.csv") %>% filter(Segment == "PPT") %>% group_by(timepoints,StateVar) %>% arrange(.by_group = TRUE) %>% summarize(Score=mean(data4modelInterpol)) %>% filter(timepoints !=1)
+
+SD_data_PPT = read.csv("Inputdata/Cisplatin_Exposure_data.csv") %>% filter(Segment == "PPT") %>% group_by(timepoints,StateVar) %>% summarize(SD= sd(data4modelInterpol)) %>% filter(timepoints !=1)
+
+DDRep_data_PPT <- Score_data_PPT %>% filter(StateVar == "DD" | StateVar == "Rep") %>% pivot_wider(names_from = "StateVar", values_from = "Score") %>% ungroup()#  %>% select(-timepoints) %>% as.matrix()
+
+DDRep_sd_PPT <- SD_data_PPT %>% filter(StateVar == "DD" | StateVar == "Rep") %>% pivot_wider(names_from = "StateVar", values_from = "SD") %>% ungroup() #  %>% select(-timepoints) %>% as.matrix()
+
+timepoints_data_PPT <- Score_data_PPT %>% filter(StateVar == "DD" | StateVar == "Rep") %>% pivot_wider(names_from = "StateVar", values_from = "Score") %>% ungroup() %>% pull(timepoints)
+
+#DDRep_data_PPT[5,2] <- 0.20
+
+ggplot(cbind(DDRep_data_PPT %>% pivot_longer(2:3,names_to = "var",values_to = "Score"), DDRep_sd_PPT %>% pivot_longer(2:3,names_to = "var",values_to = "SD")%>% select(SD)), aes(x=timepoints,y=Score))+
+  geom_point(col="#00b3ba") +
+  geom_errorbar(col="#00b3ba",aes(y = Score, ymin = Score - SD, ymax = Score + SD, fill=var), lty=2) +
+  facet_wrap(vars(var),scales = "free_y")
+  
+```
+
+
+
+# 1.) LDMR without n
+
+## A.) Inferred parameters
+
+```{r}
+
+#fit_LDMR <- readRDS("Output/Full_500Both_Cells_LDMR2023-08-02.RDS")
+#fit_LDMR <- readRDS("Output/Full_10000Both_Cells_LDMR2023-08-02.RDS")
+
+
+(fit_pk_trace_LDMR <- mcmc_trace(fit_LDMR$draws(format="df", variable = c("ks_DD_CPT" , "ks_DDkid_CPT",  "kd_DDrep_CPT" , "kd_DD_CPT", "ks_rep_CPT" , "ks_repDD_CPT", "km_rep_CPT",  "kd_rep_CPT", "ks_DD_PPT" , "ks_DDkid_PPT",  "kd_DDrep_PPT" , "kd_DD_PPT", "ks_rep_PPT" , "ks_repDD_PPT", "km_rep_PPT",  "kd_rep_PPT") ,inc_warmup = FALSE))) + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+
+(fit_pk_density_LDMR <- mcmc_dens_overlay(fit_LDMR$draws(format="df",variables = c("ks_DD_CPT" , "ks_DDkid_CPT",  "kd_DDrep_CPT" , "kd_DD_CPT", "ks_rep_CPT" , "ks_repDD_CPT", "km_rep_CPT",  "kd_rep_CPT", "ks_DD_PPT" , "ks_DDkid_PPT",  "kd_DDrep_PPT" , "kd_DD_PPT", "ks_rep_PPT" , "ks_repDD_PPT", "km_rep_PPT",  "kd_rep_PPT"),inc_warmup = FALSE)))
+
+draws_pk_LDMR <- fit_LDMR$draws(format = "draws_matrix",variables = c("ks_DD_CPT" , "ks_DDkid_CPT",  "kd_DDrep_CPT" , "kd_DD_CPT", "ks_rep_CPT" , "ks_repDD_CPT", "km_rep_CPT",  "kd_rep_CPT", "ks_DD_PPT" , "ks_DDkid_PPT",  "kd_DDrep_PPT" , "kd_DD_PPT", "ks_rep_PPT" , "ks_repDD_PPT", "km_rep_PPT",  "kd_rep_PPT"),)
+
+fit_pk_summary <- as.data.frame(fit_LDMR$summary())
+sumPar_LDMR<-data.frame(fit_pk_summary)%>% column_to_rownames(var = "variable") %>% slice(1:17)
+sumPar_LDMR[,c(1,3,7)]
+cat(paste("ks_DD_CPT ~ normal(",sumPar_LDMR[["ks_DD_CPT",1]],",",sumPar_LDMR[["ks_DD_CPT",2]],");
+      ks_DDkid_CPT ~ normal(",sumPar_LDMR[["ks_DDkid_CPT",1]],",",sumPar_LDMR[["ks_DDkid_CPT",2]],");
+      kd_DDrep_CPT ~ normal(",sumPar_LDMR[["kd_DDrep_CPT",1]],",",sumPar_LDMR[["kd_DDrep_CPT",2]],");
+      kd_DD_CPT ~ normal(",sumPar_LDMR[["kd_DD_CPT",1]],",",sumPar_LDMR[["kd_DD_CPT",2]],");
+      ks_rep_CPT ~ normal(",sumPar_LDMR[["ks_rep_CPT",1]],",",sumPar_LDMR[["ks_rep_CPT",2]],");
+      ks_repDD_CPT ~ normal(",sumPar_LDMR[["ks_repDD_CPT",1]],",",sumPar_LDMR[["ks_repDD_CPT",2]],");
+      km_rep_CPT ~ normal(",sumPar_LDMR[["km_rep_CPT",1]],",",sumPar_LDMR[["km_rep_CPT",2]],");
+      kd_rep_CPT ~ normal(",sumPar_LDMR[["kd_rep_CPT",1]],",",sumPar_LDMR[["kd_rep_CPT",2]],");
+      ks_DD_PPT ~ normal(",sumPar_LDMR[["ks_DD_PPT",1]],",",sumPar_LDMR[["ks_DD_PPT",2]],");
+      ks_DDkid_PPT ~ normal(",sumPar_LDMR[["ks_DDkid_PPT",1]],",",sumPar_LDMR[["ks_DDkid_PPT",2]],");
+      kd_DDrep_PPT ~ normal(",sumPar_LDMR[["kd_DDrep_PPT",1]],",",sumPar_LDMR[["kd_DDrep_PPT",2]],");
+      kd_DD_PPT ~ normal(",sumPar_LDMR[["kd_DD_PPT",1]],",",sumPar_LDMR[["kd_DD_PPT",2]],");
+      ks_rep_PPT ~ normal(",sumPar_LDMR[["ks_rep_PPT",1]],",",sumPar_LDMR[["ks_rep_PPT",2]],");
+      ks_repDD_PPT ~ normal(",sumPar_LDMR[["ks_repDD_PPT",1]],",",sumPar_LDMR[["ks_repDD_PPT",2]],");
+      km_rep_PPT ~ normal(",sumPar_LDMR[["km_rep_PPT",1]],",",sumPar_LDMR[["km_rep_PPT",2]],");
+      kd_rep_PPT ~ normal(",sumPar_LDMR[["kd_rep_PPT",1]],",",sumPar_LDMR[["kd_rep_PPT",2]],");",
+      sep =""))
+
+#good_parameters <- as.data.frame(draws_pk[510:515,]) %>% pivot_longer(cols = everything(),names_to = "par", values_to = "value") %>% group_by(par) %>% #summarise(mean_value = mean(value),sd_value=sd(value)) %>% column_to_rownames(var = "par")
+
+```
+
+## B.) LDMR Fitting
+
+```{r}
+
+  inistate = c(Plasma = 45,
+                KidneyPt = 0,
+                AccuPt = 0,
+                DD = 0,
+                Rep = 0)
+
+PK = function(timepoint,state,parameters){
+  with(as.list(c(state, parameters)),{ 
+    
+  dPlasma= KidneyPt * 0.022052503115 - Plasma * (1.13252628565 + 0.1813857857015)
+  dKidneyPt = AccuPt * + 0.0003284364143375 + Plasma * 1.13252628565  - KidneyPt * (0.022052503115 + 0.00181720824448 + 0.001673191758)
+  dAccuPt = KidneyPt * 0.001673191758 - AccuPt * 0.0003284364143375
+  dDD = ks_DD + (ks_DDkid * (KidneyPt + AccuPt)) - Rep * DD* kd_DDrep - DD * (kd_DD)
+  dRep = ks_rep + ((ks_repDD * DD)/(km_rep + DD)) - Rep * kd_rep
+  
+
+       list(c(dPlasma,dKidneyPt,dAccuPt,dDD,dRep))})}
+
+finish = seq(0,700,by = 1)
+
+# Repair CPT
+
+plot(x=DDRep_data_CPT$timepoints,y=DDRep_data_CPT$Rep,type="p", pch=19, ylab="Repair Score", xlab="Time in hours",main = "Score simulation with CPT",xlim=c(0,700),ylim=c(0,0.2))
+arrows(DDRep_data_CPT$timepoints, DDRep_data_CPT$Rep - DDRep_sd_CPT$Rep, DDRep_data_CPT$timepoints, DDRep_data_CPT$Rep + DDRep_sd_CPT$Rep, length=0, angle=90, code=3, lty=2, lwd=0.8)
+#legend(x = "topright",          # Position
+#       legend = c("Obs", "Sim mean", "Sim draws"),  # Legend texts
+#       lty = c(NA, 1,1),           # Line types
+#       pch=c(19,NA,NA),
+#       col = c("black", "red","blue"),           # Line colors
+#       lwd = 2, cex = 0.85)
+
+for(i in 1:50){
+  
+  j = sample(1:nrow(draws_pk_LDMR),1)
+  
+  pars = c(ks_DD = draws_pk_LDMR[[j,1]],
+           ks_DDkid = draws_pk_LDMR[[j,2]],
+           kd_DDrep = draws_pk_LDMR[[j,3]],
+           kd_DD = draws_pk_LDMR[[j,4]],
+           ks_rep = draws_pk_LDMR[[j,5]],
+           ks_repDD = draws_pk_LDMR[[j,6]],
+           km_rep = draws_pk_LDMR[[j,7]],
+           kd_rep = draws_pk_LDMR[[j,8]])
+
+  #scaling = stanfit_draws$scale_kid[j]
+  out = ode(y=inistate, times=finish, func=PK, parms=pars)
+  lines(data.frame(out)%>% mutate(totKidney = (Rep)) %>% select(time,totKidney),main="", ylab="x", col = alpha("blue",0.1),lty=1)}
+
+  pars = c( ks_DD = sumPar_LDMR[["ks_DD_CPT",1]],
+            ks_DDkid = sumPar_LDMR[["ks_DDkid_CPT",1]],
+            kd_DDrep = sumPar_LDMR[["kd_DDrep_CPT",1]],
+            kd_DD = sumPar_LDMR[["kd_DD_CPT",1]],
+            ks_rep = sumPar_LDMR[["ks_rep_CPT",1]],
+            ks_repDD = sumPar_LDMR[["ks_repDD_CPT",1]],
+            km_rep = sumPar_LDMR[["km_rep_CPT",1]],
+            kd_rep = sumPar_LDMR[["kd_rep_CPT",1]])
+
+out = ode(y=inistate, times=finish, func=PK, parms=pars)
+lines(data.frame(out)%>% mutate(totKidney = (Rep)) %>%
+         select(time,totKidney), main="", ylab="", col = "red") 
+
+# DNA-Damage CPT
+
+plot(x=DDRep_data_CPT$timepoints,y=DDRep_data_CPT$DD,type="p", pch=19, ylab="DNA-Damage Score", xlab="Time in hours",main = "Score simulation with CPT",xlim=c(0,700),ylim=c(0,1.5)) #ylim=c(0,0.02)) #
+arrows(DDRep_data_CPT$timepoints, DDRep_data_CPT$DD - DDRep_sd_CPT$DD, DDRep_data_CPT$timepoints, DDRep_data_CPT$DD + DDRep_sd_CPT$DD, length=0, angle=90, code=3, lty=2, lwd=0.8)
+#legend(x = "topright",          # Position
+#       legend = c("Obs", "Sim mean", "Sim draws"),  # Legend texts
+#       lty = c(NA, 1,1),           # Line types
+#       pch=c(19,NA,NA),
+#       col = c("black", "red","blue"),           # Line colors
+#       lwd = 2, cex = 0.85)
+
+for(i in 1:50){
+  
+  j = sample(1:nrow(draws_pk_LDMR),1)
+  
+  pars = c(ks_DD = draws_pk_LDMR[[j,1]],
+           ks_DDkid = draws_pk_LDMR[[j,2]],
+           kd_DDrep = draws_pk_LDMR[[j,3]],
+           kd_DD = draws_pk_LDMR[[j,4]],
+           ks_rep = draws_pk_LDMR[[j,5]],
+           ks_repDD = draws_pk_LDMR[[j,6]],
+           km_rep = draws_pk_LDMR[[j,7]],
+           kd_rep = draws_pk_LDMR[[j,8]])
+  
+  
+  #scaling = stanfit_draws$scale_kid[j]
+  out = ode(y=inistate, times=finish, func=PK, parms=pars)
+  lines(data.frame(out)%>% mutate(totKidney = (DD)) %>% select(time,totKidney),main="", ylab="x", col = alpha("blue",0.1),lty=1)}
+
+  pars = c( ks_DD = sumPar_LDMR[["ks_DD_CPT",1]],
+            ks_DDkid = sumPar_LDMR[["ks_DDkid_CPT",1]],
+            kd_DDrep = sumPar_LDMR[["kd_DDrep_CPT",1]],
+            kd_DD = sumPar_LDMR[["kd_DD_CPT",1]],
+            ks_rep = sumPar_LDMR[["ks_rep_CPT",1]],
+            ks_repDD = sumPar_LDMR[["ks_repDD_CPT",1]],
+            km_rep = sumPar_LDMR[["km_rep_CPT",1]],
+            kd_rep = sumPar_LDMR[["kd_rep_CPT",1]])
+
+out = ode(y=inistate, times=finish, func=PK, parms=pars)
+lines(data.frame(out)%>% mutate(totKidney = (DD)) %>%
+         select(time,totKidney), main="", ylab="", col = "red") 
+
+out[time=25,]
+
+# Repair PPT
+
+plot(x=DDRep_data_PPT$timepoints,y=DDRep_data_PPT$Rep,type="p", pch=19, ylab="Repair Score", xlab="Time in hours",main = "Score simulation with PPT",xlim=c(0,700),ylim=c(0,0.2))
+arrows(DDRep_data_PPT$timepoints, DDRep_data_PPT$Rep - DDRep_sd_PPT$Rep, DDRep_data_PPT$timepoints, DDRep_data_PPT$Rep + DDRep_sd_PPT$Rep, length=0, angle=90, code=3, lty=2, lwd=0.8)
+#legend(x = "topright",          # Position
+#       legend = c("Obs", "Sim mean", "Sim draws"),  # Legend texts
+#       lty = c(NA, 1,1),           # Line types
+#       pch=c(19,NA,NA),
+#       col = c("black", "red","blue"),           # Line colors
+#       lwd = 2, cex = 0.85)
+
+for(i in 1:50){
+  
+  j = sample(1:nrow(draws_pk_LDMR),1)
+  
+  pars = c(ks_DD = draws_pk_LDMR[[j,9]],
+           ks_DDkid = draws_pk_LDMR[[j,10]],
+           kd_DDrep = draws_pk_LDMR[[j,11]],
+           kd_DD = draws_pk_LDMR[[j,12]],
+           ks_rep = draws_pk_LDMR[[j,13]],
+           ks_repDD = draws_pk_LDMR[[j,14]],
+           km_rep = draws_pk_LDMR[[j,15]],
+           kd_rep = draws_pk_LDMR[[j,16]])
+
+  #scaling = stanfit_draws$scale_kid[j]
+  out2 = ode(y=inistate, times=finish, func=PK, parms=pars)
+  lines(data.frame(out2)%>% mutate(totKidney = (Rep)) %>% select(time,totKidney),main="", ylab="x", col = alpha("blue",0.1),lty=1)}
+
+  pars = c( ks_DD = sumPar_LDMR[["ks_DD_PPT",1]],
+            ks_DDkid = sumPar_LDMR[["ks_DDkid_PPT",1]],
+            kd_DDrep = sumPar_LDMR[["kd_DDrep_PPT",1]],
+            kd_DD = sumPar_LDMR[["kd_DD_PPT",1]],
+            ks_rep = sumPar_LDMR[["ks_rep_PPT",1]],
+            ks_repDD = sumPar_LDMR[["ks_repDD_PPT",1]],
+            km_rep = sumPar_LDMR[["km_rep_PPT",1]],
+            kd_rep = sumPar_LDMR[["kd_rep_PPT",1]])
+
+out2 = ode(y=inistate, times=finish, func=PK, parms=pars)
+lines(data.frame(out2)%>% mutate(totKidney = (Rep)) %>%
+         select(time,totKidney), main="", ylab="", col = "red") 
+
+# DNA-Damage PPT
+
+plot(x=DDRep_data_PPT$timepoints,y=DDRep_data_PPT$DD,type="p", pch=19, ylab="DNA-Damage Score", xlab="Time in hours",main = "Score simulation with PPT",xlim=c(0,700),ylim=c(0,1.5)) #ylim=c(0,0.02)) #
+arrows(DDRep_data_PPT$timepoints, DDRep_data_PPT$DD - DDRep_sd_PPT$DD, DDRep_data_PPT$timepoints, DDRep_data_PPT$DD + DDRep_sd_PPT$DD, length=0, angle=90, code=3, lty=2, lwd=0.8)
+#legend(x = "topright",          # Position
+#       legend = c("Obs", "Sim mean", "Sim draws"),  # Legend texts
+#       lty = c(NA, 1,1),           # Line types
+#       pch=c(19,NA,NA),
+#       col = c("black", "red","blue"),           # Line colors
+#       lwd = 2, cex = 0.85)
+
+for(i in 1:50){
+  
+  j = sample(1:nrow(draws_pk_LDMR),1)
+  
+  pars = c(ks_DD = draws_pk_LDMR[[j,9]],
+           ks_DDkid = draws_pk_LDMR[[j,10]],
+           kd_DDrep = draws_pk_LDMR[[j,11]],
+           kd_DD = draws_pk_LDMR[[j,12]],
+           ks_rep = draws_pk_LDMR[[j,13]],
+           ks_repDD = draws_pk_LDMR[[j,14]],
+           km_rep = draws_pk_LDMR[[j,15]],
+           kd_rep = draws_pk_LDMR[[j,16]])
+
+  #scaling = stanfit_draws$scale_kid[j]
+  out2 = ode(y=inistate, times=finish, func=PK, parms=pars)
+  lines(data.frame(out2)%>% mutate(totKidney = (DD)) %>% select(time,totKidney),main="", ylab="x", col = alpha("blue",0.1),lty=1)}
+
+  pars = c( ks_DD = sumPar_LDMR[["ks_DD_PPT",1]],
+            ks_DDkid = sumPar_LDMR[["ks_DDkid_PPT",1]],
+            kd_DDrep = sumPar_LDMR[["kd_DDrep_PPT",1]],
+            kd_DD = sumPar_LDMR[["kd_DD_PPT",1]],
+            ks_rep = sumPar_LDMR[["ks_rep_PPT",1]],
+            ks_repDD = sumPar_LDMR[["ks_repDD_PPT",1]],
+            km_rep = sumPar_LDMR[["km_rep_PPT",1]],
+            kd_rep = sumPar_LDMR[["kd_rep_PPT",1]])
+
+out2 = ode(y=inistate, times=finish, func=PK, parms=pars)
+lines(data.frame(out2)%>% mutate(totKidney = (DD)) %>%
+         select(time,totKidney), main="", ylab="", col = "red") 
+
+out2[time=25,]
+
+```
+
+
+# 2.) LDLR without n
+
+## A.) Inferred parameters
+
+```{r}
+
+
+#fit_LDLR <- readRDS("Output/Full_500Both_Cells_LDLR2023-08-02.RDS")
+#fit_LDLR <- readRDS("Output/Full_10000Both_Cells_LDLR2023-08-02.RDS")
+
+(fit_pk_trace_LDLR <- mcmc_trace(fit_LDLR$draws(format="df", variable = c("ks_DD_CPT" , "ks_DDkid_CPT",  "kd_DDrep_CPT" , "kd_DD_CPT", "ks_rep_CPT" , "ks_repDD_CPT",  "kd_rep_CPT", "ks_DD_PPT" , "ks_DDkid_PPT",  "kd_DDrep_PPT" , "kd_DD_PPT", "ks_rep_PPT" , "ks_repDD_PPT",  "kd_rep_PPT") ,inc_warmup = FALSE))) + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+
+(fit_pk_density_LDLR <- mcmc_dens_overlay(fit_LDLR$draws(format="df",variables = c("ks_DD_CPT" , "ks_DDkid_CPT",  "kd_DDrep_CPT" , "kd_DD_CPT", "ks_rep_CPT" , "ks_repDD_CPT",  "kd_rep_CPT", "ks_DD_PPT" , "ks_DDkid_PPT",  "kd_DDrep_PPT" , "kd_DD_PPT", "ks_rep_PPT" , "ks_repDD_PPT",  "kd_rep_PPT"),inc_warmup = FALSE)))
+
+draws_pk_LDLR <- fit_LDLR$draws(format = "draws_matrix",variables = c("ks_DD_CPT" , "ks_DDkid_CPT",  "kd_DDrep_CPT" , "kd_DD_CPT", "ks_rep_CPT" , "ks_repDD_CPT",  "kd_rep_CPT", "ks_DD_PPT" , "ks_DDkid_PPT",  "kd_DDrep_PPT" , "kd_DD_PPT", "ks_rep_PPT" , "ks_repDD_PPT",  "kd_rep_PPT"),)
+
+fit_pk_summary <- fit_LDLR$summary()
+sumPar_LDLR<-data.frame(fit_pk_summary)%>% column_to_rownames(var = "variable") %>% slice(1:15)
+sumPar_LDLR[,c(1,3,7)]
+cat(paste("ks_DD_CPT ~ normal(",sumPar_LDLR[["ks_DD_CPT",1]],",",sumPar_LDLR[["ks_DD_CPT",2]],");
+      ks_DDkid_CPT ~ normal(",sumPar_LDLR[["ks_DDkid_CPT",1]],",",sumPar_LDLR[["ks_DDkid_CPT",2]],");
+      kd_DDrep_CPT ~ normal(",sumPar_LDLR[["kd_DDrep_CPT",1]],",",sumPar_LDLR[["kd_DDrep_CPT",2]],");
+      kd_DD_CPT ~ normal(",sumPar_LDLR[["kd_DD_CPT",1]],",",sumPar_LDLR[["kd_DD_CPT",2]],");
+      ks_rep_CPT ~ normal(",sumPar_LDLR[["ks_rep_CPT",1]],",",sumPar_LDLR[["ks_rep_CPT",2]],");
+      ks_repDD_CPT ~ normal(",sumPar_LDLR[["ks_repDD_CPT",1]],",",sumPar_LDLR[["ks_repDD_CPT",2]],");
+      kd_rep_CPT ~ normal(",sumPar_LDLR[["kd_rep_CPT",1]],",",sumPar_LDLR[["kd_rep_CPT",2]],");
+      ks_DD_PPT ~ normal(",sumPar_LDLR[["ks_DD_PPT",1]],",",sumPar_LDLR[["ks_DD_PPT",2]],");
+      ks_DDkid_PPT ~ normal(",sumPar_LDLR[["ks_DDkid_PPT",1]],",",sumPar_LDLR[["ks_DDkid_PPT",2]],");
+      kd_DDrep_PPT ~ normal(",sumPar_LDLR[["kd_DDrep_PPT",1]],",",sumPar_LDLR[["kd_DDrep_PPT",2]],");
+      kd_DD_PPT ~ normal(",sumPar_LDLR[["kd_DD_PPT",1]],",",sumPar_LDLR[["kd_DD_PPT",2]],");
+      ks_rep_PPT ~ normal(",sumPar_LDLR[["ks_rep_PPT",1]],",",sumPar_LDLR[["ks_rep_PPT",2]],");
+      ks_repDD_PPT ~ normal(",sumPar_LDLR[["ks_repDD_PPT",1]],",",sumPar_LDLR[["ks_repDD_PPT",2]],");
+      kd_rep_PPT ~ normal(",sumPar_LDLR[["kd_rep_PPT",1]],",",sumPar_LDLR[["kd_rep_PPT",2]],");",
+      sep =""))
+
+#good_parameters <- as.data.frame(draws_pk[510:515,]) %>% pivot_longer(cols = everything(),names_to = "par", values_to = "value") %>% group_by(par) %>% #summarise(mean_value = mean(value),sd_value=sd(value)) %>% column_to_rownames(var = "par")
+
+```
+
+## B.) LDLR Fitting
+
+```{r}
+
+  inistate = c(Plasma = 45,
+                KidneyPt = 0,
+                AccuPt = 0,
+                DD = 0,
+                Rep = 0)
+
+PK = function(timepoint,state,parameters){
+  with(as.list(c(state, parameters)),{ 
+    
+  dPlasma= KidneyPt * 0.022052503115 - Plasma * (1.13252628565 + 0.1813857857015)
+  dKidneyPt = AccuPt * + 0.0003284364143375 + Plasma * 1.13252628565  - KidneyPt * (0.022052503115 + 0.00181720824448 + 0.001673191758)
+  dAccuPt = KidneyPt * 0.001673191758 - AccuPt * 0.0003284364143375
+  dDD = ks_DD + (ks_DDkid * (KidneyPt + AccuPt)) - Rep * DD* kd_DDrep - DD * (kd_DD)
+  dRep = ks_rep + (ks_repDD * DD) - Rep * kd_rep
+  
+
+       list(c(dPlasma,dKidneyPt,dAccuPt,dDD,dRep))})}
+
+finish = seq(0,700,by = 1)
+
+# Repair CPT
+
+plot(x=DDRep_data_CPT$timepoints,y=DDRep_data_CPT$Rep,type="p", pch=19, ylab="Repair Score", xlab="Time in hours",main = "Score simulation for CPT cell types for LDLR model",xlim=c(0,700),ylim=c(0,0.2))
+arrows(DDRep_data_CPT$timepoints, DDRep_data_CPT$Rep - DDRep_sd_CPT$Rep, DDRep_data_CPT$timepoints, DDRep_data_CPT$Rep + DDRep_sd_CPT$Rep, length=0, angle=90, code=3, lty=2, lwd=0.8)
+#legend(x = "topright",          # Position
+#       legend = c("Obs", "Sim mean", "Sim draws"),  # Legend texts
+#       lty = c(NA, 1,1),           # Line types
+#       pch=c(19,NA,NA),
+#       col = c("black", "red","blue"),           # Line colors
+#       lwd = 2, cex = 0.85)
+
+for(i in 1:50){
+  
+  j = sample(1:nrow(draws_pk_LDLR),1)
+  
+  pars = c(ks_DD = draws_pk_LDLR[[j,1]],
+           ks_DDkid = draws_pk_LDLR[[j,2]],
+           kd_DDrep = draws_pk_LDLR[[j,3]],
+           kd_DD = draws_pk_LDLR[[j,4]],
+           ks_rep = draws_pk_LDLR[[j,5]],
+           ks_repDD = draws_pk_LDLR[[j,6]],
+           kd_rep = draws_pk_LDLR[[j,7]])
+
+  #scaling = stanfit_draws$scale_kid[j]
+  out = ode(y=inistate, times=finish, func=PK, parms=pars)
+  lines(data.frame(out)%>% mutate(totKidney = (Rep)) %>% select(time,totKidney),main="", ylab="x", col = alpha("blue",0.1),lty=1)}
+
+  pars = c( ks_DD = sumPar_LDLR[["ks_DD_CPT",1]],
+            ks_DDkid = sumPar_LDLR[["ks_DDkid_CPT",1]],
+            kd_DDrep = sumPar_LDLR[["kd_DDrep_CPT",1]],
+            kd_DD = sumPar_LDLR[["kd_DD_CPT",1]],
+            ks_rep = sumPar_LDLR[["ks_rep_CPT",1]],
+            ks_repDD = sumPar_LDLR[["ks_repDD_CPT",1]],
+            kd_rep = sumPar_LDLR[["kd_rep_CPT",1]])
+
+out = ode(y=inistate, times=finish, func=PK, parms=pars)
+lines(data.frame(out)%>% mutate(totKidney = (Rep)) %>%
+         select(time,totKidney), main="", ylab="", col = "red") 
+
+# DNA-Damage CPT
+
+plot(x=DDRep_data_CPT$timepoints,y=DDRep_data_CPT$DD,type="p", pch=19, ylab="DNA-Damage Score", xlab="Time in hours",main = "Score simulation for CPT cell types for LDLR model",xlim=c(0,700),ylim=c(0,1.5)) #ylim=c(0,0.02)) #
+arrows(DDRep_data_CPT$timepoints, DDRep_data_CPT$DD - DDRep_sd_CPT$DD, DDRep_data_CPT$timepoints, DDRep_data_CPT$DD + DDRep_sd_CPT$DD, length=0, angle=90, code=3, lty=2, lwd=0.8)
+#legend(x = "topright",          # Position
+#       legend = c("Obs", "Sim mean", "Sim draws"),  # Legend texts
+#       lty = c(NA, 1,1),           # Line types
+#       pch=c(19,NA,NA),
+#       col = c("black", "red","blue"),           # Line colors
+#       lwd = 2, cex = 0.85)
+
+for(i in 1:50){
+  
+  j = sample(1:nrow(draws_pk_LDLR),1)
+  
+  pars = c(ks_DD = draws_pk_LDLR[[j,1]],
+           ks_DDkid = draws_pk_LDLR[[j,2]],
+           kd_DDrep = draws_pk_LDLR[[j,3]],
+           kd_DD = draws_pk_LDLR[[j,4]],
+           ks_rep = draws_pk_LDLR[[j,5]],
+           ks_repDD = draws_pk_LDLR[[j,6]],
+           kd_rep = draws_pk_LDLR[[j,7]])
+  
+  
+  #scaling = stanfit_draws$scale_kid[j]
+  out = ode(y=inistate, times=finish, func=PK, parms=pars)
+  lines(data.frame(out)%>% mutate(totKidney = (DD)) %>% select(time,totKidney),main="", ylab="x", col = alpha("blue",0.1),lty=1)}
+
+  pars = c( ks_DD = sumPar_LDLR[["ks_DD_CPT",1]],
+            ks_DDkid = sumPar_LDLR[["ks_DDkid_CPT",1]],
+            kd_DDrep = sumPar_LDLR[["kd_DDrep_CPT",1]],
+            kd_DD = sumPar_LDLR[["kd_DD_CPT",1]],
+            ks_rep = sumPar_LDLR[["ks_rep_CPT",1]],
+            ks_repDD = sumPar_LDLR[["ks_repDD_CPT",1]],
+            kd_rep = sumPar_LDLR[["kd_rep_CPT",1]])
+
+out = ode(y=inistate, times=finish, func=PK, parms=pars)
+lines(data.frame(out)%>% mutate(totKidney = (DD)) %>%
+         select(time,totKidney), main="", ylab="", col = "red") 
+
+out[time=25,]
+
+# Repair PPT
+
+plot(x=DDRep_data_PPT$timepoints,y=DDRep_data_PPT$Rep,type="p", pch=19, ylab="Repair Score", xlab="Time in hours",main = "Score simulation for PPT cell types for LDLR model",xlim=c(0,700),ylim=c(0,0.2))
+arrows(DDRep_data_PPT$timepoints, DDRep_data_PPT$Rep - DDRep_sd_PPT$Rep, DDRep_data_PPT$timepoints, DDRep_data_PPT$Rep + DDRep_sd_PPT$Rep, length=0, angle=90, code=3, lty=2, lwd=0.8)
+#legend(x = "topright",          # Position
+#       legend = c("Obs", "Sim mean", "Sim draws"),  # Legend texts
+#       lty = c(NA, 1,1),           # Line types
+#       pch=c(19,NA,NA),
+#       col = c("black", "red","blue"),           # Line colors
+#       lwd = 2, cex = 0.85)
+
+for(i in 1:50){
+  
+  j = sample(1:nrow(draws_pk_LDLR),1)
+  
+  pars = c(ks_DD = draws_pk_LDLR[[j,8]],
+           ks_DDkid = draws_pk_LDLR[[j,9]],
+           kd_DDrep = draws_pk_LDLR[[j,10]],
+           kd_DD = draws_pk_LDLR[[j,11]],
+           ks_rep = draws_pk_LDLR[[j,12]],
+           ks_repDD = draws_pk_LDLR[[j,13]],
+           kd_rep = draws_pk_LDLR[[j,14]])
+
+  #scaling = stanfit_draws$scale_kid[j]
+  out2 = ode(y=inistate, times=finish, func=PK, parms=pars)
+  lines(data.frame(out2)%>% mutate(totKidney = (Rep)) %>% select(time,totKidney),main="", ylab="x", col = alpha("blue",0.1),lty=1)}
+
+  pars = c( ks_DD = sumPar_LDLR[["ks_DD_PPT",1]],
+            ks_DDkid = sumPar_LDLR[["ks_DDkid_PPT",1]],
+            kd_DDrep = sumPar_LDLR[["kd_DDrep_PPT",1]],
+            kd_DD = sumPar_LDLR[["kd_DD_PPT",1]],
+            ks_rep = sumPar_LDLR[["ks_rep_PPT",1]],
+            ks_repDD = sumPar_LDLR[["ks_repDD_PPT",1]],
+            kd_rep = sumPar_LDLR[["kd_rep_PPT",1]])
+
+out2 = ode(y=inistate, times=finish, func=PK, parms=pars)
+lines(data.frame(out2)%>% mutate(totKidney = (Rep)) %>%
+         select(time,totKidney), main="", ylab="", col = "red") 
+
+# DNA-Damage PPT
+
+plot(x=DDRep_data_PPT$timepoints,y=DDRep_data_PPT$DD,type="p", pch=19, ylab="DNA-Damage Score", xlab="Time in hours",main = "Score simulation for PPT cell types for LDLR model",xlim=c(0,700),ylim=c(0,1.5)) #ylim=c(0,0.02)) #
+arrows(DDRep_data_PPT$timepoints, DDRep_data_PPT$DD - DDRep_sd_PPT$DD, DDRep_data_PPT$timepoints, DDRep_data_PPT$DD + DDRep_sd_PPT$DD, length=0, angle=90, code=3, lty=2, lwd=0.8)
+#legend(x = "topright",          # Position
+#       legend = c("Obs", "Sim mean", "Sim draws"),  # Legend texts
+#       lty = c(NA, 1,1),           # Line types
+#       pch=c(19,NA,NA),
+#       col = c("black", "red","blue"),           # Line colors
+#       lwd = 2, cex = 0.85)
+
+for(i in 1:50){
+  
+  j = sample(1:nrow(draws_pk_LDLR),1)
+  
+  pars = c(ks_DD = draws_pk_LDLR[[j,8]],
+           ks_DDkid = draws_pk_LDLR[[j,9]],
+           kd_DDrep = draws_pk_LDLR[[j,10]],
+           kd_DD = draws_pk_LDLR[[j,11]],
+           ks_rep = draws_pk_LDLR[[j,12]],
+           ks_repDD = draws_pk_LDLR[[j,13]],
+           kd_rep = draws_pk_LDLR[[j,14]])
+
+  #scaling = stanfit_draws$scale_kid[j]
+  out2 = ode(y=inistate, times=finish, func=PK, parms=pars)
+  lines(data.frame(out2)%>% mutate(totKidney = (DD)) %>% select(time,totKidney),main="", ylab="x", col = alpha("blue",0.1),lty=1)}
+
+  pars = c( ks_DD = sumPar_LDLR[["ks_DD_PPT",1]],
+            ks_DDkid = sumPar_LDLR[["ks_DDkid_PPT",1]],
+            kd_DDrep = sumPar_LDLR[["kd_DDrep_PPT",1]],
+            kd_DD = sumPar_LDLR[["kd_DD_PPT",1]],
+            ks_rep = sumPar_LDLR[["ks_rep_PPT",1]],
+            ks_repDD = sumPar_LDLR[["ks_repDD_PPT",1]],
+            kd_rep = sumPar_LDLR[["kd_rep_PPT",1]])
+
+out2 = ode(y=inistate, times=finish, func=PK, parms=pars)
+lines(data.frame(out2)%>% mutate(totKidney = (DD)) %>%
+         select(time,totKidney), main="", ylab="", col = "red") 
+
+out2[time=25,]
+
+```
+# 3.) MDMR without n
+
+## A.) Inferred parameters
+
+```{r}
+
+#fit_MDMR <- readRDS("Output/Full_500Both_Cells_MDMR2023-08-02.RDS")
+#fit_MDMR <- readRDS("Output/Full_10000Both_Cells_MDMR2023-08-02.RDS")
+
+(fit_pk_trace_MDMR <- mcmc_trace(fit_MDMR$draws(format="df", variable = c("ks_DD_CPT" , "ks_DDkid_CPT",  "kd_DDrep_CPT" , "kd_DD_CPT", "ks_rep_CPT" , "ks_repDD_CPT",  "kd_rep_CPT", "km_dd_CPT", "km_rep_CPT", "ks_DD_PPT" , "ks_DDkid_PPT",  "kd_DDrep_PPT" , "kd_DD_PPT", "ks_rep_PPT" , "ks_repDD_PPT",  "kd_rep_PPT", "km_dd_PPT", "km_rep_PPT") ,inc_warmup = FALSE))) + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+
+(fit_pk_density_MDMR <- mcmc_dens_overlay(fit_MDMR$draws(format="df",variables = c("ks_DD_CPT" , "ks_DDkid_CPT",  "kd_DDrep_CPT" , "kd_DD_CPT", "ks_rep_CPT" , "ks_repDD_CPT",  "kd_rep_CPT", "km_dd_CPT", "km_rep_CPT", "ks_DD_PPT" , "ks_DDkid_PPT",  "kd_DDrep_PPT" , "kd_DD_PPT", "ks_rep_PPT" , "ks_repDD_PPT",  "kd_rep_PPT", "km_dd_PPT", "km_rep_PPT"),inc_warmup = FALSE)))
+
+draws_pk_MDMR <- fit_MDMR$draws(format = "draws_matrix",variables = c("ks_DD_CPT" , "ks_DDkid_CPT",  "kd_DDrep_CPT" , "kd_DD_CPT", "ks_rep_CPT" , "ks_repDD_CPT",  "kd_rep_CPT", "km_dd_CPT", "km_rep_CPT", "ks_DD_PPT" , "ks_DDkid_PPT",  "kd_DDrep_PPT" , "kd_DD_PPT", "ks_rep_PPT" , "ks_repDD_PPT",  "kd_rep_PPT", "km_dd_PPT", "km_rep_PPT"),)
+
+fit_pk_summary <- fit_MDMR$summary()
+sumPar_MDMR<-data.frame(fit_pk_summary)%>% column_to_rownames(var = "variable") %>% slice(1:19)
+sumPar_MDMR[,c(1,3,7)]
+cat(paste("ks_DD_CPT ~ normal(",sumPar_MDMR[["ks_DD_CPT",1]],",",sumPar_MDMR[["ks_DD_CPT",2]],");
+      ks_DDkid_CPT ~ normal(",sumPar_MDMR[["ks_DDkid_CPT",1]],",",sumPar_MDMR[["ks_DDkid_CPT",2]],");
+      kd_DDrep_CPT ~ normal(",sumPar_MDMR[["kd_DDrep_CPT",1]],",",sumPar_MDMR[["kd_DDrep_CPT",2]],");
+      kd_DD_CPT ~ normal(",sumPar_MDMR[["kd_DD_CPT",1]],",",sumPar_MDMR[["kd_DD_CPT",2]],");
+      ks_rep_CPT ~ normal(",sumPar_MDMR[["ks_rep_CPT",1]],",",sumPar_MDMR[["ks_rep_CPT",2]],");
+      ks_repDD_CPT ~ normal(",sumPar_MDMR[["ks_repDD_CPT",1]],",",sumPar_MDMR[["ks_repDD_CPT",2]],");
+      kd_rep_CPT ~ normal(",sumPar_MDMR[["kd_rep_CPT",1]],",",sumPar_MDMR[["kd_rep_CPT",2]],");
+      km_dd_CPT ~ normal(",sumPar_MDMR[["km_dd_CPT",1]],",",sumPar_MDMR[["km_dd_CPT",2]],");
+      km_rep_CPT ~ normal(",sumPar_MDMR[["km_rep_CPT",1]],",",sumPar_MDMR[["km_rep_CPT",2]],");
+      ks_DD_PPT ~ normal(",sumPar_MDMR[["ks_DD_PPT",1]],",",sumPar_MDMR[["ks_DD_PPT",2]],");
+      ks_DDkid_PPT ~ normal(",sumPar_MDMR[["ks_DDkid_PPT",1]],",",sumPar_MDMR[["ks_DDkid_PPT",2]],");
+      kd_DDrep_PPT ~ normal(",sumPar_MDMR[["kd_DDrep_PPT",1]],",",sumPar_MDMR[["kd_DDrep_PPT",2]],");
+      kd_DD_PPT ~ normal(",sumPar_MDMR[["kd_DD_PPT",1]],",",sumPar_MDMR[["kd_DD_PPT",2]],");
+      ks_rep_PPT ~ normal(",sumPar_MDMR[["ks_rep_PPT",1]],",",sumPar_MDMR[["ks_rep_PPT",2]],");
+      ks_repDD_PPT ~ normal(",sumPar_MDMR[["ks_repDD_PPT",1]],",",sumPar_MDMR[["ks_repDD_PPT",2]],");
+      kd_rep_PPT ~ normal(",sumPar_MDMR[["kd_rep_PPT",1]],",",sumPar_MDMR[["kd_rep_PPT",2]],");
+      km_dd_PPT ~ normal(",sumPar_MDMR[["km_dd_PPT",1]],",",sumPar_MDMR[["km_dd_PPT",2]],");
+      km_rep_PPT ~ normal(",sumPar_MDMR[["km_rep_PPT",1]],",",sumPar_MDMR[["km_rep_PPT",2]],");",
+      sep =""))
+
+#good_parameters <- as.data.frame(draws_pk[510:515,]) %>% pivot_longer(cols = everything(),names_to = "par", values_to = "value") %>% group_by(par) %>% #summarise(mean_value = mean(value),sd_value=sd(value)) %>% column_to_rownames(var = "par")
+
+```
+
+## B.) MDMR Fitting
+
+```{r}
+
+  inistate = c(Plasma = 45,
+                KidneyPt = 0,
+                AccuPt = 0,
+                DD = 0,
+                Rep = 0)
+
+PK = function(timepoint,state,parameters){
+  with(as.list(c(state, parameters)),{ 
+    
+  dPlasma= KidneyPt * 0.022052503115 - Plasma * (1.13252628565 + 0.1813857857015)
+  dKidneyPt = AccuPt * + 0.0003284364143375 + Plasma * 1.13252628565  - KidneyPt * (0.022052503115 + 0.00181720824448 + 0.001673191758)
+  dAccuPt = KidneyPt * 0.001673191758 - AccuPt * 0.0003284364143375
+  dDD = ks_DD + (ks_DDkid * (KidneyPt + AccuPt))/(km_dd + (KidneyPt + AccuPt)) - Rep * DD* kd_DDrep - DD * (kd_DD)
+  dRep = ks_rep + ((ks_repDD * DD)/(km_rep + DD)) - Rep * kd_rep
+  
+
+       list(c(dPlasma,dKidneyPt,dAccuPt,dDD,dRep))})}
+
+finish = seq(0,700,by = 1)
+
+# Repair CPT
+
+plot(x=DDRep_data_CPT$timepoints,y=DDRep_data_CPT$Rep,type="p", pch=19, ylab="Repair Score", xlab="Time in hours",main = "Score simulation with CPT",xlim=c(0,700),ylim=c(0,0.2))
+arrows(DDRep_data_CPT$timepoints, DDRep_data_CPT$Rep - DDRep_sd_CPT$Rep, DDRep_data_CPT$timepoints, DDRep_data_CPT$Rep + DDRep_sd_CPT$Rep, length=0, angle=90, code=3, lty=2, lwd=0.8)
+#legend(x = "topright",          # Position
+#       legend = c("Obs", "Sim mean", "Sim draws"),  # Legend texts
+#       lty = c(NA, 1,1),           # Line types
+#       pch=c(19,NA,NA),
+#       col = c("black", "red","blue"),           # Line colors
+#       lwd = 2, cex = 0.85)
+
+for(i in 1:50){
+  
+  j = sample(1:nrow(draws_pk_MDMR),1)
+  
+  pars = c(ks_DD = draws_pk_MDMR[[j,1]],
+           ks_DDkid = draws_pk_MDMR[[j,2]],
+           kd_DDrep = draws_pk_MDMR[[j,3]],
+           kd_DD = draws_pk_MDMR[[j,4]],
+           ks_rep = draws_pk_MDMR[[j,5]],
+           ks_repDD = draws_pk_MDMR[[j,6]],
+           kd_rep = draws_pk_MDMR[[j,7]],
+           km_dd = draws_pk_MDMR[[j,8]],
+           km_rep = draws_pk_MDMR[[j,9]])
+
+  #scaling = stanfit_draws$scale_kid[j]
+  out = ode(y=inistate, times=finish, func=PK, parms=pars)
+  lines(data.frame(out)%>% mutate(totKidney = (Rep)) %>% select(time,totKidney),main="", ylab="x", col = alpha("blue",0.1),lty=1)}
+
+  pars = c( ks_DD = sumPar_MDMR[["ks_DD_CPT",1]],
+            ks_DDkid = sumPar_MDMR[["ks_DDkid_CPT",1]],
+            kd_DDrep = sumPar_MDMR[["kd_DDrep_CPT",1]],
+            kd_DD = sumPar_MDMR[["kd_DD_CPT",1]],
+            ks_rep = sumPar_MDMR[["ks_rep_CPT",1]],
+            ks_repDD = sumPar_MDMR[["ks_repDD_CPT",1]],
+            kd_rep = sumPar_MDMR[["kd_rep_CPT",1]],
+            km_dd = sumPar_MDMR[["km_dd_CPT",1]],
+            km_rep = sumPar_MDMR[["km_rep_CPT",1]])
+
+out = ode(y=inistate, times=finish, func=PK, parms=pars)
+lines(data.frame(out)%>% mutate(totKidney = (Rep)) %>%
+         select(time,totKidney), main="", ylab="", col = "red") 
+
+# DNA-Damage CPT
+
+plot(x=DDRep_data_CPT$timepoints,y=DDRep_data_CPT$DD,type="p", pch=19, ylab="DNA-Damage Score", xlab="Time in hours",main = "Score simulation with CPT",xlim=c(0,700),ylim=c(0,1.5)) #ylim=c(0,0.02)) #
+arrows(DDRep_data_CPT$timepoints, DDRep_data_CPT$DD - DDRep_sd_CPT$DD, DDRep_data_CPT$timepoints, DDRep_data_CPT$DD + DDRep_sd_CPT$DD, length=0, angle=90, code=3, lty=2, lwd=0.8)
+#legend(x = "topright",          # Position
+#       legend = c("Obs", "Sim mean", "Sim draws"),  # Legend texts
+#       lty = c(NA, 1,1),           # Line types
+#       pch=c(19,NA,NA),
+#       col = c("black", "red","blue"),           # Line colors
+#       lwd = 2, cex = 0.85)
+
+for(i in 1:50){
+  
+  j = sample(1:nrow(draws_pk_MDMR),1)
+  
+  pars = c(ks_DD = draws_pk_MDMR[[j,1]],
+           ks_DDkid = draws_pk_MDMR[[j,2]],
+           kd_DDrep = draws_pk_MDMR[[j,3]],
+           kd_DD = draws_pk_MDMR[[j,4]],
+           ks_rep = draws_pk_MDMR[[j,5]],
+           ks_repDD = draws_pk_MDMR[[j,6]],
+           kd_rep = draws_pk_MDMR[[j,7]],
+           km_dd = draws_pk_MDMR[[j,8]],
+           km_rep = draws_pk_MDMR[[j,9]])
+  
+  
+  #scaling = stanfit_draws$scale_kid[j]
+  out = ode(y=inistate, times=finish, func=PK, parms=pars)
+  lines(data.frame(out)%>% mutate(totKidney = (DD)) %>% select(time,totKidney),main="", ylab="x", col = alpha("blue",0.1),lty=1)}
+
+  pars = c( ks_DD = sumPar_MDMR[["ks_DD_CPT",1]],
+            ks_DDkid = sumPar_MDMR[["ks_DDkid_CPT",1]],
+            kd_DDrep = sumPar_MDMR[["kd_DDrep_CPT",1]],
+            kd_DD = sumPar_MDMR[["kd_DD_CPT",1]],
+            ks_rep = sumPar_MDMR[["ks_rep_CPT",1]],
+            ks_repDD = sumPar_MDMR[["ks_repDD_CPT",1]],
+            kd_rep = sumPar_MDMR[["kd_rep_CPT",1]],
+            km_dd = sumPar_MDMR[["km_dd_CPT",1]],
+            km_rep = sumPar_MDMR[["km_rep_CPT",1]])
+
+out = ode(y=inistate, times=finish, func=PK, parms=pars)
+lines(data.frame(out)%>% mutate(totKidney = (DD)) %>%
+         select(time,totKidney), main="", ylab="", col = "red") 
+
+out[time=672,]
+
+# Repair PPT
+
+plot(x=DDRep_data_PPT$timepoints,y=DDRep_data_PPT$Rep,type="p", pch=19, ylab="Repair Score", xlab="Time in hours",main = "Score simulation with PPT",xlim=c(0,700),ylim=c(0,0.2))
+arrows(DDRep_data_PPT$timepoints, DDRep_data_PPT$Rep - DDRep_sd_PPT$Rep, DDRep_data_PPT$timepoints, DDRep_data_PPT$Rep + DDRep_sd_PPT$Rep, length=0, angle=90, code=3, lty=2, lwd=0.8)
+#legend(x = "topright",          # Position
+#       legend = c("Obs", "Sim mean", "Sim draws"),  # Legend texts
+#       lty = c(NA, 1,1),           # Line types
+#       pch=c(19,NA,NA),
+#       col = c("black", "red","blue"),           # Line colors
+#       lwd = 2, cex = 0.85)
+
+for(i in 1:50){
+  
+  j = sample(1:nrow(draws_pk_MDMR),1)
+  
+  pars = c(ks_DD = draws_pk_MDMR[[j,10]],
+           ks_DDkid = draws_pk_MDMR[[j,11]],
+           kd_DDrep = draws_pk_MDMR[[j,12]],
+           kd_DD = draws_pk_MDMR[[j,13]],
+           ks_rep = draws_pk_MDMR[[j,14]],
+           ks_repDD = draws_pk_MDMR[[j,15]],
+           kd_rep = draws_pk_MDMR[[j,16]],
+           km_dd = draws_pk_MDMR[[j,17]],
+           km_rep = draws_pk_MDMR[[j,18]])
+
+  #scaling = stanfit_draws$scale_kid[j]
+  out2 = ode(y=inistate, times=finish, func=PK, parms=pars)
+  lines(data.frame(out2)%>% mutate(totKidney = (Rep)) %>% select(time,totKidney),main="", ylab="x", col = alpha("blue",0.1),lty=1)}
+
+  pars = c( ks_DD = sumPar_MDMR[["ks_DD_PPT",1]],
+            ks_DDkid = sumPar_MDMR[["ks_DDkid_PPT",1]],
+            kd_DDrep = sumPar_MDMR[["kd_DDrep_PPT",1]],
+            kd_DD = sumPar_MDMR[["kd_DD_PPT",1]],
+            ks_rep = sumPar_MDMR[["ks_rep_PPT",1]],
+            ks_repDD = sumPar_MDMR[["ks_repDD_PPT",1]],
+            kd_rep = sumPar_MDMR[["kd_rep_PPT",1]],
+            km_dd = sumPar_MDMR[["km_dd_PPT",1]],
+            km_rep = sumPar_MDMR[["km_rep_PPT",1]])
+
+out2 = ode(y=inistate, times=finish, func=PK, parms=pars)
+lines(data.frame(out2)%>% mutate(totKidney = (Rep)) %>%
+         select(time,totKidney), main="", ylab="", col = "red") 
+
+# DNA-Damage PPT
+
+plot(x=DDRep_data_PPT$timepoints,y=DDRep_data_PPT$DD,type="p", pch=19, ylab="DNA-Damage Score", xlab="Time in hours",main = "Score simulation with PPT",xlim=c(0,700),ylim=c(0,1.5)) #ylim=c(0,0.02)) #
+arrows(DDRep_data_PPT$timepoints, DDRep_data_PPT$DD - DDRep_sd_PPT$DD, DDRep_data_PPT$timepoints, DDRep_data_PPT$DD + DDRep_sd_PPT$DD, length=0, angle=90, code=3, lty=2, lwd=0.8)
+#legend(x = "topright",          # Position
+#       legend = c("Obs", "Sim mean", "Sim draws"),  # Legend texts
+#       lty = c(NA, 1,1),           # Line types
+#       pch=c(19,NA,NA),
+#       col = c("black", "red","blue"),           # Line colors
+#       lwd = 2, cex = 0.85)
+
+for(i in 1:50){
+  
+  j = sample(1:nrow(draws_pk_MDMR),1)
+  
+  pars = c(ks_DD = draws_pk_MDMR[[j,10]],
+           ks_DDkid = draws_pk_MDMR[[j,11]],
+           kd_DDrep = draws_pk_MDMR[[j,12]],
+           kd_DD = draws_pk_MDMR[[j,13]],
+           ks_rep = draws_pk_MDMR[[j,14]],
+           ks_repDD = draws_pk_MDMR[[j,15]],
+           kd_rep = draws_pk_MDMR[[j,16]],
+           km_dd = draws_pk_MDMR[[j,17]],
+           km_rep = draws_pk_MDMR[[j,18]])
+
+  #scaling = stanfit_draws$scale_kid[j]
+  out2 = ode(y=inistate, times=finish, func=PK, parms=pars)
+  lines(data.frame(out2)%>% mutate(totKidney = (DD)) %>% select(time,totKidney),main="", ylab="x", col = alpha("blue",0.1),lty=1)}
+
+  pars = c( ks_DD = sumPar_MDMR[["ks_DD_PPT",1]],
+            ks_DDkid = sumPar_MDMR[["ks_DDkid_PPT",1]],
+            kd_DDrep = sumPar_MDMR[["kd_DDrep_PPT",1]],
+            kd_DD = sumPar_MDMR[["kd_DD_PPT",1]],
+            ks_rep = sumPar_MDMR[["ks_rep_PPT",1]],
+            ks_repDD = sumPar_MDMR[["ks_repDD_PPT",1]],
+            kd_rep = sumPar_MDMR[["kd_rep_PPT",1]],
+            km_dd = sumPar_MDMR[["km_dd_PPT",1]],
+            km_rep = sumPar_MDMR[["km_rep_PPT",1]])
+
+out2 = ode(y=inistate, times=finish, func=PK, parms=pars)
+lines(data.frame(out2)%>% mutate(totKidney = (DD)) %>%
+         select(time,totKidney), main="", ylab="", col = "red") 
+
+out2[time=672,]
+
+```
+# 4.) MDLR without n
+
+## A.) Inferred parameters
+
+```{r}
+
+#fit_MDLR <- readRDS("Output/Full_500Both_Cells_MDLR2023-08-02.RDS")
+#fit_MDLR <- readRDS("Output/Full_10000Both_Cells_MDLR2023-08-02.RDS")
+
+(fit_pk_trace_MDLR <- mcmc_trace(fit_MDLR$draws(format="df", variable = c("ks_DD_CPT" , "ks_DDkid_CPT",  "kd_DDrep_CPT" , "kd_DD_CPT", "ks_rep_CPT" , "ks_repDD_CPT",  "kd_rep_CPT", "km_dd_CPT", "ks_DD_PPT" , "ks_DDkid_PPT",  "kd_DDrep_PPT" , "kd_DD_PPT", "ks_rep_PPT" , "ks_repDD_PPT",  "kd_rep_PPT", "km_dd_PPT") ,inc_warmup = FALSE))) + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+
+(fit_pk_density_MDLR <- mcmc_dens_overlay(fit_MDLR$draws(format="df",variables = c("ks_DD_CPT" , "ks_DDkid_CPT",  "kd_DDrep_CPT" , "kd_DD_CPT", "ks_rep_CPT" , "ks_repDD_CPT",  "kd_rep_CPT", "km_dd_CPT", "ks_DD_PPT" , "ks_DDkid_PPT",  "kd_DDrep_PPT" , "kd_DD_PPT", "ks_rep_PPT" , "ks_repDD_PPT",  "kd_rep_PPT", "km_dd_PPT"),inc_warmup = FALSE)))
+
+draws_pk_MDLR <- fit_MDLR$draws(format = "draws_matrix",variables = c("ks_DD_CPT" , "ks_DDkid_CPT",  "kd_DDrep_CPT" , "kd_DD_CPT", "ks_rep_CPT" , "ks_repDD_CPT",  "kd_rep_CPT", "km_dd_CPT", "ks_DD_PPT" , "ks_DDkid_PPT",  "kd_DDrep_PPT" , "kd_DD_PPT", "ks_rep_PPT" , "ks_repDD_PPT",  "kd_rep_PPT", "km_dd_PPT"),)
+
+fit_pk_summary <- fit_MDLR$summary()
+sumPar_MDLR<-data.frame(fit_pk_summary)%>% column_to_rownames(var = "variable") %>% slice(1:17)
+sumPar_MDLR[,c(1,3,7)]
+cat(paste("ks_DD_CPT ~ normal(",sumPar_MDLR[["ks_DD_CPT",1]],",",sumPar_MDLR[["ks_DD_CPT",2]],");
+      ks_DDkid_CPT ~ normal(",sumPar_MDLR[["ks_DDkid_CPT",1]],",",sumPar_MDLR[["ks_DDkid_CPT",2]],");
+      kd_DDrep_CPT ~ normal(",sumPar_MDLR[["kd_DDrep_CPT",1]],",",sumPar_MDLR[["kd_DDrep_CPT",2]],");
+      kd_DD_CPT ~ normal(",sumPar_MDLR[["kd_DD_CPT",1]],",",sumPar_MDLR[["kd_DD_CPT",2]],");
+      ks_rep_CPT ~ normal(",sumPar_MDLR[["ks_rep_CPT",1]],",",sumPar_MDLR[["ks_rep_CPT",2]],");
+      ks_repDD_CPT ~ normal(",sumPar_MDLR[["ks_repDD_CPT",1]],",",sumPar_MDLR[["ks_repDD_CPT",2]],");
+      kd_rep_CPT ~ normal(",sumPar_MDLR[["kd_rep_CPT",1]],",",sumPar_MDLR[["kd_rep_CPT",2]],");
+      km_dd_CPT ~ normal(",sumPar_MDLR[["km_dd_CPT",1]],",",sumPar_MDLR[["km_dd_CPT",2]],");
+      ks_DD_PPT ~ normal(",sumPar_MDLR[["ks_DD_PPT",1]],",",sumPar_MDLR[["ks_DD_PPT",2]],");
+      ks_DDkid_PPT ~ normal(",sumPar_MDLR[["ks_DDkid_PPT",1]],",",sumPar_MDLR[["ks_DDkid_PPT",2]],");
+      kd_DDrep_PPT ~ normal(",sumPar_MDLR[["kd_DDrep_PPT",1]],",",sumPar_MDLR[["kd_DDrep_PPT",2]],");
+      kd_DD_PPT ~ normal(",sumPar_MDLR[["kd_DD_PPT",1]],",",sumPar_MDLR[["kd_DD_PPT",2]],");
+      ks_rep_PPT ~ normal(",sumPar_MDLR[["ks_rep_PPT",1]],",",sumPar_MDLR[["ks_rep_PPT",2]],");
+      ks_repDD_PPT ~ normal(",sumPar_MDLR[["ks_repDD_PPT",1]],",",sumPar_MDLR[["ks_repDD_PPT",2]],");
+      kd_rep_PPT ~ normal(",sumPar_MDLR[["kd_rep_PPT",1]],",",sumPar_MDLR[["kd_rep_PPT",2]],");
+      km_dd_PPT ~ normal(",sumPar_MDLR[["km_dd_PPT",1]],",",sumPar_MDLR[["km_dd_PPT",2]],");",
+      sep =""))
+
+#good_parameters <- as.data.frame(draws_pk[510:515,]) %>% pivot_longer(cols = everything(),names_to = "par", values_to = "value") %>% group_by(par) %>% #summarise(mean_value = mean(value),sd_value=sd(value)) %>% column_to_rownames(var = "par")
+
+```
+
+## B.) MDLR Fitting
+
+```{r}
+
+  inistate = c(Plasma = 45,
+                KidneyPt = 0,
+                AccuPt = 0,
+                DD = 0,
+                Rep = 0)
+
+PK = function(timepoint,state,parameters){
+  with(as.list(c(state, parameters)),{ 
+    
+  dPlasma= KidneyPt * 0.022052503115 - Plasma * (1.13252628565 + 0.1813857857015)
+  dKidneyPt = AccuPt * + 0.0003284364143375 + Plasma * 1.13252628565  - KidneyPt * (0.022052503115 + 0.00181720824448 + 0.001673191758)
+  dAccuPt = KidneyPt * 0.001673191758 - AccuPt * 0.0003284364143375
+  dDD = ks_DD + (ks_DDkid * (KidneyPt + AccuPt))/(km_dd + (KidneyPt + AccuPt)) - Rep * DD* kd_DDrep - DD * (kd_DD)
+  dRep = ks_rep + (ks_repDD * DD) - Rep * kd_rep
+  
+
+       list(c(dPlasma,dKidneyPt,dAccuPt,dDD,dRep))})}
+
+finish = seq(0,700,by = 1)
+
+# Repair CPT
+
+plot(x=DDRep_data_CPT$timepoints,y=DDRep_data_CPT$Rep,type="p", pch=19, ylab="Repair Score", xlab="Time in hours",main = "Score simulation with CPT",xlim=c(0,700),ylim=c(0,0.2))
+arrows(DDRep_data_CPT$timepoints, DDRep_data_CPT$Rep - DDRep_sd_CPT$Rep, DDRep_data_CPT$timepoints, DDRep_data_CPT$Rep + DDRep_sd_CPT$Rep, length=0, angle=90, code=3, lty=2, lwd=0.8)
+#legend(x = "topright",          # Position
+#       legend = c("Obs", "Sim mean", "Sim draws"),  # Legend texts
+#       lty = c(NA, 1,1),           # Line types
+#       pch=c(19,NA,NA),
+#       col = c("black", "red","blue"),           # Line colors
+#       lwd = 2, cex = 0.85)
+for(i in 1:50){
+  
+  j = sample(1:nrow(draws_pk_MDLR),1)
+  
+  pars = c(ks_DD = draws_pk_MDLR[[j,1]],
+           ks_DDkid = draws_pk_MDLR[[j,2]],
+           kd_DDrep = draws_pk_MDLR[[j,3]],
+           kd_DD = draws_pk_MDLR[[j,4]],
+           ks_rep = draws_pk_MDLR[[j,5]],
+           ks_repDD = draws_pk_MDLR[[j,6]],
+           kd_rep = draws_pk_MDLR[[j,7]],
+           km_dd = draws_pk_MDLR[[j,8]])
+
+  #scaling = stanfit_draws$scale_kid[j]
+  out = ode(y=inistate, times=finish, func=PK, parms=pars)
+  lines(data.frame(out)%>% mutate(totKidney = (Rep)) %>% select(time,totKidney),main="", ylab="x", col = alpha("blue",0.1),lty=1)}
+
+  pars = c( ks_DD = sumPar_MDLR[["ks_DD_CPT",1]],
+            ks_DDkid = sumPar_MDLR[["ks_DDkid_CPT",1]],
+            kd_DDrep = sumPar_MDLR[["kd_DDrep_CPT",1]],
+            kd_DD = sumPar_MDLR[["kd_DD_CPT",1]],
+            ks_rep = sumPar_MDLR[["ks_rep_CPT",1]],
+            ks_repDD = sumPar_MDLR[["ks_repDD_CPT",1]],
+            kd_rep = sumPar_MDLR[["kd_rep_CPT",1]],
+            km_dd = sumPar_MDLR[["km_dd_CPT",1]])
+
+out = ode(y=inistate, times=finish, func=PK, parms=pars)
+lines(data.frame(out)%>% mutate(totKidney = (Rep)) %>%
+         select(time,totKidney), main="", ylab="", col = "red") 
+
+# DNA-Damage CPT
+
+plot(x=DDRep_data_CPT$timepoints,y=DDRep_data_CPT$DD,type="p", pch=19, ylab="DNA-Damage Score", xlab="Time in hours",main = "Score simulation with CPT",xlim=c(0,700),ylim=c(0,1.5)) #ylim=c(0,0.02)) #
+arrows(DDRep_data_CPT$timepoints, DDRep_data_CPT$DD - DDRep_sd_CPT$DD, DDRep_data_CPT$timepoints, DDRep_data_CPT$DD + DDRep_sd_CPT$DD, length=0, angle=90, code=3, lty=2, lwd=0.8)
+#legend(x = "topright",          # Position
+#       legend = c("Obs", "Sim mean", "Sim draws"),  # Legend texts
+#       lty = c(NA, 1,1),           # Line types
+#       pch=c(19,NA,NA),
+#       col = c("black", "red","blue"),           # Line colors
+#       lwd = 2, cex = 0.85)
+
+for(i in 1:50){
+  
+  j = sample(1:nrow(draws_pk_MDLR),1)
+  
+  pars = c(ks_DD = draws_pk_MDLR[[j,1]],
+           ks_DDkid = draws_pk_MDLR[[j,2]],
+           kd_DDrep = draws_pk_MDLR[[j,3]],
+           kd_DD = draws_pk_MDLR[[j,4]],
+           ks_rep = draws_pk_MDLR[[j,5]],
+           ks_repDD = draws_pk_MDLR[[j,6]],
+           kd_rep = draws_pk_MDLR[[j,7]],
+           km_dd = draws_pk_MDLR[[j,8]])
+  
+  
+  #scaling = stanfit_draws$scale_kid[j]
+  out = ode(y=inistate, times=finish, func=PK, parms=pars)
+  lines(data.frame(out)%>% mutate(totKidney = (DD)) %>% select(time,totKidney),main="", ylab="x", col = alpha("blue",0.1),lty=1)}
+
+  pars = c( ks_DD = sumPar_MDLR[["ks_DD_CPT",1]],
+            ks_DDkid = sumPar_MDLR[["ks_DDkid_CPT",1]],
+            kd_DDrep = sumPar_MDLR[["kd_DDrep_CPT",1]],
+            kd_DD = sumPar_MDLR[["kd_DD_CPT",1]],
+            ks_rep = sumPar_MDLR[["ks_rep_CPT",1]],
+            ks_repDD = sumPar_MDLR[["ks_repDD_CPT",1]],
+            kd_rep = sumPar_MDLR[["kd_rep_CPT",1]],
+            km_dd = sumPar_MDLR[["km_dd_CPT",1]])
+
+out = ode(y=inistate, times=finish, func=PK, parms=pars)
+lines(data.frame(out)%>% mutate(totKidney = (DD)) %>%
+         select(time,totKidney), main="", ylab="", col = "red") 
+
+out[time=25,]
+
+# Repair PPT
+
+plot(x=DDRep_data_PPT$timepoints,y=DDRep_data_PPT$Rep,type="p", pch=19, ylab="Repair Score", xlab="Time in hours",main = "Score simulation with PPT",xlim=c(0,700),ylim=c(0,0.2))
+arrows(DDRep_data_PPT$timepoints, DDRep_data_PPT$Rep - DDRep_sd_PPT$Rep, DDRep_data_PPT$timepoints, DDRep_data_PPT$Rep + DDRep_sd_PPT$Rep, length=0, angle=90, code=3, lty=2, lwd=0.8)
+#legend(x = "topright",          # Position
+#       legend = c("Obs", "Sim mean", "Sim draws"),  # Legend texts
+#       lty = c(NA, 1,1),           # Line types
+#       pch=c(19,NA,NA),
+#       col = c("black", "red","blue"),           # Line colors
+#       lwd = 2, cex = 0.85)
+
+for(i in 1:50){
+  
+  j = sample(1:nrow(draws_pk_MDLR),1)
+  
+  pars = c(ks_DD = draws_pk_MDLR[[j,9]],
+           ks_DDkid = draws_pk_MDLR[[j,10]],
+           kd_DDrep = draws_pk_MDLR[[j,11]],
+           kd_DD = draws_pk_MDLR[[j,12]],
+           ks_rep = draws_pk_MDLR[[j,13]],
+           ks_repDD = draws_pk_MDLR[[j,14]],
+           kd_rep = draws_pk_MDLR[[j,15]],
+           km_dd = draws_pk_MDLR[[j,16]])
+
+  #scaling = stanfit_draws$scale_kid[j]
+  out2 = ode(y=inistate, times=finish, func=PK, parms=pars)
+  lines(data.frame(out2)%>% mutate(totKidney = (Rep)) %>% select(time,totKidney),main="", ylab="x", col = alpha("blue",0.1),lty=1)}
+
+  pars = c( ks_DD = sumPar_MDLR[["ks_DD_PPT",1]],
+            ks_DDkid = sumPar_MDLR[["ks_DDkid_PPT",1]],
+            kd_DDrep = sumPar_MDLR[["kd_DDrep_PPT",1]],
+            kd_DD = sumPar_MDLR[["kd_DD_PPT",1]],
+            ks_rep = sumPar_MDLR[["ks_rep_PPT",1]],
+            ks_repDD = sumPar_MDLR[["ks_repDD_PPT",1]],
+            kd_rep = sumPar_MDLR[["kd_rep_PPT",1]],
+            km_dd = sumPar_MDLR[["km_dd_PPT",1]])
+
+out2 = ode(y=inistate, times=finish, func=PK, parms=pars)
+lines(data.frame(out2)%>% mutate(totKidney = (Rep)) %>%
+         select(time,totKidney), main="", ylab="", col = "red") 
+
+# DNA-Damage PPT
+
+plot(x=DDRep_data_PPT$timepoints,y=DDRep_data_PPT$DD,type="p", pch=19, ylab="DNA-Damage Score", xlab="Time in hours",main = "Simulation of PPT ",xlim=c(0,700),ylim=c(0,1.5)) #ylim=c(0,0.02)) #
+arrows(DDRep_data_PPT$timepoints, DDRep_data_PPT$DD - DDRep_sd_PPT$DD, DDRep_data_PPT$timepoints, DDRep_data_PPT$DD + DDRep_sd_PPT$DD, length=0, angle=90, code=3, lty=2, lwd=0.8)
+#legend(x = "topright",          # Position
+#       legend = c("Obs", "Sim mean", "Sim draws"),  # Legend texts
+#       lty = c(NA, 1,1),           # Line types
+#       pch=c(19,NA,NA),
+#       col = c("black", "red","blue"),           # Line colors
+#       lwd = 2, cex = 0.85)
+
+for(i in 1:50){
+  
+  j = sample(1:nrow(draws_pk_MDLR),1)
+  
+  pars = c(ks_DD = draws_pk_MDLR[[j,9]],
+           ks_DDkid = draws_pk_MDLR[[j,10]],
+           kd_DDrep = draws_pk_MDLR[[j,11]],
+           kd_DD = draws_pk_MDLR[[j,12]],
+           ks_rep = draws_pk_MDLR[[j,13]],
+           ks_repDD = draws_pk_MDLR[[j,14]],
+           kd_rep = draws_pk_MDLR[[j,15]],
+           km_dd = draws_pk_MDLR[[j,16]])
+
+  #scaling = stanfit_draws$scale_kid[j]
+  out2 = ode(y=inistate, times=finish, func=PK, parms=pars)
+  lines(data.frame(out2)%>% mutate(totKidney = (DD)) %>% select(time,totKidney),main="", ylab="x", col = alpha("blue",0.1),lty=1)}
+
+  pars = c( ks_DD = sumPar_MDLR[["ks_DD_PPT",1]],
+            ks_DDkid = sumPar_MDLR[["ks_DDkid_PPT",1]],
+            kd_DDrep = sumPar_MDLR[["kd_DDrep_PPT",1]],
+            kd_DD = sumPar_MDLR[["kd_DD_PPT",1]],
+            ks_rep = sumPar_MDLR[["ks_rep_PPT",1]],
+            ks_repDD = sumPar_MDLR[["ks_repDD_PPT",1]],
+            kd_rep = sumPar_MDLR[["kd_rep_PPT",1]],
+            km_dd = sumPar_MDLR[["km_dd_PPT",1]])
+
+out2 = ode(y=inistate, times=finish, func=PK, parms=pars)
+lines(data.frame(out2)%>% mutate(totKidney = (DD)) %>%
+         select(time,totKidney), main="", ylab="", col = "red") 
+
+out2[time=25,]
+
+
+```
+
+#Dose response Analysis
+
+## 1. DD
+
+```{r}
+Dose_Analysis <- read.csv("Inputdata/Dose_Analysis_models.csv") %>% mutate_at("Model",str_replace,"WGCNA","Observed data")
+
+ggplot(Dose_Analysis, aes(x = Conc, y = deltaScore, col = Segment)) +
+  geom_line() +
+  facet_wrap(vars(Model),ncol = 5) +
+  labs(x = "Initial Plasma Pt Concentraiton (μM)", y = "Relative DNA-damage Score", title = "Dose-response analysis of DNA-damage")
+
+plot(x=DDRep_data_PPT$timepoints,y=DDRep_data_PPT$Rep,type="p", pch=19, ylab="Death probability (DeathP)", xlab="Time in days",main = "Simulation with MDLR for PPT",xlim=c(0,700),ylim=c(0,0.2))
+  
+
+```
+## 2. Visualization of Dose Response Analysis
+
+```{r}
+
+
+PK = function(timepoint,state,parameters){
+  with(as.list(c(state, parameters)),{ 
+    
+  dPlasma= KidneyPt * 0.022052503115 - Plasma * (1.13252628565 + 0.1813857857015)
+  dKidneyPt = AccuPt * + 0.0003284364143375 + Plasma * 1.13252628565  - KidneyPt * (0.022052503115 + 0.00181720824448 + 0.001673191758)
+  dAccuPt = KidneyPt * 0.001673191758 - AccuPt * 0.0003284364143375
+  dDD = ks_DD + (ks_DDkid * (KidneyPt + AccuPt))/(km_dd + (KidneyPt + AccuPt)) - Rep * DD* kd_DDrep - DD * (kd_DD)
+  dRep = ks_rep + ((ks_repDD * DD)/(km_rep + DD)) - Rep * kd_rep
+  
+       list(c(dPlasma,dKidneyPt,dAccuPt,dDD,dRep))})}
+
+  pars = c( ks_DD = sumPar_MDMR[["ks_DD_CPT",1]],
+            ks_DDkid = sumPar_MDMR[["ks_DDkid_CPT",1]],
+            kd_DDrep = sumPar_MDMR[["kd_DDrep_CPT",1]],
+            kd_DD = sumPar_MDMR[["kd_DD_CPT",1]],
+            ks_rep = sumPar_MDMR[["ks_rep_CPT",1]],
+            ks_repDD = sumPar_MDMR[["ks_repDD_CPT",1]],
+            kd_rep = sumPar_MDMR[["kd_rep_CPT",1]],
+            km_dd = sumPar_MDMR[["km_dd_CPT",1]],
+            km_rep = sumPar_MDMR[["km_rep_CPT",1]])
+
+# Repair CPT
+
+plot(10, ylab="Repair Score", xlab="Time in hours",main = "Score simulation with CPT",xlim=c(0,700),ylim=c(0,0.2))
+#legend(x = "topright",          # Position
+#       legend = c("Plasma = 0","Plasma = 22.5", "Plasma = 45", "Plasma = 67.5"),  # Legend texts
+#       lty = c(4,3, 2,1),           # Line types
+#       pch=c(NA,NA,NA),
+#       col = c("#72bcd5","#5b96aa", "#44707f","#16252a"),           # Line colors
+#       lwd = 2, cex = 0.85)
+
+inistate = c(Plasma = 0,
+                KidneyPt = 0,
+                AccuPt = 0,
+                DD = 0,
+                Rep = 0)
+
+out = ode(y=inistate, times=finish, func=PK, parms=pars)
+lines(data.frame(out)%>% mutate(totKidney = (Rep)) %>%
+         select(time,totKidney), main="", ylab="", col = "#72bcd5",lty=4) 
+
+out[25,]
+
+  
+inistate = c(Plasma = 22.5,
+                KidneyPt = 0,
+                AccuPt = 0,
+                DD = 0,
+                Rep = 0)
+
+out = ode(y=inistate, times=finish, func=PK, parms=pars)
+lines(data.frame(out)%>% mutate(totKidney = (Rep)) %>%
+         select(time,totKidney), main="", ylab="", col = "#5b96aa",lty=3) 
+
+inistate = c(Plasma = 45,
+                KidneyPt = 0,
+                AccuPt = 0,
+                DD = 0,
+                Rep = 0)
+
+out = ode(y=inistate, times=finish, func=PK, parms=pars)
+lines(data.frame(out)%>% mutate(totKidney = (Rep)) %>%
+         select(time,totKidney), main="", ylab="", col = "#44707f",lty=2) 
+
+
+inistate = c(Plasma = 67.5,
+                KidneyPt = 0,
+                AccuPt = 0,
+                DD = 0,
+                Rep = 0)
+
+out = ode(y=inistate, times=finish, func=PK, parms=pars)
+lines(data.frame(out)%>% mutate(totKidney = (Rep)) %>%
+         select(time,totKidney), main="", ylab="", col = "#16252a",lty=1) 
+
+
+# DNA-Damage CPT
+
+plot(10, ylab="DNA-Damage Score", xlab="Time in hours",main = "Score simulation with CPT",xlim=c(0,700),ylim=c(0,1.65))
+
+  inistate = c(Plasma = 0,
+                KidneyPt = 0,
+                AccuPt = 0,
+                DD = 0,
+                Rep = 0)
+
+out = ode(y=inistate, times=finish, func=PK, parms=pars)
+lines(data.frame(out)%>% mutate(totKidney = (DD)) %>%
+         select(time,totKidney), main="", ylab="", col = "#72bcd5",lty=4) 
+
+
+inistate = c(Plasma = 22.5,
+                KidneyPt = 0,
+                AccuPt = 0,
+                DD = 0,
+                Rep = 0)
+
+out = ode(y=inistate, times=finish, func=PK, parms=pars)
+lines(data.frame(out)%>% mutate(totKidney = (DD)) %>%
+         select(time,totKidney), main="", ylab="", col = "#5b96aa",lty=3) 
+
+inistate = c(Plasma = 45,
+                KidneyPt = 0,
+                AccuPt = 0,
+                DD = 0,
+                Rep = 0)
+
+out = ode(y=inistate, times=finish, func=PK, parms=pars)
+lines(data.frame(out)%>% mutate(totKidney = (DD)) %>%
+         select(time,totKidney), main="", ylab="", col = "#44707f",lty=2) 
+
+
+inistate = c(Plasma = 67.5,
+                KidneyPt = 0,
+                AccuPt = 0,
+                DD = 0,
+                Rep = 0)
+
+out = ode(y=inistate, times=finish, func=PK, parms=pars)
+lines(data.frame(out)%>% mutate(totKidney = (DD)) %>%
+         select(time,totKidney), main="", ylab="", col = "#16252a",lty=1) 
+
+
+# Repair PPT
+
+plot(10, ylab="Repair Score", xlab="Time in hours",main = "Score simulation with PPT",xlim=c(0,700),ylim=c(0,0.2))
+
+  pars = c( ks_DD = sumPar_MDMR[["ks_DD_PPT",1]],
+            ks_DDkid = sumPar_MDMR[["ks_DDkid_PPT",1]],
+            kd_DDrep = sumPar_MDMR[["kd_DDrep_PPT",1]],
+            kd_DD = sumPar_MDMR[["kd_DD_PPT",1]],
+            ks_rep = sumPar_MDMR[["ks_rep_PPT",1]],
+            ks_repDD = sumPar_MDMR[["ks_repDD_PPT",1]],
+            kd_rep = sumPar_MDMR[["kd_rep_PPT",1]],
+            km_dd = sumPar_MDMR[["km_dd_PPT",1]],
+            km_rep = sumPar_MDMR[["km_rep_PPT",1]])
+  
+  inistate = c(Plasma = 0,
+                KidneyPt = 0,
+                AccuPt = 0,
+                DD = 0,
+                Rep = 0)
+
+out = ode(y=inistate, times=finish, func=PK, parms=pars)
+lines(data.frame(out)%>% mutate(totKidney = (Rep)) %>%
+         select(time,totKidney), main="", ylab="", col = "#72bcd5",lty=4) 
+
+out[25,]
+
+  inistate = c(Plasma = 22.5,
+                KidneyPt = 0,
+                AccuPt = 0,
+                DD = 0,
+                Rep = 0)
+
+out = ode(y=inistate, times=finish, func=PK, parms=pars)
+lines(data.frame(out)%>% mutate(totKidney = (Rep)) %>%
+         select(time,totKidney), main="", ylab="", col = "#5b96aa",lty=3) 
+
+inistate = c(Plasma = 45,
+                KidneyPt = 0,
+                AccuPt = 0,
+                DD = 0,
+                Rep = 0)
+
+out = ode(y=inistate, times=finish, func=PK, parms=pars)
+lines(data.frame(out)%>% mutate(totKidney = (Rep)) %>%
+         select(time,totKidney), main="", ylab="", col = "#44707f",lty=2) 
+
+
+inistate = c(Plasma = 67.5,
+                KidneyPt = 0,
+                AccuPt = 0,
+                DD = 0,
+                Rep = 0)
+
+out = ode(y=inistate, times=finish, func=PK, parms=pars)
+lines(data.frame(out)%>% mutate(totKidney = (Rep)) %>%
+         select(time,totKidney), main="", ylab="", col = "#16252a",lty=1) 
+
+# DNA-Damage PPT
+
+plot(10, ylab="DNA-Damage Score", xlab="Time in hours",main = "Score simulation with PPT",xlim=c(0,700),ylim=c(0,1.65))
+
+  inistate = c(Plasma = 0,
+                KidneyPt = 0,
+                AccuPt = 0,
+                DD = 0,
+                Rep = 0)
+
+out = ode(y=inistate, times=finish, func=PK, parms=pars)
+lines(data.frame(out)%>% mutate(totKidney = (DD)) %>%
+         select(time,totKidney), main="", ylab="", col = "#72bcd5",lty=4) 
+
+
+inistate = c(Plasma = 22.5,
+                KidneyPt = 0,
+                AccuPt = 0,
+                DD = 0,
+                Rep = 0)
+
+out = ode(y=inistate, times=finish, func=PK, parms=pars)
+lines(data.frame(out)%>% mutate(totKidney = (DD)) %>%
+         select(time,totKidney), main="", ylab="", col = "#5b96aa",lty=3) 
+
+inistate = c(Plasma = 45,
+                KidneyPt = 0,
+                AccuPt = 0,
+                DD = 0,
+                Rep = 0)
+
+out = ode(y=inistate, times=finish, func=PK, parms=pars)
+lines(data.frame(out)%>% mutate(totKidney = (DD)) %>%
+         select(time,totKidney), main="", ylab="", col = "#44707f",lty=2) 
+
+
+inistate = c(Plasma = 67.5,
+                KidneyPt = 0,
+                AccuPt = 0,
+                DD = 0,
+                Rep = 0)
+
+out = ode(y=inistate, times=finish, func=PK, parms=pars)
+lines(data.frame(out)%>% mutate(totKidney = (DD)) %>%
+         select(time,totKidney), main="", ylab="", col = "#16252a",lty=1) 
+
+
+```
+
+
+
+## 3. PK-dose response analysis
+```{r}
+library(ggthemes)
+
+PK = function(timepoint,state,parameters){
+  with(as.list(c(state, parameters)),{ 
+    
+  dPlasma= KidneyPt * 0.022052503115 - Plasma * (1.13252628565 + 0.1813857857015)
+  dKidneyPt = AccuPt * + 0.0003284364143375 + Plasma * 1.13252628565  - KidneyPt * (0.022052503115 + 0.00181720824448 + 0.001673191758)
+  dAccuPt = KidneyPt * 0.001673191758 - AccuPt * 0.0003284364143375
+  dDD = ks_DD + (ks_DDkid * (KidneyPt + AccuPt))/(km_dd + (KidneyPt + AccuPt)) - Rep * DD* kd_DDrep - DD * (kd_DD)
+  dRep = ks_rep + ((ks_repDD * DD)/(km_rep + DD)) - Rep * kd_rep
+  
+       list(c(dPlasma,dKidneyPt,dAccuPt,dDD,dRep))})}
+
+  pars = c( ks_DD = sumPar_MDMR[["ks_DD_CPT",1]],
+            ks_DDkid = sumPar_MDMR[["ks_DDkid_CPT",1]],
+            kd_DDrep = sumPar_MDMR[["kd_DDrep_CPT",1]],
+            kd_DD = sumPar_MDMR[["kd_DD_CPT",1]],
+            ks_rep = sumPar_MDMR[["ks_rep_CPT",1]],
+            ks_repDD = sumPar_MDMR[["ks_repDD_CPT",1]],
+            kd_rep = sumPar_MDMR[["kd_rep_CPT",1]],
+            km_dd = sumPar_MDMR[["km_dd_CPT",1]],
+            km_rep = sumPar_MDMR[["km_rep_CPT",1]])
+
+dose_analysis_accu <- data.frame(time=rep(72,5),
+           accumulation = rep(0,5),
+           dose = NA)
+doses <- c(0,9,22.5,45,67.5)
+  
+for(i in 1:5){  
+
+  
+inistate = c(Plasma = doses[i],
+                KidneyPt = 0,
+                AccuPt = 0,
+                DD = 0,
+                Rep = 0)
+
+out = ode(y=inistate, times=finish, func=PK, parms=pars)
+
+dose_analysis_accu[i,2] <- out[[73,2]]
+dose_analysis_accu[i,3] <- doses[i]
+}
+
+dose_analysis_accu <- dose_analysis_accu %>% mutate(dose = as.factor(dose))
+
+dose_analysis_accu
+ggplot(dose_analysis_accu, aes(x = dose, y = accumulation, col = dose)) +
+  geom_col(width = 0.5, position = position_dodge(0.7),lwd = 2, fill = "white")+ theme_base() + scale_colour_manual(values = c("#235c98","#4e3997","#873394","#559542","#0c425c")) + scale_y_continuous(expand = expansion(mult = c(0, 0.6))) + 
+  labs(x = "Initial plasma concentration in (μM)", y = "Simulated Pt accumulation (μg/Protein)")
+
+
+
+```
+

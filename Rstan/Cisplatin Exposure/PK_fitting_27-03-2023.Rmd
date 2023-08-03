@@ -1,0 +1,436 @@
+```{r}
+library(cmdstanr)
+library(rstan)
+library(bayesplot)
+library(tidyverse)
+library(deSolve)
+
+options(mc.cores = parallel::detectCores())
+
+```
+
+
+# Checking total dose
+```{r}
+interp_func <- function(x, y) {
+  splinefun(x, y)
+}
+
+result <- integrate(interp_func(full_S$Time, full_S$Score), lower = min(full_S$Time), upper = max(full_S$Time))
+```
+
+```{r}
+Score_data = read.csv("Inputdata/y0_PPT__two_replicates.csv") %>% group_by(timepoints,StateVar) %>% summarize(Score=mean(data4modelInterpol))
+
+SD_data = read.csv("Inputdata/y0_PPT__two_replicates.csv") %>% group_by(timepoints,StateVar) %>% summarize(SD= sd(data4modelInterpol))
+
+DD_data = Score_data %>% filter(StateVar == "DD")
+DD_sd = SD_data %>% filter(StateVar == "DD")
+
+ggplot(left_join(DD_data,DD_sd[,-2]), aes(x = timepoints, y = Score)) +
+    geom_line() +
+    labs(x="Time after in hours", y="Score") +
+  facet_wrap("StateVar",scales="free_y") +
+    geom_ribbon(aes(y = Score, ymin = Score - SD, ymax = Score + SD), alpha = .2, colour = "grey", lty=2) 
+
+```
+
+```{r}
+
+
+data_list=list(
+N = length(unique(DD_data$timepoints)),
+t0 = 0,
+ts = unique(DD_data$timepoints),
+y= as.matrix(DD_data %>% ungroup %>% select(-c(timepoints,StateVar)) %>% rename(DD=Score)),
+y0= c(50,0,0,0),
+sigma = as.matrix(DD_sd %>% ungroup %>% select(-c(timepoints,StateVar)) %>% rename(DD=SD)))
+
+options(mc.cores = parallel::detectCores())  
+chains <- 4  
+iter <- 5000  
+warmup <- 2500  
+
+
+compiled_model <- cmdstan_model("3-compartment_with_DD_cisplatin_kidney_4.stan")
+
+# This is for rstan
+#fit_pk_4 <- sampling(compiled_model, data_list, #N=N,t0=t0,ts=ts,y=y,sigma=sigma,
+#                chains = chains, iter = iter,
+#                warmup = warmup, thin = thin)
+
+
+# This is for cmdstanr
+fit_pk_DD <- compiled_model$sample(data = data_list, 
+                    parallel_chains = chains, 
+                    iter_warmup = warmup, 
+                    iter_sampling = iter-warmup,
+                    show_messages = FALSE,
+                    seed = 1234)
+```
+
+
+# Modeling the PK of cisplatin into the kidney compartment
+
+```{r}
+full_S <- read.csv("Inputdata/full_S.csv") %>% select(-1) %>% mutate(StateVar="S") %>% filter(Time!=0)
+#full_S[2,1]<-0.5
+full_Accu <- rbind(c(0.25,45,0.01,"Accu"),read.csv("Inputdata/full_Accu.csv") %>% select(-1) %>% mutate(StateVar="Accu") %>% filter(Time!=0)) %>% mutate_at(1:3,funs(as.numeric))# %>% mutate_at(2:4, funs(lead), n = 1)
+#full_Accu[13,2:4] <- full_Accu[12,2:4]
+
+full_PK <- rbind(semi_join(full_S,full_Accu, by = "Time"),full_Accu)  %>% filter(Time!=0.25)
+full_PK[13,3] <- 5
+
+
+ggplot(full_PK, aes(x = Time, y = Score)) +
+    geom_line() +
+    labs(x="Time after in hours", y="Score") +
+  facet_wrap("StateVar",scales="free_y") +
+    geom_ribbon(aes(y = Score, ymin = Score - SD, ymax = Score + SD), alpha = .2, colour = "grey", lty=2) 
+
+
+```
+
+## Fitting of PK model
+
+```{r}
+
+
+data_list=list(
+N = length(unique(full_PK$Time)),
+t0 = 0,
+ts = unique(full_PK$Time),
+y= as.matrix(full_PK%>%select(-SD)%>%pivot_wider(names_from="StateVar", values_from = Score)%>% select(-c(Time))),
+y0= c(50,0,0),
+sigma = as.matrix(full_PK%>%select(-Score)%>%pivot_wider(names_from="StateVar", values_from = SD)%>% select(-Time)))
+
+options(mc.cores = parallel::detectCores())  
+chains <- 4  
+iter <- 10000  
+warmup <- 5000  
+
+
+compiled_model <- cmdstan_model("3-compartment_PK_cisplatin_kidney_4.stan")
+
+# This is for rstan
+#fit_pk_4 <- sampling(compiled_model, data_list, #N=N,t0=t0,ts=ts,y=y,sigma=sigma,
+#                chains = chains, iter = iter,
+#                warmup = warmup, thin = thin)
+
+
+# This is for cmdstanr
+fit_pk_4 <- compiled_model$sample(data = data_list, 
+                    parallel_chains = chains, 
+                    iter_warmup = warmup, 
+                    iter_sampling = iter-warmup,
+                    show_messages = FALSE,
+                    seed = 1234)
+
+```
+
+```{r}
+# to save time for next time, save output
+#save(fit_pk_4,file="fit_pk_with_DD_2")
+#load(file="fit_pk_3_comp_fit_with_scale")
+
+setwd(dirname(getActiveDocumentContext()$path))
+
+fit_pk_4<- readRDS("Output/fit_pk_3_comp_fit_with_scale.RDS")
+
+
+
+(fit_pk_trace <- mcmc_trace(fit_pk_4$draws(variables = c("theta","scale"))))
+(fit_pk_density <- mcmc_dens_overlay(fit_pk_4$draws(variables = c("theta","scale"))))
+draws_pk <- fit_pk_4$draws(format = "draws_matrix",variables = c("theta","scale"))
+(fit_pk_summary <- as.data.frame(fit_pk_4$summary()))
+
+#posterior::summarise_draws(draws_pk)
+
+
+
+#stanfit_draws <- rstan::extract(rstan::read_stan_csv(fit_pk_4$output_files()))
+
+#save(stanfit_draws,file="fit_pk_3_comp_best_fit_extracted")
+
+sumPar<-data.frame(fit_pk_summary)%>% column_to_rownames(var = "variable")
+#parSets<- draws_pk
+
+
+
+#colMeans(as.data.frame(draws_pk))
+```
+
+```{r}
+# get relevant output data
+sumPar<-data.frame(fit_pk_summary)%>% column_to_rownames(var = "variable")
+parSets<- draws_pk
+```
+
+
+
+```{r}
+
+
+test_pk <- data.frame(Dose = c(sumPar["z_hat[1,1]",1],
+                               sumPar["z_hat[2,1]",1],
+                               sumPar["z_hat[3,1]",1],
+                               sumPar["z_hat[4,1]",1],
+                               sumPar["z_hat[5,1]",1],
+                               sumPar["z_hat[6,1]",1],
+                               sumPar["z_hat[7,1]",1],
+                               sumPar["z_hat[8,1]",1],
+                               sumPar["z_hat[9,1]",1],
+                               sumPar["z_hat[10,1]",1],
+                               sumPar["z_hat[11,1]",1],
+                               sumPar["z_hat[12,1]",1],
+                               sumPar["z_hat[13,1]",1]),
+                      KidneyPt = c(sumPar["z_hat[1,2]",1],
+                                   sumPar["z_hat[2,2]",1],
+                                   sumPar["z_hat[3,2]",1],
+                                   sumPar["z_hat[4,2]",1],
+                                   sumPar["z_hat[5,2]",1],
+                                   sumPar["z_hat[6,2]",1],
+                                   sumPar["z_hat[7,2]",1],
+                                   sumPar["z_hat[8,2]",1],
+                                   sumPar["z_hat[9,2]",1],
+                                   sumPar["z_hat[10,2]",1],
+                                   sumPar["z_hat[11,2]",1],
+                                   sumPar["z_hat[12,2]",1],
+                                   sumPar["z_hat[13,2]",1]),
+                      Time = c(unique(full_PK$Time))) %>%
+  pivot_longer(1:2,names_to = "StateVar",values_to = "Score")
+ggplot(test_pk,aes(x=Time,y=Score)) +
+  geom_line()+
+  facet_wrap(vars(StateVar),scales = "free_y")
+```
+
+```{r}
+  inistate = c(Dose = 46,
+                KidneyPt = 0,
+                AccuPt = 0,
+               DD=0)
+```
+
+
+# View 30 posterior draws(blue dotted), and mean (red)
+
+```{r}
+State = "Accu"
+small_data <- full_PK %>% filter(StateVar==State)
+
+PK = function(timepoint,state,parameters){
+  with(as.list(c(state, parameters)),{ 
+    
+  dDose= KidneyPt * k_1 - Dose * (k1 + ke_dose);
+  dKidneyPt = AccuPt * k_2 + Dose * k1 - KidneyPt * (k_1 + k2 + ke_kidney);
+  dAccuPt = KidneyPt * k2 - AccuPt * k_2;
+  
+  #theta[1] = k1
+  #theta[2] = ke_dose
+  #theta[3] = k_1
+  #theta[4] = ke_kidney
+  #theta[5] = k2
+  #theta[6] = k_2
+       list(c(dDose,dKidneyPt,dAccuPt))})}
+
+finish = seq(0,600,by = 1)
+
+plot(x=small_data$Time,y=small_data$Score, xlab="", ylab="Kidney Pt in ug/Protein", type="l",xlim=c(0,600), ylim=c(0,ifelse(State=="S",50,200)))
+for(i in 1:30){
+  
+  j = sample(1:nrow(draws_pk),1)
+  
+  pars = c(k1 = draws_pk[[j,1]],
+           ke_dose = draws_pk[[j,2]],
+           k_1 = draws_pk[[j,3]],
+           ke_kidney = draws_pk[[j,4]],
+           k2 = draws_pk[[j,5]],
+           k_2 = draws_pk[[j,6]])
+  
+  #scaling = stanfit_draws$scale_kid[j]
+  out = ode(y=inistate, times=finish, func=PK, parms=pars)
+  lines(data.frame(out)%>% mutate(totKidney = (KidneyPt+AccuPt)*draws_pk[[j,7]]) %>% select(time,totKidney),main="", ylab="x", col = alpha("blue",0.1),lty=1)}
+
+  pars = c( k1 = sumPar[["theta[1]",1]],
+            ke_dose = sumPar[["theta[2]",1]],
+            k_1 = sumPar[["theta[3]",1]],
+            ke_kidney = sumPar[["theta[4]",1]],
+            k2 = sumPar[["theta[5]",1]],
+            k_2 = sumPar[["theta[6]",1]])
+  
+  #theta[1] = k1
+  #theta[2] = k_1
+  #theta[3] = ke_kidney
+  #theta[4] = k2
+  #theta[5] = k_2
+out = ode(y=inistate, times=finish, func=PK, parms=pars)
+lines(data.frame(out)%>% mutate(totKidney = (KidneyPt+AccuPt)*sumPar[["scale",1]]) %>%
+         select(time,totKidney), main="", ylab="", col = "red") 
+
+```
+
+
+# View 50 posterior draws(blue dotted), and mean (red)
+
+```{r}
+State = "S"
+small_data <- full_PK %>% filter(StateVar==State)
+
+PK = function(timepoint,state,parameters){
+  with(as.list(c(state, parameters)),{ 
+    
+  dDose= KidneyPt * k_1 - Dose * (k1 + ke_dose);
+  dKidneyPt = AccuPt * k_2 + Dose * k1 - KidneyPt * (k_1 + k2 + ke_kidney);
+  dAccuPt = KidneyPt * k2 - AccuPt * k_2;
+  #theta[1] = k1
+  #theta[2] = ke_dose
+  #theta[3] = k_1
+  #theta[4] = ke_kidney
+  #theta[5] = k2
+  #theta[6] = k_2
+       list(c(dDose,dKidneyPt,dAccuPt))})}
+
+finish = seq(0,600,by = 1)
+
+plot(x=small_data$Time,y=small_data$Score, xlab="", ylab="Plasma Pt in uM", type="l",xlim=c(0,600), ylim=c(0,ifelse(State=="S",50,200)))
+for(i in 1:30){
+  
+  j = sample(1:nrow(draws_pk),1)
+  
+  pars = c(k1 = draws_pk[[j,1]],
+           ke_dose = draws_pk[[j,2]],
+           k_1 = draws_pk[[j,3]],
+           ke_kidney = draws_pk[[j,4]],
+           k2 = draws_pk[[j,5]],
+           k_2 = draws_pk[[j,6]])
+  
+  out = ode(y=inistate, times=finish, func=PK, parms=pars)
+  lines(data.frame(out)%>% select(time,Dose), 
+        
+        main="", ylab="x", col = alpha("blue",0.05),lty=1)}
+
+  pars = c( k1 = sumPar[["theta[1]",1]],
+            ke_dose = sumPar[["theta[2]",1]],
+            k_1 = sumPar[["theta[3]",1]],
+            ke_kidney = sumPar[["theta[4]",1]],
+            k2 = sumPar[["theta[5]",1]],
+            k_2 = sumPar[["theta[6]",1]])
+  
+  #theta[1] = k1
+  #theta[2] = ke_dose
+  #theta[3] = k_1
+  #theta[4] = ke_kidney
+  #theta[5] = k2
+  #theta[6] = k_2
+  
+out = ode(y=inistate, times=finish, func=PK, parms=pars)
+lines(data.frame(out)%>% select(time,Dose), main="", ylab="x", col = "red",lty=2) 
+
+```
+```{r}
+
+(fit_pk_trace <- mcmc_trace(fit_pk_4$draws(variables = c("theta"))))
+(fit_pk_density <- mcmc_dens_overlay(fit_pk_4$draws(variables = c("theta"))))
+draws_pk <- fit_pk_4$draws(format = "draws_matrix",variables = c("theta"))
+(fit_pk_summary <- fit_pk_4$summary())
+
+
+sumPar<-data.frame(fit_pk_summary)%>% column_to_rownames(var = "variable")
+parSets<- draws_pk
+
+```
+
+```{r}
+
+PK = function(timepoint,state,parameters){
+  with(as.list(c(state, parameters)),{ 
+    
+  dDose= KidneyPt * 0.022052503115 - Dose * (1.13252628565 + 0.1813857857015)
+  dKidneyPt = AccuPt * + 0.0003284364143375 + Dose * 1.13252628565  - KidneyPt * (0.022052503115 + 0.00181720824448 + 0.001673191758)
+  dAccuPt = KidneyPt * 0.001673191758 - AccuPt * 0.0003284364143375
+  dDD = ks_DD + KidneyPt * ks_ddKid + AccuPt * kd_ddAccu - DD* kd_DD
+  
+  # theta[1] = k1
+  # theta[2] = ke_dose
+  # theta[3] = k-1
+  # theta[4] = ke_kidney
+  # theta[5] = k2
+  # theta[6] = k-2
+  # theta[7] = k3
+  # theta[8] = k-3
+  
+       list(c(dDose,dKidneyPt,dAccuPt,dDD))})}
+
+finish = seq(0,600,by = 1)
+
+plot(x=DD_data$timepoints,y=DD_data$Score, xlab="", ylab="DD", type="l",xlim=c(0,600), ylim=c(0,ifelse(State=="S",5,5)))
+for(i in 1:30){
+  
+  j = sample(1:nrow(draws_pk),1)
+  
+  pars = c(ks_DD = draws_pk[[j,1]],
+           ks_ddKid = draws_pk[[j,2]],
+           kd_ddAccu = draws_pk[[j,3]],
+           kd_DD = draws_pk[[j,4]])
+  
+  #scaling = stanfit_draws$scale_kid[j]
+  out = ode(y=inistate, times=finish, func=PK, parms=pars)
+  lines(data.frame(out)%>% mutate(totKidney = (DD)) %>% select(time,totKidney),main="", ylab="x", col = alpha("blue",0.1),lty=1)}
+
+  pars = c( ks_DD = sumPar[["theta[1]",1]],
+            ks_ddKid = sumPar[["theta[2]",1]],
+            kd_ddAccu = sumPar[["theta[3]",1]],
+            kd_DD = sumPar[["theta[4]",1]])
+  
+  # theta[1] = k1
+  # theta[2] = ke_dose
+  # theta[3] = k-1
+  # theta[4] = ke_kidney
+  # theta[5] = k2
+  # theta[6] = k-2
+  # theta[7] = k3
+  # theta[8] = k-3
+  
+out = ode(y=inistate, times=finish, func=PK, parms=pars)
+lines(data.frame(out)%>% mutate(totKidney = (DD)) %>%
+         select(time,totKidney), main="", ylab="", col = "red") 
+
+```
+
+
+
+```{r}
+PK = function(timepoint,state,parameters){
+  with(as.list(c(state, parameters)),{ 
+    
+  dDose= KidneyPt * k_1 - Dose * (k1 + ke_dose);
+  dKidneyPt = AccuPt * k_2 + Dose * k1 - KidneyPt * (k_1 + k2 + ke_kidney);
+  dAccuPt = KidneyPt * k2 - AccuPt * (k_2);
+  #theta[1] = k1
+  #theta[2] = ke_dose
+  #theta[3] = k_1
+  #theta[4] = ke_kidney
+  #theta[5] = k2
+  #theta[6] = k_2
+       list(c(dDose,dKidneyPt,dAccuPt))})}
+```
+
+
+```{r}
+PK = function(timepoint,state,parameters){
+  with(as.list(c(state, parameters)),{ 
+    
+  dDose= KidneyPt * k_1 - Dose * (k1 + ke_dose);
+  dKidneyPt = AccuPt * k_2 + Dose * k1 - KidneyPt * (k_1 + k2 + ke_kidney);
+  dAccuPt = KidneyPt * k2 - AccuPt * (k_2);
+  #theta[1] = k1
+  #theta[2] = ke_dose
+  #theta[3] = k_1
+  #theta[4] = ke_kidney
+  #theta[5] = k2
+  #theta[6] = k_2
+       list(c(dDose,dKidneyPt,dAccuPt))})}
+```
+
+
+
