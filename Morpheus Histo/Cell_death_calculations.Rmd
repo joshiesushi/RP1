@@ -1,0 +1,187 @@
+---
+title: "Plotting death rate of basal and with cisplatin treatment"
+author: "Joshua Eugenio"
+date: "2023-07-20"
+output: html_document
+---
+
+# Quantifying basal death rate
+
+```{r}
+
+setwd(dirname(rstudioapi::getSourceEditorContext()$path))
+
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+#library(gtools)
+library(stringr) 
+library(data.table)
+#library(ggh4x)
+
+
+# loading data
+
+Necro <-read.delim(tmp_cis_CD_rep4.txt) %>% select(-1)
+
+# taking sum of all tech replicates
+
+Necro_tech_mean <- Necro %>%
+  group_by(treatment,dose_uM,replID,timeAfterExposure,variable) %>%
+  summarize(value = sum(value))
+
+# Correction with control group
+
+Necro_tech_PI_Corr <- Necro_tech_mean %>%
+  group_by(replID,timeAfterExposure,variable) %>%
+  mutate(
+DMSO = ifelse(treatment == "CycA",value[treatment == "DMEM"],value[treatment == "DMSO"]),
+corr = value - DMSO
+
+) %>%
+  ungroup() %>%
+  group_by(treatment,dose_uM,variable,timeAfterExposure) %>%
+  filter(!(treatment=="CycA" & replID==3)) %>%
+  summarise(meancorr = mean(corr),sdcorr=sd(corr),meanvalue= mean(value), sdvalue=sd(value))
+
+
+# % PI stained cells over time after cisplatin treatment
+
+ggplot(Necro_tech_PI_Corr%>%filter(treatment=="Cis" & variable == "count_PI_masked_primaryID_AreaShape_Area.DIV.Nuclei_AreaShape_Area_larger_0_"), aes(x=timeAfterExposure,y=meancorr,col=as.factor(dose_uM))) +
+  geom_line() +
+  geom_ribbon(aes(y=meancorr,ymin=meancorr-sdcorr, ymax=meancorr+sdcorr,fill=as.factor(dose_uM)),alpha=0.15)
+
+# % PI stain after DMEM t reatment
+
+ggplot(Necro_tech_PI_Corr%>%filter(treatment=="DMEM" & variable == "count_PI_masked_primaryID_AreaShape_Area.DIV.Nuclei_AreaShape_Area_larger_0_") %>% filter(timeAfterExposure > 10), aes(x=timeAfterExposure,y=meanvalue)) +
+  geom_line() +
+  geom_ribbon(aes(y=meanvalue,ymin=meanvalue-sdvalue, ymax=meanvalue+sdvalue),alpha=0.15) +
+  labs(y = "Percentage PI positive cells", x="Time in hours")
+
+
+test <- Necro_tech_PI_Corr%>%filter(treatment=="DMEM" & variable == "count_PI_masked_primaryID_AreaShape_Area.DIV.Nuclei_AreaShape_Area_larger_0_") %>% filter(timeAfterExposure > 10)
+
+colMeans(test["meanvalue"])
+
+
+```
+
+
+# Quantifying and normalizing the Kim1 data
+
+```{r}
+Kim1<-read.csv("Kim1/Isolated Kim-1/Imaging Histo.csv") %>% group_by(Segment) %>% mutate(corrIntDen = IntDen/IntDen[Time==0])
+
+ggplot(Kim1,aes(x = Time, y = Control.Normalized, fill = Segment)) +
+  geom_col(position = "dodge") +
+  labs(x = " time in days", y = "Normalized Integrated Density", title = "Kim-1 levels per segment")
+  
+```
+
+# Quantifying and normalizing the Clusterin data
+
+```{r}
+setwd(dirname(getActiveDocumentContext()$path))
+Clusterin<-read.csv("Clusterin/Isolated Clusterin/Results.csv") %>% group_by(Segment) %>% mutate(corrIntDen = IntDen/IntDen[Time==0])
+
+ggplot(Clusterin %>% dplyr::filter(Time != 28),aes(x = Time, y = corrIntDen, col = Segment)) +
+  geom_line() +
+  labs(x = " time in days", y = "Normalized Integrated Density", title = "Clusterin levels per segment")
+  
+```
+
+# Outdated cell death count of simulations (Bad data)
+
+```{r}
+setwd(dirname(getActiveDocumentContext()$path))
+
+Sim1276 <-read.csv("Plasma_45_Final/1/logger_1.csv", sep="\t") %>%
+  mutate(Segment = ifelse(cell.center.y<=600,"PPT","CPT")) %>%
+  rbind(data.frame(time = 0, cell.id = 1, cell.id.1 =1, cell.center.y=1,Segment = "CPT"),data.frame(time = 0, cell.id = 1, cell.id.1 =1, cell.center.y=1,Segment = "PPT")) %>%
+  group_by(Segment,time) %>%
+  summarize(n_death = n()) %>%
+  mutate(n=as.factor(1))
+  
+Sim1277 <-read.csv("Plasma_45_Final/2/logger_1.csv", sep="\t")%>%
+  mutate(Segment = ifelse(cell.center.y<=600,"PPT","CPT")) %>%
+  rbind(data.frame(time = 0, cell.id = 1, cell.id.1 =1, cell.center.y=1,Segment = "CPT"),data.frame(time = 0, cell.id = 1, cell.id.1 =1, cell.center.y=1,Segment = "PPT")) %>%
+  group_by(Segment,time) %>%
+  summarize(n_death = n()) %>%
+  mutate(n=as.factor(2))
+
+Sim1278 <-read.csv("Plasma_45_Final/3/logger_1.csv", sep="\t")%>%
+  mutate(Segment = ifelse(cell.center.y<=600,"PPT","CPT")) %>%
+  rbind(data.frame(time = 0, cell.id = 1, cell.id.1 =1, cell.center.y=1,Segment = "CPT"),data.frame(time = 0, cell.id = 1, cell.id.1 =1, cell.center.y=1,Segment = "PPT")) %>%
+  group_by(Segment,time) %>%
+  summarize(n_death = n()) %>%
+  mutate(n=as.factor(3))
+
+Sim1279 <-read.csv("Plasma_45_Final/4/logger_1.csv", sep="\t")%>%
+  mutate(Segment = ifelse(cell.center.y<=600,"PPT","CPT")) %>%
+  rbind(data.frame(time = 0, cell.id = 1, cell.id.1 =1, cell.center.y=1,Segment = "CPT"),data.frame(time = 0, cell.id = 1, cell.id.1 =1, cell.center.y=1,Segment = "PPT")) %>%
+  group_by(Segment,time) %>%
+  summarize(n_death = n()) %>%
+  mutate(n=as.factor(4))
+
+Sim1280 <-read.csv("Plasma_45_Final/5/logger_1.csv", sep="\t")%>%
+  mutate(Segment = ifelse(cell.center.y<=600,"PPT","CPT")) %>%
+  rbind(data.frame(time = 0, cell.id = 1, cell.id.1 =1, cell.center.y=1,Segment = "CPT"),data.frame(time = 0, cell.id = 1, cell.id.1 =1, cell.center.y=1,Segment = "PPT")) %>%
+  group_by(Segment,time) %>%
+  summarize(n_death = n()) %>%
+  mutate(n=as.factor(5))
+
+
+
+
+ggplot(rbind(Sim1276,Sim1277,Sim1278,Sim1279,Sim1280),# %>% group_by(Segment,time)# %>% summarize(n_death = mean(n_death)),
+       aes(x = time, y = n_death,col =n)) +
+  geom_bar(stat="identity") +
+  labs(x = " time in days", y = "Cell death count", title = "Cell death over time") +
+  facet_wrap(vars(Segment))
+  
+
+```
+# Good count of cell death (Good data)
+
+```{r}
+
+Sims <- data.frame()
+#Sims <- list()
+ref_df <- data.frame(Segment = c(rep("CPT",28),rep("PPT",28)),time = rep(seq(1,28,by = 1),2))
+#This reference df is made to make sure that if there is 0 death, the quantification counts 0 death and not NA.
+
+
+# This for loop creates a df from apoptotic cells (count) per time point per cell type. This is then corrected by the total number of cells. And final value is the %cell death compared to basal death rate of 0.0004
+
+for(i in 52:72){
+  
+  Sims_temp <- read.csv(paste("Plasma_45_Final/",i,"/logger.csv",sep = ""), sep="\t")%>%
+  mutate(Segment = ifelse(cell.center.y<=600,"PPT","CPT"))  %>%
+  select(Segment,time) %>%
+  rbind(ref_df) %>%
+  group_by(Segment,time) %>%
+
+  summarize(n_death = (n())/630) %>%
+  #summarize(n_death = ifelse(Segment == "CPT",(n()-1)/302,(n()-1)/322)) %>%
+  rbind(data.frame(Segment = c("CPT","PPT"),time = c(0,0), n_death = (0.0004))) %>%
+  mutate(n=as.factor(i))
+  
+  Sims <- rbind(Sims,Sims_temp)
+  
+  #Sims[[i]] <- Sims_temp
+  
+}
+
+ggplot(Sims %>% filter(time < 21) %>% group_by(Segment) %>% mutate(n_death = n_death/n_death[time==0]) %>% group_by(Segment,time) %>% summarize(mean_n_death = mean(n_death), se = sd(n_death)/sqrt(n())) %>% rbind(data.frame(Segment = "CPT",time=0,mean_n_death = 0, se= 0),data.frame(Segment = "PPT",time=0,mean_n_death = 0, se= 0)),
+       aes(x = time, y=mean_n_death,col=Segment,fill=Segment)) +
+  geom_smooth()+
+  labs(x = " time in days",y=NULL, title = "%Cell death compared to basal condition (n = 20)") +
+  scale_y_continuous(limits = c(0,11), expand = c(0, 0)) 
+  
+  #geom_ribbon(aes(y=mean_n_death,ymin=mean_n_death-se, ymax=mean_n_death+se,fill=Segment),alpha=0.15)
+  
+```
+
+
+
+
