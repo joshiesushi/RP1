@@ -1,0 +1,916 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<MorpheusModel version="4">
+    <Description>
+        <Details></Details>
+        <Title></Title>
+    </Description>
+    <Space>
+        <Lattice class="square">
+            <Neighborhood>
+                <Order>2</Order>
+            </Neighborhood>
+            <Size symbol="size" value="1200, 1200, 0.0"/>
+            <BoundaryConditions>
+                <Condition type="noflux" boundary="x"/>
+                <Condition type="periodic" boundary="y"/>
+            </BoundaryConditions>
+        </Lattice>
+        <SpaceSymbol symbol="l"/>
+    </Space>
+    <Time>
+        <StartTime value="0"/>
+        <StopTime value="28"/>
+        <TimeSymbol symbol="time"/>
+        <!--    <Disabled>
+        <RandomSeed value="12345"/>
+    </Disabled>
+-->
+    </Time>
+    <Analysis>
+        <!--    <Disabled>
+        <Gnuplotter time-step="1.0" decorate="false">
+            <Plot>
+                <Cells value="color">
+                    <ColorMap>
+                        <Disabled>
+                            <Color color="light-pink" value="1"/>
+                        </Disabled>
+                        <Disabled>
+                            <Color color="salmon" value="2"/>
+                        </Disabled>
+                        <Disabled>
+                            <Color color="gray" value="3"/>
+                        </Disabled>
+                        <Disabled>
+                            <Color color="light-blue" value="4"/>
+                        </Disabled>
+                        <Color color="lemonchiffon" value="10"/>
+                        <Disabled>
+                            <Color color="lemonchiffon" value="30"/>
+                        </Disabled>
+                        <Disabled>
+                            <Color color="yellow" value="35"/>
+                        </Disabled>
+                        <Color color="brown4" value="48"/>
+                        <Color color="lemonchiffon" value="0"/>
+                    </ColorMap>
+                </Cells>
+                <Disabled>
+                    <CellLabels value="cell.id"/>
+                </Disabled>
+            </Plot>
+            <Terminal name="png"/>
+        </Gnuplotter>
+    </Disabled>
+-->
+        <ModelGraph include-tags="#untagged" format="dot" reduced="false"/>
+        <Logger time-step="1.0">
+            <Input>
+                <Symbol symbol-ref="cell.id"/>
+                <Symbol symbol-ref="cell.center.y"/>
+            </Input>
+            <Output>
+                <TextOutput/>
+            </Output>
+            <Restriction>
+                <Celltype celltype="aCell"/>
+            </Restriction>
+        </Logger>
+        <!--    <Disabled>
+        <Logger time-step="1">
+            <Input/>
+            <Output>
+                <TextOutput file-format="matrix"/>
+            </Output>
+            <Plots>
+                <Disabled>
+                    <Plot>
+                        <Style style="points"/>
+                        <Terminal terminal="png"/>
+                        <X-axis>
+                            <Symbol symbol-ref="cell.id"/>
+                        </X-axis>
+                        <Y-axis/>
+                    </Plot>
+                </Disabled>
+                <Plot time-step="1">
+                    <Style style="lines" line-width="4.0"/>
+                    <Terminal terminal="png"/>
+                    <X-axis>
+                        <Symbol symbol-ref="time"/>
+                    </X-axis>
+                    <Y-axis>
+                        <Symbol symbol-ref="deathP_CPT"/>
+                        <Disabled>
+                            <Symbol symbol-ref="cell.id"/>
+                        </Disabled>
+                        <Disabled>
+                            <Symbol symbol-ref="cell.id"/>
+                        </Disabled>
+                        <Symbol symbol-ref="deathP_PPT"/>
+                    </Y-axis>
+                </Plot>
+            </Plots>
+            <Restriction>
+                <Disabled/>
+                <Cells cell-ids="631"/>
+            </Restriction>
+        </Logger>
+    </Disabled>
+-->
+        <!--    <Disabled>
+        <Logger time-step="1">
+            <Input/>
+            <Output>
+                <TextOutput file-format="matrix"/>
+            </Output>
+            <Plots>
+                <Plot time-step="1">
+                    <Style style="lines" line-width="4.0"/>
+                    <Terminal terminal="png"/>
+                    <X-axis>
+                        <Symbol symbol-ref="time"/>
+                    </X-axis>
+                    <Y-axis>
+                        <Symbol symbol-ref="deathP"/>
+                    </Y-axis>
+                </Plot>
+            </Plots>
+        </Logger>
+    </Disabled>
+-->
+        <!--    <Disabled>
+        <Gnuplotter time-step="1.0">
+            <Plot>
+                <Cells max="48" min="0" value="color">
+                    <ColorMap>
+                        <Color color="light-pink" value="1"/>
+                        <Color color="salmon" value="2"/>
+                        <Color color="gray" value="3"/>
+                        <Color color="light-blue" value="4"/>
+                        <Color color="lemonchiffon" value="10"/>
+                        <Disabled>
+                            <Color color="lemonchiffon" value="30"/>
+                        </Disabled>
+                        <Disabled>
+                            <Color color="yellow" value="35"/>
+                        </Disabled>
+                        <Color color="brown4" value="48"/>
+                        <Color color="lemonchiffon" value="0"/>
+                    </ColorMap>
+                </Cells>
+            </Plot>
+            <Terminal name="png"/>
+        </Gnuplotter>
+    </Disabled>
+-->
+        <!--    <Disabled>
+        <Logger time-step="1.0">
+            <Input>
+                <Symbol symbol-ref="deathP"/>
+                <Disabled>
+                    <Symbol symbol-ref="Pt_BM"/>
+                </Disabled>
+            </Input>
+            <Output>
+                <TextOutput/>
+            </Output>
+            <Disabled>
+                <Restriction>
+                    <Celltype celltype="aCell"/>
+                </Restriction>
+            </Disabled>
+        </Logger>
+    </Disabled>
+-->
+        <!--    <Disabled>
+        <Logger time-step="1">
+            <Input/>
+            <Output>
+                <TextOutput file-format="matrix"/>
+            </Output>
+            <Plots>
+                <Disabled>
+                    <Plot>
+                        <Style style="points"/>
+                        <Terminal terminal="png"/>
+                        <X-axis>
+                            <Symbol symbol-ref="cell.id"/>
+                        </X-axis>
+                        <Y-axis/>
+                    </Plot>
+                </Disabled>
+                <Plot time-step="1">
+                    <Style style="lines" line-width="4.0"/>
+                    <Terminal terminal="png"/>
+                    <X-axis>
+                        <Symbol symbol-ref="time"/>
+                    </X-axis>
+                    <Y-axis>
+                        <Symbol symbol-ref="DD_CPT"/>
+                        <Disabled>
+                            <Symbol symbol-ref="cell.id"/>
+                        </Disabled>
+                        <Disabled>
+                            <Symbol symbol-ref="cell.id"/>
+                        </Disabled>
+                        <Symbol symbol-ref="DD_PPT"/>
+                    </Y-axis>
+                </Plot>
+            </Plots>
+            <Restriction>
+                <Disabled/>
+                <Cells cell-ids="631"/>
+            </Restriction>
+        </Logger>
+    </Disabled>
+-->
+        <!--    <Disabled>
+        <Logger time-step="1">
+            <Input/>
+            <Output>
+                <TextOutput file-format="matrix"/>
+            </Output>
+            <Plots>
+                <Disabled>
+                    <Plot>
+                        <Style style="points"/>
+                        <Terminal terminal="png"/>
+                        <X-axis>
+                            <Symbol symbol-ref="cell.id"/>
+                        </X-axis>
+                        <Y-axis/>
+                    </Plot>
+                </Disabled>
+                <Plot time-step="1">
+                    <Style style="lines" line-width="4.0"/>
+                    <Terminal terminal="png"/>
+                    <X-axis>
+                        <Symbol symbol-ref="time"/>
+                    </X-axis>
+                    <Y-axis>
+                        <Symbol symbol-ref="Repair_CPT"/>
+                        <Disabled>
+                            <Symbol symbol-ref="cell.id"/>
+                        </Disabled>
+                        <Disabled>
+                            <Symbol symbol-ref="cell.id"/>
+                        </Disabled>
+                        <Symbol symbol-ref="Repair_PPT"/>
+                    </Y-axis>
+                </Plot>
+            </Plots>
+            <Restriction>
+                <Disabled/>
+                <Cells cell-ids="631"/>
+            </Restriction>
+        </Logger>
+    </Disabled>
+-->
+    </Analysis>
+    <Global>
+        <Constant symbol="live" value="0.0"/>
+        <Variable symbol="DD_CPT" value="0.0"/>
+        <Variable symbol="Repair_CPT" value="0.0"/>
+        <Variable symbol="DD_PPT" value="0.0"/>
+        <Variable symbol="Repair_PPT" value="0.0"/>
+        <Variable symbol="DD" value="0.0"/>
+        <Variable symbol="Repair" value="0.0"/>
+        <Variable symbol="deathP_CPT" value="0.0"/>
+        <Variable symbol="deathP_PPT" value="0.0"/>
+        <Variable symbol="DD_CPT_accu" value="0.0"/>
+        <Variable symbol="DD_PPT_accu" value="0.0"/>
+        <DelayVariable symbol="DD_CPT_delay" delay="1" value="0.0"/>
+        <DelayVariable symbol="DD_PPT_delay" delay="1" value="0.0"/>
+        <Variable symbol="time_alive" value="0.0"/>
+        <Constant symbol="ks_DD_PPT" value="0.000130883351030345"/>
+        <Constant symbol="ks_DDkid_PPT" value="0.4420521903"/>
+        <Constant symbol="kd_DDrep_PPT" value="0.0017272936841664"/>
+        <Constant symbol="kd_DD_PPT" value="0.015688904695"/>
+        <Constant symbol="ks_rep_PPT" value="0.000401006491090441"/>
+        <Constant symbol="ks_repDD_PPT" value="0.870501750385"/>
+        <Constant symbol="kd_rep_PPT" value="0.296661055485"/>
+        <Constant symbol="km_DD_PPT" value="556.962189175"/>
+        <Constant symbol="km_rep_PPT" value="26.694218674"/>
+        <Constant symbol="ks_DD_CPT" value="0.06439027349172"/>
+        <Constant symbol="ks_DDkid_CPT" value="0.14673697886"/>
+        <Constant symbol="kd_DDrep_CPT" value="2.378617125"/>
+        <Constant symbol="kd_DD_CPT" value="0.154989993355"/>
+        <Constant symbol="ks_rep_CPT" value="0.0006355919263578"/>
+        <Constant symbol="ks_repDD_CPT" value="0.00107090822962525"/>
+        <Constant symbol="kd_rep_CPT" value="0.006505962649"/>
+        <Constant symbol="km_DD_CPT" value="0.36923132438775"/>
+        <Constant symbol="km_rep_CPT" value="1.8904552685379"/>
+        <!--    <Disabled>
+        <DelayVariable symbol="time_alive_delay" delay="1" value="0.0"/>
+    </Disabled>
+-->
+        <!--    <Disabled>
+        <Equation symbol-ref="time_alive_delay">
+            <Expression>time_alive</Expression>
+        </Equation>
+    </Disabled>
+-->
+        <!--    <Disabled>
+        <Equation symbol-ref="DD_CPT_delay">
+            <Expression>DD_CPT_accu</Expression>
+        </Equation>
+    </Disabled>
+-->
+        <!--    <Disabled>
+        <Equation symbol-ref="DD_PPT_delay">
+            <Expression>DD_PPT_accu</Expression>
+        </Equation>
+    </Disabled>
+-->
+        <!--    <Disabled>
+        <DelayVariable symbol="time_delay" delay="1" value="0.0"/>
+    </Disabled>
+-->
+        <!--    <Disabled>
+        <Equation symbol-ref="time_alive">
+            <Expression>time_delay+1</Expression>
+        </Equation>
+    </Disabled>
+-->
+        <Variable symbol="deathP" value="0.0"/>
+        <!--    <Disabled>
+        <Equation symbol-ref="time_delay">
+            <Expression>time_alive</Expression>
+        </Equation>
+    </Disabled>
+-->
+        <Variable symbol="Segment" value="0"/>
+    </Global>
+    <CellTypes>
+        <CellType name="CPT" class="biological">
+            <Property symbol="deathP" value="0"/>
+            <Property symbol="divP" value="0.00000001"/>
+            <Property symbol="live" value="1"/>
+            <Property symbol="div" value="0"/>
+            <Property symbol="control" value="0.0"/>
+            <Property symbol="mem" value="0.0"/>
+            <ChangeCellType time-step="1" newCellType="aCell">
+                <Condition>(rand_uni(0,1) &lt; deathP and control ==0)</Condition>
+                <Triggers>
+                    <Rule symbol-ref="color">
+                        <Expression>3</Expression>
+                    </Rule>
+                </Triggers>
+            </ChangeCellType>
+            <ChangeCellType newCellType="mCell">
+                <Condition>rand_uni(0,1) &lt; divP and div &lt; 2 and control == 0</Condition>
+                <Triggers>
+                    <Rule symbol-ref="color">
+                        <Expression>4</Expression>
+                    </Rule>
+                </Triggers>
+            </ChangeCellType>
+            <NeighborhoodReporter>
+                <Input scaling="cell" value="live"/>
+                <Output symbol-ref="div" mapping="sum"/>
+            </NeighborhoodReporter>
+            <NeighborhoodReporter>
+                <Input noflux-cell-medium="true" scaling="cell" value="(cell.type == celltype.mCell.id)"/>
+                <Output symbol-ref="control" mapping="sum"/>
+            </NeighborhoodReporter>
+            <!--    <Disabled>
+        <Event trigger="when-true">
+            <Condition>div&lt;2</Condition>
+            <Rule symbol-ref="deathP">
+                <Expression>0.008</Expression>
+            </Rule>
+        </Event>
+    </Disabled>
+-->
+            <!--    <Disabled>
+        <Property symbol="c" value="800"/>
+    </Disabled>
+-->
+            <LengthConstraint target="40" strength="1" mode="length"/>
+            <VolumeConstraint target="450" strength="1"/>
+            <SurfaceConstraint target="0.8" strength="0.2" mode="surface"/>
+            <ConnectivityConstraint/>
+            <InterfaceConstraint target="10" type="mCell" strength="50"/>
+            <NeighborhoodReporter>
+                <Input scaling="length" value="cell.type == celltype.BaseMem.id"/>
+                <Output symbol-ref="mem" mapping="sum"/>
+            </NeighborhoodReporter>
+            <!--    <Disabled>
+        <System time-scaling="2.4" time-step="4e-2" solver="Dormand-Prince [adaptive, O(5)]" solver-eps="1e-4">
+            <DiffEqn symbol-ref="DD">
+                <Expression>ks_DD_CPT + (ks_DDkid_CPT * Pt)/(km_DD_CPT + Pt) - Repair * DD*  kd_DDrep_CPT - DD*kd_DD_CPT</Expression>
+            </DiffEqn>
+            <DiffEqn symbol-ref="Repair">
+                <Expression>ks_rep_CPT + ks_repDD_CPT * DD - Repair * kd_rep_CPT</Expression>
+            </DiffEqn>
+            <Rule symbol-ref="deathP">
+                <Expression>if(DD &lt; 0.02010011659,0.0002085, 0.0002085 + 0.039174 *DD^2)
+</Expression>
+            </Rule>
+            <Annotation>ODE-System for CPT</Annotation>
+        </System>
+    </Disabled>
+-->
+            <Property symbol="DD" value="0"/>
+            <Property symbol="Repair" value="0.0"/>
+            <Property symbol="Pt" value="0"/>
+            <Property symbol="color" value="1"/>
+            <Property symbol="Pt_BM" value="0"/>
+            <NeighborhoodReporter>
+                <Input scaling="cell" value="Pt_BM"/>
+                <Output symbol-ref="Pt" mapping="sum"/>
+            </NeighborhoodReporter>
+            <System time-scaling="24" time-step="4e-2" solver="Dormand-Prince [adaptive, O(5)]" solver-eps="1e-4">
+                <DiffEqn symbol-ref="DD">
+                    <Expression>ks_DD_CPT + ((ks_DDkid_CPT * Pt)/(km_DD_CPT + Pt)) - Repair * DD*  kd_DDrep_CPT - DD*kd_DD_CPT</Expression>
+                </DiffEqn>
+                <DiffEqn symbol-ref="Repair">
+                    <Expression>ks_rep_CPT + (ks_repDD_CPT * DD)/(km_rep_CPT + DD) - Repair * kd_rep_CPT</Expression>
+                </DiffEqn>
+                <Rule symbol-ref="deathP">
+                    <Expression>if(DD&lt; 0.35, 0.0004,0.0004 + 0.0032* DD)</Expression>
+                </Rule>
+                <Annotation>ODE-System for CPT</Annotation>
+            </System>
+            <Property symbol="regenerated_cell" value="0.0"/>
+            <!--    <Disabled>
+        <Equation symbol-ref="Segment">
+            <Expression>if(cell.center.y &lt;= 600, 2, 1)</Expression>
+        </Equation>
+    </Disabled>
+-->
+        </CellType>
+        <CellType name="PPT" class="biological">
+            <Property symbol="deathP" value="0"/>
+            <Property symbol="divP" value="0.00000001"/>
+            <Property symbol="live" value="1"/>
+            <Property symbol="div" value="0"/>
+            <Property symbol="control" value="0.0"/>
+            <Property symbol="mem" value="0.0"/>
+            <ChangeCellType time-step="1" newCellType="aCell">
+                <Condition>(rand_uni(0,1) &lt; deathP and control ==0)</Condition>
+                <Triggers>
+                    <Rule symbol-ref="color">
+                        <Expression>3</Expression>
+                    </Rule>
+                </Triggers>
+            </ChangeCellType>
+            <ChangeCellType newCellType="mCell">
+                <Condition>rand_uni(0,1) &lt; divP and div &lt; 2 and control == 0</Condition>
+                <Triggers>
+                    <Rule symbol-ref="color">
+                        <Expression>4</Expression>
+                    </Rule>
+                </Triggers>
+            </ChangeCellType>
+            <NeighborhoodReporter>
+                <Input scaling="cell" value="live"/>
+                <Output symbol-ref="div" mapping="sum"/>
+            </NeighborhoodReporter>
+            <NeighborhoodReporter>
+                <Input noflux-cell-medium="true" scaling="cell" value="(cell.type == celltype.mCell.id)"/>
+                <Output symbol-ref="control" mapping="sum"/>
+            </NeighborhoodReporter>
+            <!--    <Disabled>
+        <Event trigger="when-true">
+            <Condition>div&lt;2</Condition>
+            <Rule symbol-ref="deathP">
+                <Expression>0.008</Expression>
+            </Rule>
+        </Event>
+    </Disabled>
+-->
+            <!--    <Disabled>
+        <Property symbol="c" value="800"/>
+    </Disabled>
+-->
+            <LengthConstraint target="40" strength="1" mode="length"/>
+            <VolumeConstraint target="450" strength="1"/>
+            <SurfaceConstraint target="0.8" strength="0.2" mode="surface"/>
+            <ConnectivityConstraint/>
+            <InterfaceConstraint target="10" type="mCell" strength="50"/>
+            <NeighborhoodReporter>
+                <Input scaling="length" value="cell.type == celltype.BaseMem.id"/>
+                <Output symbol-ref="mem" mapping="sum"/>
+            </NeighborhoodReporter>
+            <!--    <Disabled>
+        <System time-scaling="2.4" time-step="4e-2" solver="Dormand-Prince [adaptive, O(5)]" solver-eps="1e-4">
+            <DiffEqn symbol-ref="DD">
+                <Expression>ks_DD_PPT + (ks_DDkid_PPT * Pt)/(km_DD_PPT + Pt) - Repair * DD*  kd_DDrep_PPT - DD*kd_DD_PPT</Expression>
+            </DiffEqn>
+            <DiffEqn symbol-ref="Repair">
+                <Expression>ks_rep_PPT + ks_repDD_PPT * DD - Repair * kd_rep_PPT</Expression>
+            </DiffEqn>
+            <Rule symbol-ref="deathP">
+                <Expression>if(DD &lt; 0.001643808241, 0.0002085  , 0.0002085 + 0.066452 *DD^2)</Expression>
+            </Rule>
+            <Annotation>ODE-System for PPT</Annotation>
+        </System>
+    </Disabled>
+-->
+            <Property symbol="DD" value="0"/>
+            <Property symbol="Repair" value="0.0"/>
+            <Property symbol="Pt" value="0"/>
+            <Property symbol="color" value="2"/>
+            <Property symbol="Pt_BM" value="0"/>
+            <NeighborhoodReporter>
+                <Input scaling="cell" value="Pt_BM"/>
+                <Output symbol-ref="Pt" mapping="sum"/>
+            </NeighborhoodReporter>
+            <System time-scaling="24" time-step="4e-2" solver="Dormand-Prince [adaptive, O(5)]" solver-eps="1e-4">
+                <DiffEqn symbol-ref="DD">
+                    <Expression>ks_DD_PPT + ((ks_DDkid_PPT * Pt)/(km_DD_PPT + Pt)) - Repair * DD*  kd_DDrep_PPT - DD*kd_DD_PPT</Expression>
+                </DiffEqn>
+                <DiffEqn symbol-ref="Repair">
+                    <Expression>ks_rep_PPT + (ks_repDD_PPT * DD)/(km_rep_PPT + DD) - Repair * kd_rep_PPT</Expression>
+                </DiffEqn>
+                <Rule symbol-ref="deathP">
+                    <Expression>if(DD &lt; 0.0083 ,0.0004, 0.0004 + 0.0032* DD)</Expression>
+                </Rule>
+                <Annotation>ODE-System for PPT</Annotation>
+            </System>
+            <Property symbol="regenerated_cell" value="0.0"/>
+            <!--    <Disabled>
+        <Equation symbol-ref="Segment">
+            <Expression>if(cell.center.y &lt;= 600, 2, 1)</Expression>
+        </Equation>
+    </Disabled>
+-->
+        </CellType>
+        <CellType name="medium" class="medium">
+            <Property symbol="Pt" value="0"/>
+            <Property symbol="Pt_BM" value="0"/>
+            <Property symbol="Cell_Death" value="0.0"/>
+            <!--    <Disabled>
+        <NeighborhoodReporter>
+            <Input scaling="cell" value="live"/>
+            <Output symbol-ref="Cell_Death" mapping="sum"/>
+        </NeighborhoodReporter>
+    </Disabled>
+-->
+            <!--    <Disabled>
+        <Equation symbol-ref="cumulativeDeath">
+            <Expression>cumulativeDeath + Cell_Death</Expression>
+        </Equation>
+    </Disabled>
+-->
+            <Property symbol="cumulativeDeath" value="0.0"/>
+        </CellType>
+        <CellType name="aCell" class="biological">
+            <Property symbol="div" value="0.0"/>
+            <!--    <Disabled>
+        <Property symbol="h" value="if(cell.center.x&lt;60,1,-1)"/>
+    </Disabled>
+-->
+            <!--    <Disabled>
+        <PropertyVector symbol="direction" value="h, 0, 0.0"/>
+    </Disabled>
+-->
+            <Property symbol="length" value="40"/>
+            <!--    <Disabled>
+        <Property symbol="live" value="0"/>
+    </Disabled>
+-->
+            <Property symbol="volume" value="200"/>
+            <Property symbol="location" value="cell.center.y"/>
+            <!--    <Disabled>
+        <Property symbol="stuck" value="0.0"/>
+    </Disabled>
+-->
+            <VolumeConstraint target="deadV" strength="20"/>
+            <LengthConstraint target="length" strength="1" mode="length"/>
+            <!--    <Disabled>
+        <SurfaceConstraint target="0.9" strength="" mode="aspherity"/>
+    </Disabled>
+-->
+            <Property symbol="cont" value="0.0"/>
+            <!--    <Disabled>
+        <ChangeCellType newCellType="PPT">
+            <Condition>(div>=30)</Condition>
+        </ChangeCellType>
+    </Disabled>
+-->
+            <!--    <Disabled>
+        <ConnectivityConstraint/>
+    </Disabled>
+-->
+            <!--    <Disabled>
+        <NeighborhoodReporter>
+            <Input scaling="cell" value="live"/>
+            <Output symbol-ref="div" mapping="sum"/>
+        </NeighborhoodReporter>
+    </Disabled>
+-->
+            <!--    <Disabled>
+        <NeighborhoodReporter>
+            <Input scaling="length" value="live"/>
+            <Output symbol-ref="div" mapping="average"/>
+        </NeighborhoodReporter>
+    </Disabled>
+-->
+            <SurfaceConstraint target="0.9" strength="10" mode="surface"/>
+            <!--    <Disabled>
+        <CellDeath>
+            <Condition>div &lt; 0</Condition>
+            <Shrinkage remove-volume="0" replace-with="medium" target-volume="volume"/>
+        </CellDeath>
+    </Disabled>
+-->
+            <!--    <Disabled>
+        <DirectedMotion strength="2000" retraction="true" direction="direction" protrusion="true"/>
+    </Disabled>
+-->
+            <!--    <Disabled>
+        <Event>
+            <Condition>cell.center.x>40 and cell.center.x&lt;80</Condition>
+            <VectorRule symbol-ref="direction">
+                <Expression>0, -1, 0.0</Expression>
+            </VectorRule>
+        </Event>
+    </Disabled>
+-->
+            <!--    <Disabled>
+        <ConnectivityConstraint/>
+    </Disabled>
+-->
+            <!--    <Disabled>
+        <CellDivision division-plane="major">
+            <Condition>div&lt;1 and volume>26</Condition>
+            <Triggers name="volume = voluem/2">
+                <Rule symbol-ref="volume">
+                    <Expression>volume = volume/2</Expression>
+                </Rule>
+                <Rule symbol-ref="length">
+                    <Expression>length/2</Expression>
+                </Rule>
+            </Triggers>
+        </CellDivision>
+    </Disabled>
+-->
+            <!--    <Disabled>
+        <Event>
+            <Condition>time>=0</Condition>
+            <Rule symbol-ref="stuck">
+                <Expression>if(cell.center.x*cell.center.y == location,stuck+1,0)</Expression>
+            </Rule>
+        </Event>
+    </Disabled>
+-->
+            <CellDeath>
+                <Condition>cell.center.y &lt; 0</Condition>
+            </CellDeath>
+            <CellDeath>
+                <Condition>cell.volume&lt;170</Condition>
+            </CellDeath>
+            <!--    <Disabled>
+        <CellDeath>
+            <Condition>0</Condition>
+            <Shrinkage remove-volume="0" replace-with="medium" target-volume="deadCPT"/>
+        </CellDeath>
+    </Disabled>
+-->
+            <Property symbol="deadV" value="0"/>
+            <Property symbol="color" value="3"/>
+            <Property symbol="Pt" value="0"/>
+            <Property symbol="Pt_BM" value="0"/>
+            <Property symbol="deadCount" value="1"/>
+        </CellType>
+        <CellType name="mCell" class="biological">
+            <Property symbol="div" value="0.0"/>
+            <Property symbol="live" value="1"/>
+            <!--    <Disabled>
+        <SurfaceConstraint target="0.9" strength="" mode="aspherity"/>
+    </Disabled>
+-->
+            <CellDivision division-plane="oriented" orientation="0.0, 1, 0.0">
+                <Condition>cell.length > 60</Condition>
+            </CellDivision>
+            <Property symbol="cont" value="0.0"/>
+            <ChangeCellType newCellType="PPT">
+                <Condition>(delay_div>=2) and cell.center.y &lt;= 600</Condition>
+                <Triggers>
+                    <Rule symbol-ref="color">
+                        <Expression>2</Expression>
+                    </Rule>
+                    <Rule symbol-ref="regenerated_cell">
+                        <Expression>1</Expression>
+                    </Rule>
+                </Triggers>
+            </ChangeCellType>
+            <ChangeCellType newCellType="PPT">
+                <Condition>(delay_div>=2) and cell.center.y > 600</Condition>
+                <Triggers>
+                    <Rule symbol-ref="color">
+                        <Expression>1</Expression>
+                    </Rule>
+                    <Rule symbol-ref="regenerated_cell">
+                        <Expression>1</Expression>
+                    </Rule>
+                </Triggers>
+            </ChangeCellType>
+            <NeighborhoodReporter>
+                <Input scaling="cell" value="live"/>
+                <Output symbol-ref="div" mapping="sum"/>
+            </NeighborhoodReporter>
+            <!--    <Disabled>
+        <NeighborhoodReporter>
+            <Input scaling="length" value="live"/>
+            <Output symbol-ref="div" mapping="average"/>
+        </NeighborhoodReporter>
+    </Disabled>
+-->
+            <Property symbol="stopDiv" value="0.0"/>
+            <VolumeConstraint target="600" strength="1"/>
+            <ConnectivityConstraint/>
+            <LengthConstraint target="80" strength="50" mode="length"/>
+            <SurfaceConstraint target="0.7" strength="0.6" mode="aspherity"/>
+            <InterfaceConstraint target="13" type="PPT" strength="100"/>
+            <!--    <Disabled>
+        <InterfaceConstraint target="500" type="BaseMem" strength="5"/>
+    </Disabled>
+-->
+            <NeighborhoodReporter>
+                <Input scaling="length" value="cell.type == celltype.BaseMem.id"/>
+                <Output symbol-ref="mem" mapping="sum"/>
+            </NeighborhoodReporter>
+            <Property symbol="mem" value="0.0"/>
+            <Property symbol="color" value="4"/>
+            <Property symbol="Pt" value="0"/>
+            <Property symbol="Pt_BM" value="0"/>
+            <Property symbol="DD" value="0.0"/>
+            <DelayProperty symbol="delay_div" delay="0.5" value="0"/>
+            <Equation symbol-ref="delay_div">
+                <Expression>div</Expression>
+            </Equation>
+            <!--    <Disabled>
+        <Equation symbol-ref="Segment">
+            <Expression>if(cell.center.y &lt;= 600, 2, 1)</Expression>
+        </Equation>
+    </Disabled>
+-->
+        </CellType>
+        <CellType name="BaseMem" class="biological">
+            <FreezeMotion>
+                <Condition>1</Condition>
+            </FreezeMotion>
+            <Property symbol="color" value="0"/>
+            <InterfaceConstraint target="550" type="mCell" strength="50"/>
+            <System time-scaling="24" time-step="4e-2" solver="Runge-Kutta [fixed, O(4)]" solver-eps="1e-4">
+                <DiffEqn symbol-ref="Plasma">
+                    <Expression>Kidney * k_kidPlas - Plasma * (k_plasKid + ke_plas)</Expression>
+                </DiffEqn>
+                <DiffEqn symbol-ref="Kidney">
+                    <Expression>Accumulation * + k_accuKid + Plasma * k_plasKid  - Kidney * (k_kidPlas + k_kidAccu + ke_kid)</Expression>
+                </DiffEqn>
+                <DiffEqn symbol-ref="Accumulation">
+                    <Expression>Kidney * k_kidAccu - Accumulation * k_accuKid</Expression>
+                </DiffEqn>
+                <Rule symbol-ref="Pt_BM">
+                    <Expression>Kidney + Accumulation</Expression>
+                </Rule>
+                <Rule symbol-ref="color">
+                    <Expression>10+Pt_BM</Expression>
+                </Rule>
+            </System>
+            <Property symbol="Plasma" value="45">
+                <Annotation></Annotation>
+            </Property>
+            <Property symbol="Kidney" value="0"/>
+            <Property symbol="Accumulation" value="0"/>
+            <Property symbol="Pt_BM" value="0"/>
+            <Property symbol="k_kidPlas" value="0.022052503115"/>
+            <Property symbol="k_plasKid" value="1.13252628565"/>
+            <Property symbol="ke_plas" value="0.1813857857015"/>
+            <Property symbol="k_accuKid" value="0.0003284364143375"/>
+            <Property symbol="k_kidAccu" value="0.001673191758"/>
+            <Property symbol="ke_kid" value="0.00181720824448"/>
+            <!--    <Disabled>
+        <Property symbol="color_BM" value="0.0"/>
+    </Disabled>
+-->
+            <Property symbol="Pt" value="0"/>
+            <System time-scaling="24" time-step="4e-2" solver="Dormand-Prince [adaptive, O(5)]" solver-eps="1e-4">
+                <DiffEqn symbol-ref="DD_CPT">
+                    <Expression>ks_DD_CPT + ((ks_DDkid_CPT * Pt_BM)/(km_DD_CPT + Pt_BM)) - Repair_CPT * DD_CPT*  kd_DDrep_CPT - DD_CPT*kd_DD_CPT</Expression>
+                </DiffEqn>
+                <DiffEqn symbol-ref="Repair_CPT">
+                    <Expression>ks_rep_CPT + ((ks_repDD_CPT * DD_CPT)/(km_rep_CPT + DD_CPT)) - Repair_CPT * kd_rep_CPT</Expression>
+                </DiffEqn>
+                <Rule symbol-ref="deathP_CPT">
+                    <Expression>if(DD_CPT &lt; 0.34, 0.0004,0.0004 + 0.0032*DD_CPT)</Expression>
+                </Rule>
+                <Annotation>ODE-System for CPT</Annotation>
+            </System>
+            <Property symbol="DD_CPT" value="0"/>
+            <Property symbol="Repair_CPT" value="0"/>
+            <System time-scaling="24" time-step="4e-2" solver="Dormand-Prince [adaptive, O(5)]" solver-eps="1e-4">
+                <DiffEqn symbol-ref="DD_PPT">
+                    <Expression>ks_DD_PPT + ((ks_DDkid_PPT * Pt_BM)/(km_DD_PPT + Pt_BM)) - Repair_PPT * DD_PPT*  kd_DDrep_PPT - DD_PPT*kd_DD_PPT</Expression>
+                </DiffEqn>
+                <DiffEqn symbol-ref="Repair_PPT">
+                    <Expression>ks_rep_PPT + ((ks_repDD_PPT * DD_PPT)/(km_rep_PPT + DD_PPT)) - Repair_PPT* kd_rep_PPT</Expression>
+                </DiffEqn>
+                <Rule symbol-ref="deathP_PPT">
+                    <Expression>if(DD_PPT &lt; 0.0082 ,0.0004, 0.0004 + 0.0032* DD_PPT)</Expression>
+                </Rule>
+                <!--    <Disabled>
+        <Rule symbol-ref="DD_PPT_accu">
+            <Expression>DD_PPT_delay + DD_PPT*time_alive</Expression>
+        </Rule>
+    </Disabled>
+-->
+                <Annotation>ODE-System for PPT</Annotation>
+            </System>
+            <Property symbol="DD_PPT" value="0"/>
+            <Property symbol="Repair_PPT" value="0"/>
+            <Property symbol="deathP_PPT" value="0.0"/>
+            <Property symbol="deathP_CPT" value="0.0"/>
+        </CellType>
+    </CellTypes>
+    <CellPopulations>
+        <Population type="CPT" size="1">
+            <InitCellObjects mode="order">
+                <Arrangement repetitions="14, 22, 0" displacements="85, 27, 0">
+                    <Sphere center="17, 623,0" radius="5"/>
+                </Arrangement>
+            </InitCellObjects>
+        </Population>
+        <Population type="PPT" size="1">
+            <InitCellObjects mode="order">
+                <Arrangement repetitions="14, 23, 0" displacements="85, 27, 0">
+                    <Sphere center="17, 2, 0" radius="5"/>
+                </Arrangement>
+            </InitCellObjects>
+        </Population>
+        <Population type="BaseMem" name="Basal membrane" size="1">
+            <InitCellObjects mode="order">
+                <Arrangement repetitions="1, 1, 0" displacements="105, 1, 0">
+                    <Box origin="0, 0.0, 0.0" size="15, 1200.0, 0.0"/>
+                </Arrangement>
+            </InitCellObjects>
+        </Population>
+        <Population type="BaseMem" name="Basal Membrane" size="1">
+            <InitCellObjects mode="order">
+                <Arrangement repetitions="7, 1, 1" displacements="170, 1, 1">
+                    <Box origin="105, 0.0, 0.0" size="80, 1200.0, 0.0"/>
+                </Arrangement>
+            </InitCellObjects>
+        </Population>
+    </CellPopulations>
+    <CPM>
+        <Interaction>
+            <Contact type2="BaseMem" type1="PPT" value="-20"/>
+            <Contact type2="PPT" type1="PPT" value="-10">
+                <HomophilicAdhesion strength="10" adhesive="10"/>
+            </Contact>
+            <Contact type2="medium" type1="PPT" value="200"/>
+            <Contact type2="aCell" type1="PPT" value="200"/>
+            <Contact type2="BaseMem" type1="mCell" value="-10"/>
+            <Contact type2="mCell" type1="mCell" value="5"/>
+            <Contact type2="medium" type1="mCell" value="500">
+                <!--    <Disabled>
+        <HeterophilicAdhesion adhesive1="0.0" strength="0.0" adhesive2="0.0"/>
+    </Disabled>
+-->
+            </Contact>
+            <!--    <Disabled>
+        <Contact type2="CPT" type1="PPT" value="2"/>
+    </Disabled>
+-->
+            <Contact type2="mCell" type1="mCell" value="500"/>
+            <Contact type2="aCell" type1="mCell" value="200"/>
+            <Contact type2="mCell" type1="aCell" value="200"/>
+            <Contact type2="medium" type1="aCell" value="1"/>
+            <Contact type2="aCell" type1="aCell" value="200"/>
+            <Contact type2="BaseMem" type1="aCell" value="200"/>
+            <Contact type2="BaseMem" type1="PPT" value="-20"/>
+            <Contact type2="CPT" type1="CPT" value="-10">
+                <HomophilicAdhesion strength="10" adhesive="10"/>
+            </Contact>
+            <Contact type2="medium" type1="CPT" value="200"/>
+            <Contact type2="aCell" type1="CPT" value="200"/>
+            <Contact type2="PPT" type1="CPT" value="-10">
+                <HomophilicAdhesion strength="10" adhesive="10"/>
+            </Contact>
+            <Contact type2="mCell" type1="PPT" value="10"/>
+            <Contact type2="mCell" type1="CPT" value="10"/>
+        </Interaction>
+        <ShapeSurface scaling="norm">
+            <Neighborhood>
+                <!--    <Disabled>
+        <Distance>2.5</Distance>
+    </Disabled>
+-->
+                <Order>6</Order>
+            </Neighborhood>
+        </ShapeSurface>
+        <MonteCarloSampler stepper="edgelist">
+            <MCSDuration symbol="mcs_duration" value="0.0417"/>
+            <Neighborhood>
+                <Order>optimal</Order>
+            </Neighborhood>
+            <MetropolisKinetics temperature="5"/>
+        </MonteCarloSampler>
+    </CPM>
+</MorpheusModel>
