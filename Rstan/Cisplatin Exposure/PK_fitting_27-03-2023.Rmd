@@ -74,9 +74,7 @@ fit_pk_DD <- compiled_model$sample(data = data_list,
 
 ```{r}
 full_S <- read.csv("Inputdata/full_S.csv") %>% select(-1) %>% mutate(StateVar="S") %>% filter(Time!=0)
-#full_S[2,1]<-0.5
-full_Accu <- rbind(c(0.25,45,0.01,"Accu"),read.csv("Inputdata/full_Accu.csv") %>% select(-1) %>% mutate(StateVar="Accu") %>% filter(Time!=0)) %>% mutate_at(1:3,funs(as.numeric))# %>% mutate_at(2:4, funs(lead), n = 1)
-#full_Accu[13,2:4] <- full_Accu[12,2:4]
+full_Accu <- rbind(c(0.25,45,0.01,"Accu"),read.csv("Inputdata/full_Accu.csv") %>% select(-1) %>% mutate(StateVar="Accu") %>% filter(Time!=0)) %>% mutate_at(1:3,funs(as.numeric))
 
 full_PK <- rbind(semi_join(full_S,full_Accu, by = "Time"),full_Accu)  %>% filter(Time!=0.25)
 full_PK[13,3] <- 5
